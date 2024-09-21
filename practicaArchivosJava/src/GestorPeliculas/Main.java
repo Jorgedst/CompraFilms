@@ -20,32 +20,87 @@ public class Main {
         Scanner leer = new Scanner(System.in);
         int sw = 1;
         int op = 0;
+        String ruta = "C:\\Users\\PC\\OneDrive\\Documentos\\EstructurasRepo\\practicaArchivosJava\\src\\peliculas.txt";
+        Archivo archivo = new Archivo(ruta);
+        archivo.leerPeliculas();
         while (sw == 1) {
             System.out.println("--------SISTEMA GESTOR DE PELICULAS---------\n");
-            System.out.print("(1)Registrar Pelicula"
-                    + "(2)Mostrar pelicula segun año"
-                    + "(3)Peliculas de menor a mayor segun año"
-                    + "(4)Peliculas de mayor precio en un año"
-                    + "(5)Peliculas de un director (Rango De años)"
-                    + "(6)Peliculas de un genero especifico"
-                    + "(6)Salir...)");
+            System.out.print("""
+                             (1)Registrar Pelicula
+                             (2)Mostrar cantidad de peliculas segun año
+                             (3)Peliculas de menor a mayor segun año
+                             (4)Peliculas de mayor precio en un año
+                             (5)Modificar Pelicula
+                             (6)Eliminar Pelicula
+                             (7)Salir...)
+                             """);
             System.out.println("Ingrese una opción:");
             op = leer.nextInt();
             switch (op) {
                 case 1:
                     System.out.println("Ingrese la informacion de la pelicula a registrar:");
-                    System.out.println("ID:");
+                    System.out.print("ID:");
                     ide = leer.nextInt();
-                    System.out.println("Titulo:");
+                    leer.nextLine();
+
+                    System.out.print("Titulo:");
                     titulo = leer.nextLine();
-                    System.out.println("Director:");
+
+                    System.out.print("Director:");
                     director = leer.nextLine();
-                    System.out.println("Genero:");
+
+                    System.out.print("Genero:");
                     genero = leer.nextLine();
-                    System.out.println("Año:");
+
+                    System.out.print("Año:");
                     año = leer.nextInt();
-                    System.out.println("Precio:");
-                    precio = leer.nextFloat;
+                    leer.nextLine();
+
+                    System.out.print("Precio:");
+                    precio = leer.nextDouble();
+
+                    archivo.registrarPelicula(ide, titulo, director, genero, año, precio);
+                    break;
+                case 2:
+                    System.out.println("Ingrese el año a buscar:");
+                    int añoBusq = leer.nextInt();
+                    archivo.cantidadPeliculasAño(añoBusq);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    System.out.println("Ingrese el año a buscar:");
+                    int añoBusqM = leer.nextInt();
+                    archivo.hayarMayorPrecio(añoBusqM);
+                    break;
+                case 5:
+                    System.out.println("Ingrese el ID de la pelicula que desea modificar:");
+                    int idmodificar = leer.nextInt();
+                    archivo.mostrarPeliculaId(idmodificar);
+                    System.out.println("Ingrese el nuevo ID:");
+                    int nuevoid = leer.nextInt();
+                    leer.nextLine();
+                    System.out.println("Ingrese el nuevo titulo:");
+                    String nuevotitulo = leer.nextLine();
+                    System.out.println("Ingrese el nuevo director:");
+                    String nuevodirector = leer.nextLine();
+                    System.out.println("Ingrese el nuevo genero:");
+                    String nuevogenero = leer.nextLine();
+                    System.out.println("Ingrese el nuevo año:");
+                    int nuevoaño = leer.nextInt();
+                    leer.nextLine();
+                    System.out.println("Ingrese el nuevo precio:");
+                    double nuevoprecio = leer.nextDouble();
+                    archivo.modificarPelicula(idmodificar, nuevoid, nuevotitulo, nuevodirector, nuevogenero, nuevoaño, nuevoprecio);
+
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    sw = 0;
+                    break;
+                default:
+                    System.out.println("Opcion no valida, Intente de nuevo.");
             }
         }
 

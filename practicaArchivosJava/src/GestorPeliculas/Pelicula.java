@@ -18,13 +18,14 @@ public class Pelicula {
         this.ide = ide;
         this.titulo = titulo;
         this.director = director;
+        this.genero = genero;
         this.año = año;
         this.precio = precio;
     }
     
     @Override
     public String toString(){
-        return ide+","+titulo+","+director+","+año+","+precio;
+        return ide+","+titulo+","+director+","+genero+","+año+","+precio;
     }
 
     public int getIde() {

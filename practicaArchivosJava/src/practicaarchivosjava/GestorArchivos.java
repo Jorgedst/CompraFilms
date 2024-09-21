@@ -33,7 +33,8 @@ public class GestorArchivos {
 
     public ArrayList<String> leer() throws IOException {
         ArrayList<String> datos = new ArrayList<>();
-        try ( FileReader fr = new FileReader(rutaArchivo);  BufferedReader br = new BufferedReader(fr)) {
+        try ( FileReader fr = new FileReader(rutaArchivo);  
+             BufferedReader br = new BufferedReader(fr)) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 datos.add(linea);

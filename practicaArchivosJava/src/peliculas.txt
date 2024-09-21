@@ -1,0 +1,3 @@
+77,tit,dir,gen,2024,1000.0
+14,Taxi Driver,Martin Scorsesse,Sci-Fi,2004,80000.0
+22,Shrek 2,Nose2,nose3,2003,10000.0
