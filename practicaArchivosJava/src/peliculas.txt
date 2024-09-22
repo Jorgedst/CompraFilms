@@ -1,3 +1,6 @@
-77,tit,dir,gen,2024,1000.0
-14,Taxi Driver,Martin Scorsesse,Sci-Fi,2004,80000.0
-22,Shrek 2,Nose2,nose3,2003,10000.0
+3,Mami prenda la radio encienda la tele,Ryan Castro,Reggaeton,2024,90000.0
+2,The box,Roddy Richh,Peo,2024,100.0
+4,Work,Rihanna,peito,2024,40.0
+5,Bored,Laufey,Bossa ,2024,50000.0
+6,3 pecados despues ,Milo J,Rap,2024,100000.0
+7,PassionFruit,Drake,peo,2024,1000.0

@@ -67,6 +67,9 @@ public class Main {
                     archivo.cantidadPeliculasAño(añoBusq);
                     break;
                 case 3:
+                    System.out.println("Ingrese el año a ordenar:");
+                    int añoOrden = leer.nextInt();
+                    archivo.ordenarSegunAño(añoOrden);
                     break;
                 case 4:
                     System.out.println("Ingrese el año a buscar:");
@@ -95,6 +98,9 @@ public class Main {
 
                     break;
                 case 6:
+                    System.out.println("Ingrese el ID de la pelicula que desea eliminar:");
+                    int idEliminar = leer.nextInt();
+                    archivo.eliminarPelicula(idEliminar);
                     break;
                 case 7:
                     sw = 0;

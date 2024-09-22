@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -104,8 +105,22 @@ public class Archivo {
             System.out.println("No hay peliculas registradas de ese año.");
             return 0;
         } else {
-            System.out.println("Cantidad de peliculas en "+añoBusq+": "+cantidadPeliculas);
+            System.out.println("Cantidad de peliculas en " + añoBusq + ": " + cantidadPeliculas);
             return cantidadPeliculas;
+        }
+    }
+    
+    public void ordenarSegunAño(int añoOrdenar){
+        ArrayList<Pelicula> peliculasOrdenadas = new ArrayList<>();
+        for (Pelicula pelicula : peliculas){
+            if (pelicula.getAño()== añoOrdenar){
+                peliculasOrdenadas.add(pelicula);
+            }
+        }
+        peliculasOrdenadas.sort(Comparator.comparingDouble(Pelicula::getPrecio));
+        
+        for (Pelicula p: peliculasOrdenadas){
+            System.out.println("ID:" + p.getIde() + ", Titulo:" + p.getTitulo() + ", Director:" + p.getDirector() + ", Genero:" + p.getGenero() + ", Año:" + p.getAño() + ", Precio:" + p.getPrecio());
         }
     }
 
@@ -146,12 +161,32 @@ public class Archivo {
                 }
             }
             try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, false))) {
-                for (Pelicula p : peliculas){
-                    bw.write(p.toString()+"\n");
+                for (Pelicula p : peliculas) {
+                    bw.write(p.toString() + "\n");
                 }
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    public void eliminarPelicula(int idElim) {
+        Pelicula peliculaEliminar = null;
+        for (Pelicula pelicula : peliculas) {
+            if (pelicula.getIde() == idElim) {
+                peliculaEliminar = pelicula;
+                break;
+            }
+        }
+        if (peliculaEliminar != null) {
+            peliculas.remove(peliculaEliminar);
+        }
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, false))) {
+            for (Pelicula pelicula : peliculas) {
+                bw.write(pelicula.toString() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
