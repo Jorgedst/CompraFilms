@@ -90,4 +90,24 @@ public class ArchivoCliente {
         }
 
     }
+    
+    public void eliminarCliente(int idElim) {
+        Cliente clienteEliminar = null;
+        for (Cliente cliente : clientes) {
+            if (cliente.getIdecliente()== idElim) {
+                clienteEliminar = cliente;
+                break;
+            }
+        }
+        if (clienteEliminar != null) {
+            clientes.remove(clienteEliminar);
+        }
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, false))) {
+            for (Cliente cliente : clientes) {
+                bw.write(clientes.toString() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

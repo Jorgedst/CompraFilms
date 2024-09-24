@@ -7,8 +7,7 @@ package entidades;
 /**
  *
  * @author Dtapiaj
- */
-public class Cliente {
+ */public class Cliente {
     int idecliente;
     String nombre;
     String correo;

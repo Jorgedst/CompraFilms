@@ -132,24 +132,24 @@ public class ArchivoPelicula {
         return peliculaEncontrada;
     }
     
-    public Pelicula busqPorDirector(String director){
-        Pelicula peliculaEncontrada = null;
+    public ArrayList<Pelicula> busqPorDirector(String director){
+        ArrayList<Pelicula> directoresPelicula = new ArrayList<>();
         for (Pelicula pelicula : peliculas){
-            if (pelicula.getTitulo().equalsIgnoreCase(director)){
-                peliculaEncontrada = pelicula;
+            if (pelicula.getDirector().equalsIgnoreCase(director)){
+                directoresPelicula.add(pelicula);
             }
         }
-        return peliculaEncontrada;
+        return directoresPelicula;
     }
     
-    public Pelicula busqPorGenero(String genero){
-        Pelicula peliculaEncontrada = null;
+    public ArrayList<Pelicula> busqPorGenero(String genero){
+        ArrayList<Pelicula> generoPeliculas = new ArrayList<>();
         for (Pelicula pelicula : peliculas){
-            if (pelicula.getTitulo().equalsIgnoreCase(genero)){
-                peliculaEncontrada = pelicula;
+            if (pelicula.getGenero().equalsIgnoreCase(genero)){
+                generoPeliculas.add(pelicula);
             }
         }
-        return peliculaEncontrada;
+        return generoPeliculas;
     }
     
 }
