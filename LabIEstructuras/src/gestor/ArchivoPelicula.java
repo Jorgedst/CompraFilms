@@ -121,4 +121,35 @@ public class ArchivoPelicula {
             System.out.println(e.getMessage());
         }
     }
+    
+    public Pelicula busqPorTitulo(String titulo){
+        Pelicula peliculaEncontrada = null;
+        for (Pelicula pelicula : peliculas){
+            if (pelicula.getTitulo().equalsIgnoreCase(titulo)){
+                peliculaEncontrada = pelicula;
+            }
+        }
+        return peliculaEncontrada;
+    }
+    
+    public Pelicula busqPorDirector(String director){
+        Pelicula peliculaEncontrada = null;
+        for (Pelicula pelicula : peliculas){
+            if (pelicula.getTitulo().equalsIgnoreCase(director)){
+                peliculaEncontrada = pelicula;
+            }
+        }
+        return peliculaEncontrada;
+    }
+    
+    public Pelicula busqPorGenero(String genero){
+        Pelicula peliculaEncontrada = null;
+        for (Pelicula pelicula : peliculas){
+            if (pelicula.getTitulo().equalsIgnoreCase(genero)){
+                peliculaEncontrada = pelicula;
+            }
+        }
+        return peliculaEncontrada;
+    }
+    
 }

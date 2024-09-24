@@ -7,8 +7,7 @@ package entidades;
 /**
  *
  * @author Dtapiaj
- */
-public class Pelicula {
+ */public class Pelicula {
     int ide;
     String titulo;
     String director;
