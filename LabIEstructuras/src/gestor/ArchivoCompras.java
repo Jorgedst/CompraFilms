@@ -18,16 +18,21 @@ import java.util.ArrayList;
  * @author Dsilv
  */
 public class ArchivoCompras {
-    private final String ruta;
+
+    private final String rutaCompras;
+    private final String rutaClientes;
+    private final String rutaPeliculas;
     ArrayList<Compra> compras;
 
-    public ArchivoCompras(String ruta, ArrayList<Compra> compras) {
-        this.ruta = ruta;
-        this.compras = compras;
+    public ArchivoCompras(String rutaCompras, String rutaClientes, String rutaPeliculas) {
+        this.rutaCompras = rutaCompras;
+        this.rutaClientes = rutaClientes;
+        this.rutaPeliculas = rutaPeliculas;
+        this.compras = new ArrayList<>();
     }
-    
+
     public ArrayList<Compra> leerCompra() {
-        try ( BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(rutaCompras))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] elementos = linea.split(",");
@@ -35,17 +40,17 @@ public class ArchivoCompras {
                 int idecliente = Integer.parseInt(elementos[1]);
                 int idpelicula = Integer.parseInt(elementos[2]);
                 String fechaCompra = elementos[3];
-                
+
                 Compra compra = new Compra(idcompra, idecliente, idpelicula, fechaCompra);
                 compras.add(compra);
             }
         } catch (IOException e) {
-            System.out.println("Ocurrio un error al leer los clientes..." + e.getMessage());
+            System.out.println("Ocurrio un error al leer las compras..." + e.getMessage());
         }
         return compras;
     }
-    
-     public Boolean existeId(int ide) {
+
+    public Boolean existeId(int ide) {
         for (Compra compra : compras) {
             if (compra.getIdecliente() == ide) {
                 return true;
@@ -53,27 +58,34 @@ public class ArchivoCompras {
         }
         return false;
     }
-     
-     public void registrarCompra(int ideCompra, int idCliente, int idPelicula, String fechaCompra) {
+
+    public void registrarCompra(int ideCompra, int idCliente, int idPelicula, String fechaCompra) {
+        ArchivoCliente archivoCliente = new ArchivoCliente(rutaCompras);
+        ArchivoPelicula archivoPeliculas = new ArchivoPelicula(rutaCompras);
+
+        ArrayList<Cliente> clientes = archivoCliente.leerClientes();
         if (existeId(ideCompra) == true) {
-            System.out.println("Ya existe una pelicula con ese ID...");
-        } else {
-         Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
+            System.out.println("Ya existe una compra con ese ID...");
+        } else if (archivoCliente.existeId(idCliente) == false) {
+            System.out.println("No existe un cliente con ese ID...");
+        } else if(archivoPeliculas.existeId(idCliente)==false) {
+            System.out.println("No existe una pelicula con es ID...");
+        }else{
+            Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
             compras.add(compra);
             guardarCompra(compra);
-            System.out.println("Pelicula guardada...");
+            System.out.println("Compra guardada...");
         }
     }
-     
-     public void guardarCompra(Compra compra) {
+
+    public void guardarCompra(Compra compra) {
         //BufferedWriter y FileWriter en try para asegurar de que cierre bufferedWriter y escriba en el archivo.
-        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(this.ruta, true))) {
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(this.rutaCompras, true))) {
             bw.write(compra.toString() + "\n");
-            System.out.println("Guardando en archivo la pelicula: " + compra.toString());
+            System.out.println("Guardando en archivo la compra: " + compra.toString());
         } catch (IOException e) {
-            System.out.println("Ocurrio un error al guardar la pelicula..." + e.getMessage());
+            System.out.println("Ocurrio un error al guardar la compra..." + e.getMessage());
         }
     }
-     
-     
+
 }

@@ -21,9 +21,9 @@ public class ArchivoCliente {
     private final String ruta;
     ArrayList<Cliente> clientes;
 
-    public ArchivoCliente(String ruta, ArrayList<Cliente> clientes) {
+    public ArchivoCliente(String ruta) {
         this.ruta = ruta;
-        this.clientes = clientes;
+        this.clientes = new ArrayList<>();
     }
     
     public ArrayList<Cliente> leerClientes() {
@@ -55,21 +55,21 @@ public class ArchivoCliente {
     
     public void registrarCliente(int ide, String nombre, String correo, String direccion) {
         if (existeId(ide) == true) {
-            System.out.println("Ya existe una pelicula con ese ID...");
+            System.out.println("Ya existe un cliente con ese ID...");
         } else {
             Cliente cliente = new Cliente(ide, nombre, correo, direccion);
             clientes.add(cliente);
             guardarCliente(cliente);
-            System.out.println("Pelicula guardada...");
+            System.out.println("Cliente guardado.");
         }
     }
     public void guardarCliente(Cliente cliente) {
         //BufferedWriter y FileWriter en try para asegurar de que cierre bufferedWriter y escriba en el archivo.
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(this.ruta, true))) {
             bw.write(cliente.toString() + "\n");
-            System.out.println("Guardando en archivo la pelicula: " + cliente.toString());
+            System.out.println("Guardando en archivo el cliente: " + cliente.toString());
         } catch (IOException e) {
-            System.out.println("Ocurrio un error al guardar la pelicula..." + e.getMessage());
+            System.out.println("Ocurrio un error al guardar el cliente..." + e.getMessage());
         }
     }
     
