@@ -2,6 +2,7 @@ package interfaz;
 
 
 import gestor.ArchivoPelicula;
+import java.io.File;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,7 +14,7 @@ import gestor.ArchivoPelicula;
  * @author Dtapiaj
  */
 public class GestionPeliculas extends javax.swing.JFrame {
-    String rutaArchivoPelicula = "C:\\Users\\PC\\OneDrive\\Documentos\\EstructurasRepo\\LabIEstructuras\\src\\archivos\\peliculas.txt";
+    String rutaArchivoPelicula= new File("").getAbsolutePath()+"\\src\\archivos\\peliculas.txt";
     ArchivoPelicula archivoPelicula = new ArchivoPelicula(rutaArchivoPelicula);
     /**
      * Creates new form GestionPeliculas
@@ -222,7 +223,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         int añoPelicula = Integer.parseInt(txtaño.getText());
         String generoPelicula = txtgenero.getText();
         double precioPelicula = Double.parseDouble(txtprecio.getText());
-        
+        archivoPelicula.leerPeliculas();
         archivoPelicula.registrarPelicula(idepelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
         
     }//GEN-LAST:event_btnagregarActionPerformed

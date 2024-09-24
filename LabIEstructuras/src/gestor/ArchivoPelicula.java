@@ -35,8 +35,8 @@ public class ArchivoPelicula {
                 int ide = Integer.parseInt(elementos[0]);
                 String titulo = elementos[1];
                 String director = elementos[2];
-                String genero = elementos[3];
-                int año = Integer.parseInt(elementos[4]);
+                int año = Integer.parseInt(elementos[3]);
+                String genero = elementos[4];
                 double precio = Double.parseDouble(elementos[5]);
                 Pelicula pelicula = new Pelicula(ide, titulo, director, año, genero, precio);
                 peliculas.add(pelicula);
@@ -79,7 +79,7 @@ public class ArchivoPelicula {
             System.out.println("Ocurrio un error al guardar la pelicula..." + e.getMessage());
         }
     }
-    
+
 //Actualizar Pelicula
     public void actualizarPelicula(int ide, String nuevotitulo, String nuevodir, int nuevoaño, String nuevogen, double nuevoprecio) {
         for (Pelicula pelicula : peliculas) {
@@ -100,7 +100,7 @@ public class ArchivoPelicula {
         }
 
     }
-    
+
     //EliminarPelicula
     public void eliminarPelicula(int idElim) {
         Pelicula peliculaEliminar = null;
