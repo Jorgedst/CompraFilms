@@ -67,7 +67,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         btnagregarPelicula = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaPeliculas = new javax.swing.JTextArea();
-        btMostrarPeliculas = new javax.swing.JButton();
+        btnMostrarPeliculas = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtIdCliente = new javax.swing.JTextField();
@@ -259,10 +259,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtAreaPeliculas.setRows(5);
         jScrollPane1.setViewportView(txtAreaPeliculas);
 
-        btMostrarPeliculas.setText("Mostrar");
-        btMostrarPeliculas.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrarPeliculas.setText("Mostrar");
+        btnMostrarPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMostrarPeliculasActionPerformed(evt);
+                btnMostrarPeliculasActionPerformed(evt);
             }
         });
 
@@ -483,7 +483,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnagregarPelicula)
                                 .addGap(18, 18, 18)
-                                .addComponent(btMostrarPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnMostrarPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBuscarPelicula))
                             .addGroup(layout.createSequentialGroup()
@@ -610,7 +610,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnagregarPelicula)
-                                    .addComponent(btMostrarPeliculas)
+                                    .addComponent(btnMostrarPeliculas)
                                     .addComponent(btnBuscarPelicula))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -649,10 +649,29 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtgeneroRegisterPeliculaActionPerformed
 
     private void btnagregarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarPeliculaActionPerformed
-        
+        int idepelicula = Integer.parseInt(txtidPelicula.getText());
+        String tituloPelicula = txtituloPelicula.getText();
+        String directorPelicula = txtdirectorRegisterPelicula.getText();
+        int añoPelicula = Integer.parseInt(txtañoRegisterPelicula.getText());
+        String generoPelicula = txtgeneroRegisterPelicula.getText();
+        double precioPelicula = Double.parseDouble(txtprecioPelicula.getText());
+
+        archivoPelicula.leerPeliculas();
+        if (archivoPelicula.existeId(idepelicula)) {
+            txtAreaPeliculas.setText("!El ID de la pelicula ya existe!");
+        } else {
+            txtidPelicula.setText(null);
+            txtituloPelicula.setText(null);
+            txtdirectorRegisterPelicula.setText(null);
+            txtañoRegisterPelicula.setText(null);
+            txtgeneroRegisterPelicula.setText(null);
+            txtprecioPelicula.setText(null);
+            archivoPelicula.registrarPelicula(idepelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
+            txtAreaPeliculas.setText("!Pelicula registrada Exitosamente!");
+        }
     }//GEN-LAST:event_btnagregarPeliculaActionPerformed
 
-    private void btMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarPeliculasActionPerformed
+    private void btnMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPeliculasActionPerformed
         StringBuilder contenido = new StringBuilder();
         try ( BufferedReader br = new BufferedReader(new FileReader(rutaArchivoPelicula))) {
             String linea;
@@ -663,7 +682,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage());
         }
-    }//GEN-LAST:event_btMostrarPeliculasActionPerformed
+    }//GEN-LAST:event_btnMostrarPeliculasActionPerformed
 
     private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
         // TODO add your handling code here:
@@ -723,9 +742,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
     private void btnEliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaActionPerformed
         archivoPelicula.leerPeliculas();
-        int peliculaEliminar = Integer.parseInt(txtidPelicula.getText());
-        if (archivoPelicula.existeId(peliculaEliminar)) {
-            archivoPelicula.eliminarPelicula(peliculaEliminar);
+        int idPeliculaEliminar = Integer.parseInt(txtidPelicula.getText());
+        if (archivoPelicula.existeId(idPeliculaEliminar)) {
+            archivoPelicula.eliminarPelicula(idPeliculaEliminar);
             txtituloPelicula.setText(null);
             txtdirectorRegisterPelicula.setText(null);
             txtañoRegisterPelicula.setText(null);
@@ -757,26 +776,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarPeliculaMouseClicked
 
     private void btnagregarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarPeliculaMouseClicked
-        int idepelicula = Integer.parseInt(txtidPelicula.getText());
-        String tituloPelicula = txtituloPelicula.getText();
-        String directorPelicula = txtdirectorRegisterPelicula.getText();
-        int añoPelicula = Integer.parseInt(txtañoRegisterPelicula.getText());
-        String generoPelicula = txtgeneroRegisterPelicula.getText();
-        double precioPelicula = Double.parseDouble(txtprecioPelicula.getText());
 
-        archivoPelicula.leerPeliculas();
-        if (archivoPelicula.existeId(idepelicula)) {
-            txtAreaPeliculas.setText("!El ID de la pelicula ya existe!");
-        } else {
-            txtidPelicula.setText(null);
-            txtituloPelicula.setText(null);
-            txtdirectorRegisterPelicula.setText(null);
-            txtañoRegisterPelicula.setText(null);
-            txtgeneroRegisterPelicula.setText(null);
-            txtprecioPelicula.setText(null);
-            archivoPelicula.registrarPelicula(idepelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
-            txtAreaPeliculas.setText("!Pelicula registrada Exitosamente!");
-        }
     }//GEN-LAST:event_btnagregarPeliculaMouseClicked
 
     /**
@@ -817,7 +817,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscar;
     private javax.swing.JFrame BuscarPelicula;
-    private javax.swing.JButton btMostrarPeliculas;
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarCompra;
     private javax.swing.JButton btnBuscarPelicula;
@@ -827,6 +826,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JButton btnModificarPelicula;
     private javax.swing.JButton btnMostrarClientes;
     private javax.swing.JButton btnMostrarCompra;
+    private javax.swing.JButton btnMostrarPeliculas;
     private javax.swing.JButton btnagregarPelicula;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

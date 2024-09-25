@@ -254,7 +254,7 @@
                           <Group type="102" attributes="0">
                               <Component id="btnagregarPelicula" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="btMostrarPeliculas" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="btnMostrarPeliculas" min="-2" pref="78" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnBuscarPelicula" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -413,7 +413,7 @@
                               <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnagregarPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btMostrarPeliculas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMostrarPeliculas" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnBuscarPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -522,12 +522,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btMostrarPeliculas">
+    <Component class="javax.swing.JButton" name="btnMostrarPeliculas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMostrarPeliculasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarPeliculasActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
