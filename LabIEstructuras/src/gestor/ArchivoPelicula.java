@@ -66,6 +66,7 @@ public class ArchivoPelicula {
             peliculas.add(pelicula);
             guardarPelicula(pelicula);
             System.out.println("Pelicula guardada...");
+            System.out.println("Vector en registrar: "+peliculas);
         }
     }
 
@@ -113,8 +114,10 @@ public class ArchivoPelicula {
         if (peliculaEliminar != null) {
             peliculas.remove(peliculaEliminar);
         }
+        System.out.println(peliculas);
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, false))) {
             for (Pelicula pelicula : peliculas) {
+                System.out.println("Elementos en eliminar"+pelicula.toString()+"\n");
                 bw.write(pelicula.toString() + "\n");
             }
         } catch (IOException e) {
@@ -150,11 +153,5 @@ public class ArchivoPelicula {
             }
         }
         return generoPeliculas;
-    }
-    
-    public void mostrarPeliculas(){
-        for (Pelicula p : peliculas){
-            
-        }
     }
 }

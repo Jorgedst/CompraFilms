@@ -19,14 +19,17 @@ import javax.swing.JOptionPane;
  */
 public class GestionPeliculas extends javax.swing.JFrame {
 
+    ArrayList<Pelicula> peliculas;
     String rutaArchivoPelicula = new File("").getAbsolutePath() + "\\src\\archivos\\peliculas.txt";
     ArchivoPelicula archivoPelicula = new ArchivoPelicula(rutaArchivoPelicula);
+    int leerArchivoExterno = 1;
 
     /**
      * Creates new form GestionPeliculas
      */
     public GestionPeliculas() {
         initComponents();
+        archivoPelicula.leerPeliculas();
     }
 
     /**
@@ -48,9 +51,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtDirectorBusqueda = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         txtGeneroBusqueda = new javax.swing.JTextField();
-        BtnBuscar = new javax.swing.JButton();
+        BtnBuscarTitulo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAreaBusqPelicula = new javax.swing.JTextArea();
+        BtnBuscarDirector = new javax.swing.JButton();
+        BtnBuscarGenero = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -113,16 +118,30 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
         jLabel24.setText("Genero");
 
-        BtnBuscar.setText("Buscar");
-        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        BtnBuscarTitulo.setText("Buscar");
+        BtnBuscarTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarActionPerformed(evt);
+                BtnBuscarTituloActionPerformed(evt);
             }
         });
 
         txtAreaBusqPelicula.setColumns(20);
         txtAreaBusqPelicula.setRows(5);
         jScrollPane4.setViewportView(txtAreaBusqPelicula);
+
+        BtnBuscarDirector.setText("Buscar");
+        BtnBuscarDirector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarDirectorActionPerformed(evt);
+            }
+        });
+
+        BtnBuscarGenero.setText("Buscar");
+        BtnBuscarGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarGeneroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BuscarPeliculaLayout = new javax.swing.GroupLayout(BuscarPelicula.getContentPane());
         BuscarPelicula.getContentPane().setLayout(BuscarPeliculaLayout);
@@ -137,34 +156,40 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 .addComponent(jLabel24)
                 .addGap(108, 108, 108))
             .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(BtnBuscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscarPeliculaLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                        .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4)
                             .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                                .addComponent(txtTituloBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(txtDirectorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel19)
-                                .addGap(89, 89, 89)
-                                .addComponent(jLabel20)))
-                        .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel21)
-                                .addGap(21, 21, 21))
-                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(txtGeneroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 11, Short.MAX_VALUE)))))
-                .addGap(52, 52, 52))
+                                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                        .addComponent(txtTituloBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(68, 68, 68)
+                                        .addComponent(txtDirectorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel19)
+                                        .addGap(89, 89, 89)
+                                        .addComponent(jLabel20)))
+                                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel21)
+                                        .addGap(21, 21, 21))
+                                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                        .addGap(62, 62, 62)
+                                        .addComponent(txtGeneroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 11, Short.MAX_VALUE)))))
+                        .addGap(52, 52, 52))
+                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(BtnBuscarTitulo)
+                        .addGap(114, 114, 114)
+                        .addComponent(BtnBuscarDirector)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnBuscarGenero)
+                        .addGap(86, 86, 86))))
         );
         BuscarPeliculaLayout.setVerticalGroup(
             BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,9 +209,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
                     .addComponent(txtTituloBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDirectorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtGeneroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BtnBuscar)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBuscarTitulo)
+                    .addComponent(BtnBuscarDirector)
+                    .addComponent(BtnBuscarGenero))
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -649,6 +677,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtgeneroRegisterPeliculaActionPerformed
 
     private void btnagregarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarPeliculaActionPerformed
+
         int idepelicula = Integer.parseInt(txtidPelicula.getText());
         String tituloPelicula = txtituloPelicula.getText();
         String directorPelicula = txtdirectorRegisterPelicula.getText();
@@ -656,7 +685,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         String generoPelicula = txtgeneroRegisterPelicula.getText();
         double precioPelicula = Double.parseDouble(txtprecioPelicula.getText());
 
-        archivoPelicula.leerPeliculas();
         if (archivoPelicula.existeId(idepelicula)) {
             txtAreaPeliculas.setText("!El ID de la pelicula ya existe!");
         } else {
@@ -741,7 +769,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnEliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaActionPerformed
-        archivoPelicula.leerPeliculas();
         int idPeliculaEliminar = Integer.parseInt(txtidPelicula.getText());
         if (archivoPelicula.existeId(idPeliculaEliminar)) {
             archivoPelicula.eliminarPelicula(idPeliculaEliminar);
@@ -767,17 +794,33 @@ public class GestionPeliculas extends javax.swing.JFrame {
         BuscarPelicula.setVisible(true);
     }//GEN-LAST:event_btnBuscarPeliculaActionPerformed
 
-    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnBuscarActionPerformed
+    private void BtnBuscarTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarTituloActionPerformed
+        String tituloBusq = txtTituloBusqueda.getText();
+        Pelicula pelicula = archivoPelicula.busqPorTitulo(tituloBusq);
+        txtAreaBusqPelicula.setText("ID: "+pelicula.getIde()+", Titulo:"+pelicula.getTitulo()+", Director:"+pelicula.getDirector()+", Año:"+pelicula.getAño()+", Genero:"+pelicula.getGenero()+", Precio:"+pelicula.getPrecio());
+    }//GEN-LAST:event_BtnBuscarTituloActionPerformed
 
     private void btnEliminarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarPeliculaMouseClicked
 
     private void btnagregarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarPeliculaMouseClicked
-
+        
     }//GEN-LAST:event_btnagregarPeliculaMouseClicked
+
+    private void BtnBuscarDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarDirectorActionPerformed
+        StringBuilder contenido = new StringBuilder();
+        String directorBusq = txtDirectorBusqueda.getText();
+        ArrayList<Pelicula> peliculasDirectores = archivoPelicula.busqPorDirector(directorBusq);
+        for (Pelicula pelicula : peliculasDirectores){
+            contenido.append("ID: "+pelicula.getIde()+", Titulo:"+pelicula.getTitulo()+", Director:"+pelicula.getDirector()+", Año:"+pelicula.getAño()+", Genero:"+pelicula.getGenero()+", Precio:"+pelicula.getPrecio()).append("\n");
+        }
+        txtAreaBusqPelicula.setText(contenido.toString());
+    }//GEN-LAST:event_BtnBuscarDirectorActionPerformed
+
+    private void BtnBuscarGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnBuscarGeneroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -815,7 +858,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JButton BtnBuscarDirector;
+    private javax.swing.JButton BtnBuscarGenero;
+    private javax.swing.JButton BtnBuscarTitulo;
     private javax.swing.JFrame BuscarPelicula;
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarCompra;
@@ -880,6 +925,4 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 //System.exit(0);
-
-
 }

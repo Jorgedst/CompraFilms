@@ -20,7 +20,7 @@ public class Main {
         Scanner leer = new Scanner(System.in);
         int sw = 1;
         int op = 0;
-        String ruta = "C:\\Users\\Dsilv\\OneDrive\\Documentos\\EstructurasRepo\\practicaArchivosJava\\src\\peliculas.txt";
+        String ruta = "C:\\Users\\PC\\OneDrive\\Documentos\\EstructurasRepo\\practicaArchivosJava\\src\\peliculas.txt";
         Archivo archivo = new Archivo(ruta);
         archivo.leerPeliculas();
         while (sw == 1) {

@@ -1,66 +1,14 @@
-<<<<<<< HEAD
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-23,sdfsdf,sdffdssdf,232,dsfddf,333.0
-11,jjjj,ffff,233,fffffff,23345.0
-13,fgdgdf,erer,2354,ktht,2455.0
-=======
-2,asadda,adda,2024,asdfimj,200.0
-1,asas,assa,1020,gen1,200.0
-2,asadda,adda,2024,asdfimj,200.0
-1,asas,assa,1020,gen1,200.0
-2,asadda,adda,2024,asdfimj,200.0
-123,jaws,jim carrey,2004,romance,90.0
->>>>>>> 348962f373eba91733ed5152f0ab9ea9a6e977f4
+1,Inception,Christopher Nolan,2010,Sci-Fi,79900.0
+2,The Godfather,Francis Ford Coppola,1972,Crime,63900.0
+3,The Dark Knight,Christopher Nolan,2008,Action,75900.0
+4,Pulp Fiction,Quentin Tarantino,1994,Crime,67900.0
+5,The Shawshank Redemption,Frank Darabont,1994,Drama,70900.0
+6,Interstellar,Christopher Nolan,2014,Sci-Fi,84900.0
+7,The Matrix,Lana Wachowski,1999,Sci-Fi,72900.0
+8,Forrest Gump,Robert Zemeckis,1994,Drama,59900.0
+9,Fight Club,David Fincher,1999,Drama,68900.0
+10,Gladiator,Ridley Scott,2000,Action,73900.0
+11,The Social Network,David Fincher,2010,Drama,68900.0
+12,Parasite,Bong Joon-ho,2019,Thriller,81900.0
+13,Avatar,James Cameron,2009,Sci-Fi,99900.0
+14,Titanic,James Cameron,1997,Romance,95900.0
