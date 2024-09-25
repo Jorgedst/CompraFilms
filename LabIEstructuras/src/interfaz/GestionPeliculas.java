@@ -878,4 +878,8 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextField txtituloPelicula;
     private javax.swing.JTextField txtprecioPelicula;
     // End of variables declaration//GEN-END:variables
+
+//System.exit(0);
+
+
 }
