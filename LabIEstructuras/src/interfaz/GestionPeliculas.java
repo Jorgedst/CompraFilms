@@ -1,21 +1,27 @@
 package interfaz;
 
-
+import entidades.Pelicula;
 import gestor.ArchivoPelicula;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Dtapiaj
  */
 public class GestionPeliculas extends javax.swing.JFrame {
-    String rutaArchivoPelicula= new File("").getAbsolutePath()+"\\src\\archivos\\peliculas.txt";
+
+    String rutaArchivoPelicula = new File("").getAbsolutePath() + "\\src\\archivos\\peliculas.txt";
     ArchivoPelicula archivoPelicula = new ArchivoPelicula(rutaArchivoPelicula);
+
     /**
      * Creates new form GestionPeliculas
      */
@@ -32,6 +38,19 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BuscarPelicula = new javax.swing.JFrame();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txtTituloBusqueda = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtDirectorBusqueda = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtGeneroBusqueda = new javax.swing.JTextField();
+        BtnBuscar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtAreaBusqPelicula = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -39,15 +58,138 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
-        txtitulo = new javax.swing.JTextField();
-        txtaño = new javax.swing.JTextField();
-        txtdirector = new javax.swing.JTextField();
-        txtprecio = new javax.swing.JTextField();
-        txtgenero = new javax.swing.JTextField();
-        btnagregar = new javax.swing.JButton();
+        txtidPelicula = new javax.swing.JTextField();
+        txtituloPelicula = new javax.swing.JTextField();
+        txtañoRegisterPelicula = new javax.swing.JTextField();
+        txtdirectorRegisterPelicula = new javax.swing.JTextField();
+        txtprecioPelicula = new javax.swing.JTextField();
+        txtgeneroRegisterPelicula = new javax.swing.JTextField();
+        btnagregarPelicula = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaPeliculas = new javax.swing.JTextArea();
+        btMostrarPeliculas = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtIdCliente = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtDireccionCliente = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtCorreoCliente = new javax.swing.JTextField();
+        btnAgregarCliente = new javax.swing.JButton();
+        btnMostrarClientes = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaClientes = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        txtIdCompra = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtIdPeliculaCompra = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtIdClienteCompra = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        txtFechaCompra = new javax.swing.JTextField();
+        btnAgregarCompra = new javax.swing.JButton();
+        btnMostrarCompra = new javax.swing.JButton();
+        btnConsultarCompras = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaCompras = new javax.swing.JTextArea();
+        btnBuscarPelicula = new javax.swing.JButton();
+        btnEditarCliente = new javax.swing.JButton();
+        btnEliminarPelicula = new javax.swing.JButton();
+        btnModificarPelicula = new javax.swing.JButton();
+
+        jLabel19.setText("Buscar por titulo");
+
+        jLabel20.setText("Buscar por director");
+
+        jLabel21.setText("Buscar por genero");
+
+        jLabel22.setText("Titulo");
+
+        jLabel23.setText("Director");
+
+        jLabel24.setText("Genero");
+
+        BtnBuscar.setText("Buscar");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtAreaBusqPelicula.setColumns(20);
+        txtAreaBusqPelicula.setRows(5);
+        jScrollPane4.setViewportView(txtAreaBusqPelicula);
+
+        javax.swing.GroupLayout BuscarPeliculaLayout = new javax.swing.GroupLayout(BuscarPelicula.getContentPane());
+        BuscarPelicula.getContentPane().setLayout(BuscarPeliculaLayout);
+        BuscarPeliculaLayout.setHorizontalGroup(
+            BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jLabel22)
+                .addGap(159, 159, 159)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(108, 108, 108))
+            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(BtnBuscar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscarPeliculaLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                        .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                .addComponent(txtTituloBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(txtDirectorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel19)
+                                .addGap(89, 89, 89)
+                                .addComponent(jLabel20)))
+                        .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel21)
+                                .addGap(21, 21, 21))
+                            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(txtGeneroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 11, Short.MAX_VALUE)))))
+                .addGap(52, 52, 52))
+        );
+        BuscarPeliculaLayout.setVerticalGroup(
+            BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BuscarPeliculaLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BuscarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTituloBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDirectorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGeneroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(BtnBuscar)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,59 +207,220 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
         jLabel7.setText("precio");
 
-        txtid.addActionListener(new java.awt.event.ActionListener() {
+        txtidPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
+                txtidPeliculaActionPerformed(evt);
             }
         });
 
-        txtitulo.addActionListener(new java.awt.event.ActionListener() {
+        txtituloPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtituloActionPerformed(evt);
+                txtituloPeliculaActionPerformed(evt);
             }
         });
 
-        txtaño.addActionListener(new java.awt.event.ActionListener() {
+        txtañoRegisterPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtañoActionPerformed(evt);
+                txtañoRegisterPeliculaActionPerformed(evt);
             }
         });
 
-        txtdirector.addActionListener(new java.awt.event.ActionListener() {
+        txtdirectorRegisterPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdirectorActionPerformed(evt);
+                txtdirectorRegisterPeliculaActionPerformed(evt);
             }
         });
 
-        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+        txtprecioPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtprecioActionPerformed(evt);
+                txtprecioPeliculaActionPerformed(evt);
             }
         });
 
-        txtgenero.addActionListener(new java.awt.event.ActionListener() {
+        txtgeneroRegisterPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtgeneroActionPerformed(evt);
+                txtgeneroRegisterPeliculaActionPerformed(evt);
             }
         });
 
-        btnagregar.setText("Agregar");
-        btnagregar.addActionListener(new java.awt.event.ActionListener() {
+        btnagregarPelicula.setText("Agregar");
+        btnagregarPelicula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnagregarPeliculaMouseClicked(evt);
+            }
+        });
+        btnagregarPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnagregarActionPerformed(evt);
+                btnagregarPeliculaActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaPeliculas.setColumns(20);
+        txtAreaPeliculas.setRows(5);
+        jScrollPane1.setViewportView(txtAreaPeliculas);
+
+        btMostrarPeliculas.setText("Mostrar");
+        btMostrarPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMostrarPeliculasActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Registrar pelicula");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setText("Registrar Cliente");
+
+        txtIdCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("id");
+
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Nombre");
+
+        txtDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Correo ");
+
+        jLabel13.setText("Direccion");
+
+        txtCorreoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoClienteActionPerformed(evt);
+            }
+        });
+
+        btnAgregarCliente.setText("Agregar");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
+
+        btnMostrarClientes.setText("Mostrar");
+        btnMostrarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarClientesActionPerformed(evt);
+            }
+        });
+
+        txtAreaClientes.setColumns(20);
+        txtAreaClientes.setRows(5);
+        jScrollPane2.setViewportView(txtAreaClientes);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Realizar compra");
+
+        txtIdCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdCompraActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("idcompra");
+
+        jLabel16.setText("idcliente");
+
+        txtIdPeliculaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdPeliculaCompraActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("idpelicula");
+
+        txtIdClienteCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdClienteCompraActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("FechaCompra");
+
+        txtFechaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaCompraActionPerformed(evt);
+            }
+        });
+
+        btnAgregarCompra.setText("Agregar");
+        btnAgregarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCompraActionPerformed(evt);
+            }
+        });
+
+        btnMostrarCompra.setText("Mostrar");
+        btnMostrarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarCompraActionPerformed(evt);
+            }
+        });
+
+        btnConsultarCompras.setText("Consultar");
+        btnConsultarCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarComprasActionPerformed(evt);
+            }
+        });
+
+        txtAreaCompras.setColumns(20);
+        txtAreaCompras.setRows(5);
+        jScrollPane3.setViewportView(txtAreaCompras);
+
+        btnBuscarPelicula.setText("Buscar");
+        btnBuscarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPeliculaActionPerformed(evt);
+            }
+        });
+
+        btnEditarCliente.setText("Editar");
+        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClienteActionPerformed(evt);
+            }
+        });
+
+        btnEliminarPelicula.setText("Eliminar");
+        btnEliminarPelicula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarPeliculaMouseClicked(evt);
+            }
+        });
+        btnEliminarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPeliculaActionPerformed(evt);
+            }
+        });
+
+        btnModificarPelicula.setText("Modificar");
+        btnModificarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarPeliculaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(400, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(398, 398, 398))
             .addGroup(layout.createSequentialGroup()
@@ -129,10 +432,16 @@ public class GestionPeliculas extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(txtid)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnagregar)
+                            .addComponent(txtituloPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(txtidPelicula))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDireccionCliente)
+                            .addComponent(txtCorreoCliente, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombreCliente)
+                            .addComponent(txtIdCliente, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -142,91 +451,333 @@ public class GestionPeliculas extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtgenero))
+                                .addComponent(txtgeneroRegisterPelicula))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtdirector, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                    .addComponent(txtaño)))
+                                    .addComponent(txtdirectorRegisterPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                    .addComponent(txtañoRegisterPelicula)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtprecioPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel11)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(btnAgregarCliente)))
+                        .addComponent(btnMostrarClientes)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditarCliente)
+                        .addGap(47, 47, 47))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnagregarPelicula)
+                                .addGap(18, 18, 18)
+                                .addComponent(btMostrarPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscarPelicula))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEliminarPelicula)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnModificarPelicula)))
+                                .addGap(47, 47, 47)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnAgregarCompra)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnMostrarCompra)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnConsultarCompras)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtIdClienteCompra))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel17)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtIdPeliculaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(101, 101, 101))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel8)
+                .addGap(136, 136, 136)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtidPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtituloPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel16)
+                    .addComponent(txtIdClienteCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtdirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtdirectorRegisterPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtIdPeliculaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnagregar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(txtañoRegisterPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtgeneroRegisterPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtprecioPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarCliente)
+                            .addComponent(btnMostrarClientes)
+                            .addComponent(btnAgregarCompra)
+                            .addComponent(btnMostrarCompra)
+                            .addComponent(btnConsultarCompras)
+                            .addComponent(btnEditarCliente))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnagregarPelicula)
+                                    .addComponent(btMostrarPeliculas)
+                                    .addComponent(btnBuscarPelicula))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnEliminarPelicula)
+                                    .addComponent(btnModificarPelicula))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+    private void txtidPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
+    }//GEN-LAST:event_txtidPeliculaActionPerformed
 
-    private void txtituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtituloActionPerformed
+    private void txtituloPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtituloPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtituloActionPerformed
+    }//GEN-LAST:event_txtituloPeliculaActionPerformed
 
-    private void txtañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtañoActionPerformed
+    private void txtañoRegisterPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtañoRegisterPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtañoActionPerformed
+    }//GEN-LAST:event_txtañoRegisterPeliculaActionPerformed
 
-    private void txtdirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdirectorActionPerformed
+    private void txtdirectorRegisterPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdirectorRegisterPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdirectorActionPerformed
+    }//GEN-LAST:event_txtdirectorRegisterPeliculaActionPerformed
 
-    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+    private void txtprecioPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtprecioActionPerformed
+    }//GEN-LAST:event_txtprecioPeliculaActionPerformed
 
-    private void txtgeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgeneroActionPerformed
+    private void txtgeneroRegisterPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgeneroRegisterPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtgeneroActionPerformed
+    }//GEN-LAST:event_txtgeneroRegisterPeliculaActionPerformed
 
-    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-        int idepelicula = Integer.parseInt(txtid.getText());
-        String tituloPelicula = txtitulo.getText();
-        String directorPelicula = txtdirector.getText();
-        int añoPelicula = Integer.parseInt(txtaño.getText());
-        String generoPelicula = txtgenero.getText();
-        double precioPelicula = Double.parseDouble(txtprecio.getText());
-        archivoPelicula.leerPeliculas();
-        archivoPelicula.registrarPelicula(idepelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
+    private void btnagregarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarPeliculaActionPerformed
         
-    }//GEN-LAST:event_btnagregarActionPerformed
+    }//GEN-LAST:event_btnagregarPeliculaActionPerformed
+
+    private void btMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarPeliculasActionPerformed
+        StringBuilder contenido = new StringBuilder();
+        try ( BufferedReader br = new BufferedReader(new FileReader(rutaArchivoPelicula))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                contenido.append(linea).append("\n");
+            }
+            txtAreaPeliculas.setText(contenido.toString());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btMostrarPeliculasActionPerformed
+
+    private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdClienteActionPerformed
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionClienteActionPerformed
+
+    private void txtCorreoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoClienteActionPerformed
+
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+
+    private void btnMostrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarClientesActionPerformed
+
+    private void txtIdCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdCompraActionPerformed
+
+    private void txtIdPeliculaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPeliculaCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdPeliculaCompraActionPerformed
+
+    private void txtIdClienteCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdClienteCompraActionPerformed
+
+    private void txtFechaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaCompraActionPerformed
+
+    private void btnAgregarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCompraActionPerformed
+
+    private void btnMostrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarCompraActionPerformed
+
+    private void btnConsultarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarComprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarComprasActionPerformed
+
+    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarClienteActionPerformed
+
+    private void btnEliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaActionPerformed
+        archivoPelicula.leerPeliculas();
+        int peliculaEliminar = Integer.parseInt(txtidPelicula.getText());
+        if (archivoPelicula.existeId(peliculaEliminar)) {
+            archivoPelicula.eliminarPelicula(peliculaEliminar);
+            txtituloPelicula.setText(null);
+            txtdirectorRegisterPelicula.setText(null);
+            txtañoRegisterPelicula.setText(null);
+            txtgeneroRegisterPelicula.setText(null);
+            txtprecioPelicula.setText(null);
+            txtAreaPeliculas.setText("¡Pelicula Eliminada...!");
+        } else {
+            txtAreaPeliculas.setText("El ID ingresado no existe...");
+        }
+
+    }//GEN-LAST:event_btnEliminarPeliculaActionPerformed
+
+    private void btnModificarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPeliculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarPeliculaActionPerformed
+
+    private void btnBuscarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPeliculaActionPerformed
+        BuscarPelicula.setSize(600, 500);
+        BuscarPelicula.setLocationRelativeTo(null);
+        BuscarPelicula.setVisible(true);
+    }//GEN-LAST:event_btnBuscarPeliculaActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnBuscarActionPerformed
+
+    private void btnEliminarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarPeliculaMouseClicked
+
+    private void btnagregarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarPeliculaMouseClicked
+        int idepelicula = Integer.parseInt(txtidPelicula.getText());
+        String tituloPelicula = txtituloPelicula.getText();
+        String directorPelicula = txtdirectorRegisterPelicula.getText();
+        int añoPelicula = Integer.parseInt(txtañoRegisterPelicula.getText());
+        String generoPelicula = txtgeneroRegisterPelicula.getText();
+        double precioPelicula = Double.parseDouble(txtprecioPelicula.getText());
+
+        archivoPelicula.leerPeliculas();
+        if (archivoPelicula.existeId(idepelicula)) {
+            txtAreaPeliculas.setText("!El ID de la pelicula ya existe!");
+        } else {
+            txtidPelicula.setText(null);
+            txtituloPelicula.setText(null);
+            txtdirectorRegisterPelicula.setText(null);
+            txtañoRegisterPelicula.setText(null);
+            txtgeneroRegisterPelicula.setText(null);
+            txtprecioPelicula.setText(null);
+            archivoPelicula.registrarPelicula(idepelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
+            txtAreaPeliculas.setText("!Pelicula registrada Exitosamente!");
+        }
+    }//GEN-LAST:event_btnagregarPeliculaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -264,21 +815,67 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnagregar;
+    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JFrame BuscarPelicula;
+    private javax.swing.JButton btMostrarPeliculas;
+    private javax.swing.JButton btnAgregarCliente;
+    private javax.swing.JButton btnAgregarCompra;
+    private javax.swing.JButton btnBuscarPelicula;
+    private javax.swing.JButton btnConsultarCompras;
+    private javax.swing.JButton btnEditarCliente;
+    private javax.swing.JButton btnEliminarPelicula;
+    private javax.swing.JButton btnModificarPelicula;
+    private javax.swing.JButton btnMostrarClientes;
+    private javax.swing.JButton btnMostrarCompra;
+    private javax.swing.JButton btnagregarPelicula;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField txtaño;
-    private javax.swing.JTextField txtdirector;
-    private javax.swing.JTextField txtgenero;
-    private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtitulo;
-    private javax.swing.JTextField txtprecio;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea txtAreaBusqPelicula;
+    private javax.swing.JTextArea txtAreaClientes;
+    private javax.swing.JTextArea txtAreaCompras;
+    private javax.swing.JTextArea txtAreaPeliculas;
+    private javax.swing.JTextField txtCorreoCliente;
+    private javax.swing.JTextField txtDireccionCliente;
+    private javax.swing.JTextField txtDirectorBusqueda;
+    private javax.swing.JTextField txtFechaCompra;
+    private javax.swing.JTextField txtGeneroBusqueda;
+    private javax.swing.JTextField txtIdCliente;
+    private javax.swing.JTextField txtIdClienteCompra;
+    private javax.swing.JTextField txtIdCompra;
+    private javax.swing.JTextField txtIdPeliculaCompra;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtTituloBusqueda;
+    private javax.swing.JTextField txtañoRegisterPelicula;
+    private javax.swing.JTextField txtdirectorRegisterPelicula;
+    private javax.swing.JTextField txtgeneroRegisterPelicula;
+    private javax.swing.JTextField txtidPelicula;
+    private javax.swing.JTextField txtituloPelicula;
+    private javax.swing.JTextField txtprecioPelicula;
     // End of variables declaration//GEN-END:variables
 }

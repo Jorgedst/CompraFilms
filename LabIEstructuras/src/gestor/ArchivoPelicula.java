@@ -152,4 +152,9 @@ public class ArchivoPelicula {
         return generoPeliculas;
     }
     
+    public void mostrarPeliculas(){
+        for (Pelicula p : peliculas){
+            
+        }
+    }
 }

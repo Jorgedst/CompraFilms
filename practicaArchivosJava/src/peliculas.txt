@@ -2,5 +2,5 @@
 2,The box,Roddy Richh,Peo,2024,100.0
 4,Work,Rihanna,peito,2024,40.0
 5,Bored,Laufey,Bossa ,2024,50000.0
-6,3 pecados despues ,Milo J,Rap,2024,100000.0
 7,PassionFruit,Drake,peo,2024,1000.0
+12,po,po,po,2023,200.0
