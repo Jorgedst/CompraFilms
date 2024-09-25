@@ -46,7 +46,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        btnAcceder = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JTextField();
+        contraseña = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        txtIdSesion = new javax.swing.JTextField();
+        titulo = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 48)); // NOI18N
         jLabel2.setText("INICIO DE SESION");
@@ -92,12 +98,51 @@ public class GestionPeliculas extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(890, 535));
         setResizable(false);
+        setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 770, 500);
+        btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        btnAcceder.setText("Entrar");
+        getContentPane().add(btnAcceder);
+        btnAcceder.setBounds(390, 320, 140, 40);
+
+        txtContraseña.setBackground(new java.awt.Color(51, 51, 51));
+        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        txtContraseña.setToolTipText("Ingrese su contraseña");
+        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(txtContraseña);
+        txtContraseña.setBounds(330, 260, 260, 30);
+
+        contraseña.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        contraseña.setText("Contraseña:");
+        getContentPane().add(contraseña);
+        contraseña.setBounds(140, 260, 180, 30);
+
+        id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("ID:");
+        getContentPane().add(id);
+        id.setBounds(280, 200, 40, 30);
+
+        txtIdSesion.setBackground(new java.awt.Color(51, 51, 51));
+        txtIdSesion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdSesion.setToolTipText("Ingrese su ID");
+        txtIdSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(txtIdSesion);
+        txtIdSesion.setBounds(330, 200, 260, 30);
+
+        titulo.setFont(new java.awt.Font("Berlin Sans FB", 0, 80)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setText("PeliCenter");
+        getContentPane().add(titulo);
+        titulo.setBounds(280, 70, 350, 90);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        getContentPane().add(background);
+        background.setBounds(0, 0, 890, 500);
 
         pack();
         setLocationRelativeTo(null);
@@ -140,13 +185,19 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnAcceder;
+    private javax.swing.JLabel contraseña;
+    private javax.swing.JLabel id;
     private javax.swing.JFrame inicioSesion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtIdSesion;
     // End of variables declaration//GEN-END:variables
 
 //System.exit(0);
