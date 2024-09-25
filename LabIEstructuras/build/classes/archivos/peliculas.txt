@@ -10,4 +10,3 @@
 11,The Social Network,David Fincher,2010,Drama,68900.0
 12,Parasite,Bong Joon-ho,2019,Thriller,81900.0
 13,Avatar,James Cameron,2009,Sci-Fi,99900.0
-14,Titanic,James Cameron,1997,Romance,95900.0
