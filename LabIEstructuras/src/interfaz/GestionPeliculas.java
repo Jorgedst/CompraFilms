@@ -98,7 +98,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 48)); // NOI18N
-        jLabel1.setText("TIENDA  DE PELICULAS");
+        jLabel1.setText("TIENDA  DE PELICULAS.");
 
         jButton1.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 18)); // NOI18N
         jButton1.setText("Catalogo de Peliculas");
@@ -127,7 +127,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
