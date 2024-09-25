@@ -5,9 +5,8 @@
         <group>
             <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoPelicula.java</file>
             <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/interfaz/GestionPeliculas.java</file>
-            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/entidades/Pelicula.java</file>
-            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/entidades/Compra.java</file>
-            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/entidades/Cliente.java</file>
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoCompras.java</file>
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoCliente.java</file>
         </group>
     </open-files>
 </project-private>
