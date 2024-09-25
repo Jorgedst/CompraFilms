@@ -819,7 +819,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarDirectorActionPerformed
 
     private void BtnBuscarGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarGeneroActionPerformed
-        // TODO add your handling code here:
+        StringBuilder contenido = new StringBuilder();
+        String generoBusq = txtGeneroBusqueda.getText();
+        ArrayList<Pelicula> peliculasGenero = archivoPelicula.busqPorGenero(generoBusq);
+        for (Pelicula pelicula : peliculasGenero){
+            contenido.append("ID: "+pelicula.getIde()+", Titulo:"+pelicula.getTitulo()+", Director:"+pelicula.getDirector()+", Año:"+pelicula.getAño()+", Genero:"+pelicula.getGenero()+", Precio:"+pelicula.getPrecio()).append("\n");
+        }
+        txtAreaBusqPelicula.setText(contenido.toString());
     }//GEN-LAST:event_BtnBuscarGeneroActionPerformed
 
     /**
