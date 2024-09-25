@@ -46,8 +46,8 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         btnAcceder = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JTextField();
         contraseña = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         txtIdSesion = new javax.swing.JTextField();
@@ -103,17 +103,16 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
+        txtPassword.setBackground(new java.awt.Color(51, 51, 51));
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setToolTipText("Ingrese su contraseña");
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(330, 262, 260, 30);
+
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         btnAcceder.setText("Entrar");
         getContentPane().add(btnAcceder);
         btnAcceder.setBounds(390, 320, 140, 40);
-
-        txtContraseña.setBackground(new java.awt.Color(51, 51, 51));
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setToolTipText("Ingrese su contraseña");
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtContraseña);
-        txtContraseña.setBounds(330, 260, 260, 30);
 
         contraseña.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         contraseña.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,8 +195,8 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtIdSesion;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
 //System.exit(0);
