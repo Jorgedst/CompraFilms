@@ -40,66 +40,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ClienteRegistrado = new javax.swing.JFrame();
-        imgLogo = new javax.swing.JLabel();
-        imgBackgorund = new javax.swing.JLabel();
-        ClienteNoRegistrado = new javax.swing.JFrame();
-        jLabel2 = new javax.swing.JLabel();
-        imgLogo1 = new javax.swing.JLabel();
-        imgBackground = new javax.swing.JLabel();
-        Prueba = new javax.swing.JFrame();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnAcceder = new javax.swing.JButton();
         id = new javax.swing.JLabel();
         txtIdSesion = new javax.swing.JTextField();
         titulo = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
-
-        ClienteRegistrado.setResizable(false);
-        ClienteRegistrado.setSize(new java.awt.Dimension(880, 500));
-        ClienteRegistrado.getContentPane().setLayout(null);
-
-        imgLogo.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
-        imgLogo.setForeground(new java.awt.Color(255, 255, 255));
-        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        ClienteRegistrado.getContentPane().add(imgLogo);
-        imgLogo.setBounds(-10, 0, 130, 100);
-
-        imgBackgorund.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
-        ClienteRegistrado.getContentPane().add(imgBackgorund);
-        imgBackgorund.setBounds(0, 0, 880, 500);
-
-        ClienteNoRegistrado.setBounds(new java.awt.Rectangle(0, 0, 880, 500));
-        ClienteNoRegistrado.setMinimumSize(new java.awt.Dimension(880, 500));
-        ClienteNoRegistrado.setPreferredSize(new java.awt.Dimension(880, 500));
-        ClienteNoRegistrado.setResizable(false);
-        ClienteNoRegistrado.setSize(new java.awt.Dimension(880, 500));
-        ClienteNoRegistrado.getContentPane().setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        jLabel2.setText("Registro de usuario");
-        ClienteNoRegistrado.getContentPane().add(jLabel2);
-        jLabel2.setBounds(360, 190, 190, 27);
-
-        imgLogo1.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
-        imgLogo1.setForeground(new java.awt.Color(255, 255, 255));
-        imgLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        ClienteNoRegistrado.getContentPane().add(imgLogo1);
-        imgLogo1.setBounds(-10, 0, 130, 100);
-
-        imgBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
-        ClienteNoRegistrado.getContentPane().add(imgBackground);
-        imgBackground.setBounds(0, 0, 880, 500);
-
-        Prueba.setPreferredSize(new java.awt.Dimension(880, 500));
-        Prueba.setResizable(false);
-        Prueba.setSize(new java.awt.Dimension(880, 500));
-        Prueba.getContentPane().setLayout(null);
-
-        jButton1.setText("PRUEBA");
-        Prueba.getContentPane().add(jButton1);
-        jButton1.setBounds(390, 220, 73, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(890, 535));
@@ -184,19 +130,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame ClienteNoRegistrado;
-    private javax.swing.JFrame ClienteRegistrado;
-    private javax.swing.JFrame Prueba;
     private javax.swing.JLabel background;
     private javax.swing.JButton btnAcceder;
     private javax.swing.JLabel id;
-    private javax.swing.JLabel imgBackgorund;
-    private javax.swing.JLabel imgBackground;
-    private javax.swing.JLabel imgLogo;
-    private javax.swing.JLabel imgLogo1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtIdSesion;
     // End of variables declaration//GEN-END:variables
