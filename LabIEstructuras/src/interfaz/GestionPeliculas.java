@@ -1,17 +1,22 @@
 package interfaz;
 
+import entidades.Cliente;
+import entidades.Compra;
 import entidades.Pelicula;
 import gestor.ArchivoCliente;
+import gestor.ArchivoCompras;
 import gestor.ArchivoPelicula;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.constant.DirectMethodHandleDesc;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,16 +33,22 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
     String rutaArchivoCliente = new File("").getAbsolutePath() + "\\src\\archivos\\clientes.txt";
     ArchivoCliente archivoCliente = new ArchivoCliente(rutaArchivoCliente);
-
+    
+    String rutaArchivoCompra = new File("").getAbsolutePath() + "\\src\\archivos\\compras.txt";
+    ArchivoCompras archivoCompra = new ArchivoCompras(rutaArchivoCompra, rutaArchivoCliente, rutaArchivoPelicula);
+    
+    ArrayList<Compra> compras;
+    ArrayList<Pelicula> peliculas;
+    ArrayList<Compra> comprasCliente;
+    
     private String idAdministrador = "admin";
-
     /**
      * Creates new form GestionPeliculas
      */
     public GestionPeliculas() {
         initComponents();
-        archivoPelicula.leerPeliculas();
-        archivoCliente.leerClientes();
+        compras = archivoCompra.leerCompra();
+        peliculas = archivoPelicula.leerPeliculas();
     }
 
     /**
@@ -52,6 +63,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
         clienteRegistrado = new javax.swing.JFrame();
         clienteNoRegistrado = new javax.swing.JFrame();
         adminFrame = new javax.swing.JFrame();
+        panelCompras = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtConsultarCompras = new javax.swing.JTextArea();
+        btnTodasCompras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtIdClienteConsultar = new javax.swing.JTextField();
+        btnBuscarCliente = new javax.swing.JButton();
         tituloRegistrarPelicula1 = new javax.swing.JLabel();
         tituloRegistrarPelicula = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -76,6 +94,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
         descrAdmin = new javax.swing.JLabel();
         btnRegresarAdmin_main = new javax.swing.JButton();
         background1 = new javax.swing.JLabel();
+        modificarFrame = new javax.swing.JFrame();
+        btnRegresarModificar_Admin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        titulo1 = new javax.swing.JLabel();
+        background2 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         autores = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
         iconPelicenter = new javax.swing.JLabel();
@@ -121,6 +145,59 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame.setSize(new java.awt.Dimension(890, 535));
         adminFrame.getContentPane().setLayout(null);
 
+        panelCompras.setBackground(new java.awt.Color(51, 51, 51));
+        panelCompras.setForeground(new java.awt.Color(51, 51, 51));
+        panelCompras.setLayout(null);
+
+        txtConsultarCompras.setBackground(new java.awt.Color(51, 51, 51));
+        txtConsultarCompras.setColumns(20);
+        txtConsultarCompras.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        txtConsultarCompras.setForeground(new java.awt.Color(255, 255, 255));
+        txtConsultarCompras.setRows(5);
+        jScrollPane2.setViewportView(txtConsultarCompras);
+
+        panelCompras.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 110, 320, 280);
+
+        btnTodasCompras.setBackground(new java.awt.Color(204, 255, 204));
+        btnTodasCompras.setForeground(new java.awt.Color(0, 0, 0));
+        btnTodasCompras.setText("Todas las compras");
+        btnTodasCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTodasCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTodasComprasActionPerformed(evt);
+            }
+        });
+        panelCompras.add(btnTodasCompras);
+        btnTodasCompras.setBounds(180, 70, 130, 23);
+
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ID cliente");
+        panelCompras.add(jLabel1);
+        jLabel1.setBounds(20, 21, 80, 30);
+
+        txtIdClienteConsultar.setBackground(new java.awt.Color(51, 51, 51));
+        txtIdClienteConsultar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtIdClienteConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        panelCompras.add(txtIdClienteConsultar);
+        txtIdClienteConsultar.setBounds(100, 20, 220, 30);
+
+        btnBuscarCliente.setBackground(new java.awt.Color(153, 255, 153));
+        btnBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscarCliente.setText("Buscar Cliente");
+        btnBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteActionPerformed(evt);
+            }
+        });
+        panelCompras.add(btnBuscarCliente);
+        btnBuscarCliente.setBounds(30, 70, 110, 23);
+
+        adminFrame.getContentPane().add(panelCompras);
+        panelCompras.setBounds(510, 40, 340, 400);
+
         tituloRegistrarPelicula1.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         tituloRegistrarPelicula1.setForeground(new java.awt.Color(255, 255, 255));
         tituloRegistrarPelicula1.setText("Consultar Compras");
@@ -140,7 +217,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
         txtPeliculasAdmin.setBackground(new java.awt.Color(51, 51, 51));
         txtPeliculasAdmin.setColumns(20);
-        txtPeliculasAdmin.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         txtPeliculasAdmin.setForeground(new java.awt.Color(255, 255, 255));
         txtPeliculasAdmin.setLineWrap(true);
         txtPeliculasAdmin.setRows(5);
@@ -294,12 +370,58 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame.getContentPane().add(background1);
         background1.setBounds(0, 0, 890, 500);
 
+        modificarFrame.setPreferredSize(new java.awt.Dimension(890, 535));
+        modificarFrame.setSize(new java.awt.Dimension(890, 535));
+        modificarFrame.getContentPane().setLayout(null);
+
+        btnRegresarModificar_Admin.setBackground(new java.awt.Color(153, 255, 0));
+        btnRegresarModificar_Admin.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarModificar_Admin.setText("Regresar");
+        btnRegresarModificar_Admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarModificar_Admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarModificar_AdminActionPerformed(evt);
+            }
+        });
+        modificarFrame.getContentPane().add(btnRegresarModificar_Admin);
+        btnRegresarModificar_Admin.setBounds(20, 460, 100, 23);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliCenterLogoSmall.png"))); // NOI18N
+        modificarFrame.getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 20, 80, 60);
+
+        titulo1.setFont(new java.awt.Font("Berlin Sans FB", 0, 40)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setText("CompraFilms");
+        modificarFrame.getContentPane().add(titulo1);
+        titulo1.setBounds(80, 30, 270, 50);
+
+        background2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        modificarFrame.getContentPane().add(background2);
+        background2.setBounds(0, 0, 890, 500);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CompraFilms");
         setPreferredSize(new java.awt.Dimension(890, 535));
         setResizable(false);
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
+
+        btnSalir.setBackground(new java.awt.Color(153, 255, 0));
+        btnSalir.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 255, 0), 1, true));
+        btnSalir.setBorderPainted(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir);
+        btnSalir.setBounds(390, 350, 120, 30);
 
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Creado por: Jorge Silva, Samuel Tilano, Rafael Mejia");
@@ -329,13 +451,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAcceder);
-        btnAcceder.setBounds(380, 270, 140, 40);
+        btnAcceder.setBounds(380, 250, 140, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
         id.setText("ID:");
         getContentPane().add(id);
-        id.setBounds(270, 200, 40, 30);
+        id.setBounds(260, 200, 50, 30);
 
         txtIdSesion.setBackground(new java.awt.Color(51, 51, 51));
         txtIdSesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -344,6 +466,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtIdSesion.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, new java.awt.Color(153, 153, 153)));
         txtIdSesion.setCaretColor(new java.awt.Color(51, 204, 0));
         txtIdSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtIdSesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdSesionKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtIdSesion);
         txtIdSesion.setBounds(320, 200, 260, 30);
 
@@ -360,14 +487,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         String idusuario = txtIdSesion.getText();
         if (idusuario.equals(idAdministrador)) {
             this.dispose();
             adminFrame.setLocationRelativeTo(null);
             adminFrame.setVisible(true);
-            MostrarPeliculasAdmin();
         } else {
             archivoCliente.existeId(Integer.parseInt(idusuario));
         }
@@ -388,55 +514,112 @@ public class GestionPeliculas extends javax.swing.JFrame {
         Double precioPelicula = Double.parseDouble(txtPrecioPelicula.getText());
         if (archivoPelicula.existeId(idpelicula)) {
             txtPeliculasAdmin.setForeground(Color.red);
-            txtPeliculasAdmin.setText("¡EL ID INGRESADO YA EXISTE!\nCambia el ID a registrar");
+            txtPeliculasAdmin.setText("¡EL ID INGRESADO YA EXISTE\nIntenta con otro id.");
         } else {
+            txtPeliculasAdmin.setText("¡PELICULA REGISTRADA EXITOSAMENTE!");
             archivoPelicula.registrarPelicula(idpelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
-            txtPeliculasAdmin.setForeground(Color.green);
-            txtPeliculasAdmin.setText("¡PELICULA REGISTRADA CORRECTAMENTE!");
+
+            txtIdPelicula.setText("");
+            txtTituloPelicula.setText("");
+            txtDirectorPelicula.setText("");
+            txtAñoPelicula.setText("");
+            txtGeneroPelicula.setText("");
+            txtPrecioPelicula.setText("");
         }
 
     }//GEN-LAST:event_btnRegistrarPeliculaActionPerformed
 
     private void btnModificarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPeliculaActionPerformed
-        // TODO add your handling code here:
+        adminFrame.setVisible(false);
+        modificarFrame.setLocationRelativeTo(null);
+        modificarFrame.setVisible(true);
     }//GEN-LAST:event_btnModificarPeliculaActionPerformed
 
     private void btnEliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaActionPerformed
         int idpeliculaEliminar = Integer.parseInt(txtIdPelicula.getText());
-        if (archivoPelicula.existeId(idpeliculaEliminar)){
+        if (archivoPelicula.existeId(idpeliculaEliminar)) {
             archivoPelicula.eliminarPelicula(idpeliculaEliminar);
             txtPeliculasAdmin.setForeground(Color.green);
-            txtPeliculasAdmin.setText("¡PELICULA ELIMINADA CORRECTAMENTE!");
-        }else{
+            txtPeliculasAdmin.setText("¡PELICULA ELIMINADA EXITOSAMENTE! ");
+            txtIdPelicula.setText("");
+            txtTituloPelicula.setText("");
+            txtDirectorPelicula.setText("");
+            txtAñoPelicula.setText("");
+            txtGeneroPelicula.setText("");
+            txtPrecioPelicula.setText("");
+        } else {
             txtPeliculasAdmin.setForeground(Color.red);
-            txtPeliculasAdmin.setText("¡EL ID INGRESADO NO EXISTE!\nCambia el ID a eliminar.");
+            txtPeliculasAdmin.setText("¡EL ID INGRESADO NO EXISTE!");
         }
     }//GEN-LAST:event_btnEliminarPeliculaActionPerformed
 
     private void btnMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPeliculasActionPerformed
-        StringBuilder sb = new StringBuilder();
         txtPeliculasAdmin.setForeground(Color.white);
+        StringBuilder sb = new StringBuilder();
+
         try ( BufferedReader br = new BufferedReader(new FileReader("src/archivos/peliculas.txt"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 // Separar los campos por comas
-                sb.append(linea).append("\n");
+                sb.append(linea+"\n"
+                        + "---------------------------------------------------------------------------------------------------").append("\n");
             }
             txtPeliculasAdmin.setText(sb.toString());
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnMostrarPeliculasActionPerformed
+
+    private void txtIdSesionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdSesionKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            this.btnAcceder.doClick();
+        }
+    }//GEN-LAST:event_txtIdSesionKeyPressed
+
+    private void btnTodasComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodasComprasActionPerformed
+    StringBuilder sb = new StringBuilder();
+        for (Compra compra : compras){
+            sb.append("ID:"+compra.getIdecompra()+"| IDCliente:"+compra.getIdecliente()+"| IDPelicula:"+compra.getIdepelicula()+"| Fecha:"+compra.getFechacompra()+
+                    "\n---------------------------------------------------").append("\n");
+    }
+        txtConsultarCompras.setText(sb.toString());
+    }//GEN-LAST:event_btnTodasComprasActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+        StringBuilder sb = new StringBuilder();
+        int clienteBuscar = Integer.parseInt(txtIdClienteConsultar.getText());
+        txtConsultarCompras.setForeground(Color.white);
+        comprasCliente = archivoCompra.buscarCompraCliente(clienteBuscar);
+        for (Compra compra : comprasCliente){
+            sb.append("IDCompra:"+compra.getIdecompra()+"| IDCliente:"+compra.getIdecliente()+"| IDPelicula:"+compra.getIdepelicula()+"| Fecha:"+compra.getFechacompra()+
+                    "\n---------------------------------------------------").append("\n");
+        }
+        txtConsultarCompras.setText(sb.toString());
+        if(comprasCliente.isEmpty()){
+            txtConsultarCompras.setText("EL CLIENTE CON EL ID: "+clienteBuscar+"  NO HA REALIZADO COMPRAS");
+        }
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
+
+    private void btnRegresarModificar_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarModificar_AdminActionPerformed
+        modificarFrame.setVisible(false);
+        adminFrame.setVisible(true);
+        
+    }//GEN-LAST:event_btnRegresarModificar_AdminActionPerformed
 
     public static void mostrarMainPeliculas() {
         // Crea una nueva instancia de GestionPeliculas y la muestra
         GestionPeliculas gestionPeliculas = new GestionPeliculas();
         gestionPeliculas.setVisible(true);
     }
-
-    public void MostrarPeliculasAdmin() {
-
-    }
+    
+ 
+        
+    
 
     /**
      * @param args the command line arguments
@@ -478,32 +661,45 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel autores;
     private javax.swing.JLabel background;
     private javax.swing.JLabel background1;
+    private javax.swing.JLabel background2;
     private javax.swing.JButton btnAcceder;
+    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnEliminarPelicula;
     private javax.swing.JButton btnModificarPelicula;
     private javax.swing.JButton btnMostrarPeliculas;
     private javax.swing.JButton btnRegistrarPelicula;
     private javax.swing.JButton btnRegresarAdmin_main;
+    private javax.swing.JButton btnRegresarModificar_Admin;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnTodasCompras;
     private javax.swing.JFrame clienteNoRegistrado;
     private javax.swing.JFrame clienteRegistrado;
     private javax.swing.JLabel descrAdmin;
     private javax.swing.JLabel descripcion;
     private javax.swing.JLabel iconPelicenter;
     private javax.swing.JLabel id;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JFrame modificarFrame;
+    private javax.swing.JPanel panelCompras;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
     private javax.swing.JLabel tituloRegistrarPelicula;
     private javax.swing.JLabel tituloRegistrarPelicula1;
     private javax.swing.JTextField txtAñoPelicula;
+    private javax.swing.JTextArea txtConsultarCompras;
     private javax.swing.JTextField txtDirectorPelicula;
     private javax.swing.JTextField txtGeneroPelicula;
+    private javax.swing.JTextField txtIdClienteConsultar;
     private javax.swing.JTextField txtIdPelicula;
     private javax.swing.JTextField txtIdSesion;
     private javax.swing.JTextArea txtPeliculasAdmin;
@@ -511,5 +707,5 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextField txtTituloPelicula;
     // End of variables declaration//GEN-END:variables
 
-//System.exit(0);
+
 }
