@@ -40,62 +40,66 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inicioSesion = new javax.swing.JFrame();
+        ClienteRegistrado = new javax.swing.JFrame();
+        imgLogo = new javax.swing.JLabel();
+        imgBackgorund = new javax.swing.JLabel();
+        ClienteNoRegistrado = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        imgLogo1 = new javax.swing.JLabel();
+        imgBackground = new javax.swing.JLabel();
+        Prueba = new javax.swing.JFrame();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btnAcceder = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JTextField();
-        contraseña = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         txtIdSesion = new javax.swing.JTextField();
         titulo = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 48)); // NOI18N
-        jLabel2.setText("INICIO DE SESION");
+        ClienteRegistrado.setResizable(false);
+        ClienteRegistrado.setSize(new java.awt.Dimension(880, 500));
+        ClienteRegistrado.getContentPane().setLayout(null);
 
-        jLabel3.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
-        jLabel3.setText("Usuario");
+        imgLogo.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
+        imgLogo.setForeground(new java.awt.Color(255, 255, 255));
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        ClienteRegistrado.getContentPane().add(imgLogo);
+        imgLogo.setBounds(-10, 0, 130, 100);
 
-        jLabel4.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
-        jLabel4.setText("Email");
+        imgBackgorund.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        ClienteRegistrado.getContentPane().add(imgBackgorund);
+        imgBackgorund.setBounds(0, 0, 880, 500);
 
-        javax.swing.GroupLayout inicioSesionLayout = new javax.swing.GroupLayout(inicioSesion.getContentPane());
-        inicioSesion.getContentPane().setLayout(inicioSesionLayout);
-        inicioSesionLayout.setHorizontalGroup(
-            inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inicioSesionLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(inicioSesionLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(inicioSesionLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1)))
-                .addContainerGap(139, Short.MAX_VALUE))
-        );
-        inicioSesionLayout.setVerticalGroup(
-            inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inicioSesionLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addGap(50, 50, 50)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(283, Short.MAX_VALUE))
-        );
+        ClienteNoRegistrado.setBounds(new java.awt.Rectangle(0, 0, 880, 500));
+        ClienteNoRegistrado.setMinimumSize(new java.awt.Dimension(880, 500));
+        ClienteNoRegistrado.setPreferredSize(new java.awt.Dimension(880, 500));
+        ClienteNoRegistrado.setResizable(false);
+        ClienteNoRegistrado.setSize(new java.awt.Dimension(880, 500));
+        ClienteNoRegistrado.getContentPane().setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        jLabel2.setText("Registro de usuario");
+        ClienteNoRegistrado.getContentPane().add(jLabel2);
+        jLabel2.setBounds(360, 190, 190, 27);
+
+        imgLogo1.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
+        imgLogo1.setForeground(new java.awt.Color(255, 255, 255));
+        imgLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        ClienteNoRegistrado.getContentPane().add(imgLogo1);
+        imgLogo1.setBounds(-10, 0, 130, 100);
+
+        imgBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        ClienteNoRegistrado.getContentPane().add(imgBackground);
+        imgBackground.setBounds(0, 0, 880, 500);
+
+        Prueba.setPreferredSize(new java.awt.Dimension(880, 500));
+        Prueba.setResizable(false);
+        Prueba.setSize(new java.awt.Dimension(880, 500));
+        Prueba.getContentPane().setLayout(null);
+
+        jButton1.setText("PRUEBA");
+        Prueba.getContentPane().add(jButton1);
+        jButton1.setBounds(390, 220, 73, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(890, 535));
@@ -103,46 +107,41 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(180, 100, 140, 100);
+
+        btnAcceder.setBackground(new java.awt.Color(51, 51, 255));
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        btnAcceder.setForeground(new java.awt.Color(204, 204, 204));
         btnAcceder.setText("Entrar");
+        btnAcceder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 255), 3, true));
         getContentPane().add(btnAcceder);
-        btnAcceder.setBounds(390, 320, 140, 40);
-
-        txtContraseña.setBackground(new java.awt.Color(51, 51, 51));
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setToolTipText("Ingrese su contraseña");
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtContraseña);
-        txtContraseña.setBounds(330, 260, 260, 30);
-
-        contraseña.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        contraseña.setText("Contraseña:");
-        getContentPane().add(contraseña);
-        contraseña.setBounds(140, 260, 180, 30);
+        btnAcceder.setBounds(380, 310, 140, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
         id.setText("ID:");
         getContentPane().add(id);
-        id.setBounds(280, 200, 40, 30);
+        id.setBounds(240, 230, 40, 30);
 
-        txtIdSesion.setBackground(new java.awt.Color(51, 51, 51));
-        txtIdSesion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdSesion.setBackground(new java.awt.Color(204, 204, 204));
+        txtIdSesion.setForeground(new java.awt.Color(51, 51, 51));
         txtIdSesion.setToolTipText("Ingrese su ID");
+        txtIdSesion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 10, true));
         txtIdSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         getContentPane().add(txtIdSesion);
-        txtIdSesion.setBounds(330, 200, 260, 30);
+        txtIdSesion.setBounds(290, 230, 350, 30);
 
         titulo.setFont(new java.awt.Font("Berlin Sans FB", 0, 80)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("PeliCenter");
         getContentPane().add(titulo);
-        titulo.setBounds(280, 70, 350, 90);
+        titulo.setBounds(310, 110, 350, 90);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
         getContentPane().add(background);
-        background.setBounds(0, 0, 890, 500);
+        background.setBounds(0, 0, 880, 500);
 
         pack();
         setLocationRelativeTo(null);
@@ -185,18 +184,20 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame ClienteNoRegistrado;
+    private javax.swing.JFrame ClienteRegistrado;
+    private javax.swing.JFrame Prueba;
     private javax.swing.JLabel background;
     private javax.swing.JButton btnAcceder;
-    private javax.swing.JLabel contraseña;
     private javax.swing.JLabel id;
-    private javax.swing.JFrame inicioSesion;
+    private javax.swing.JLabel imgBackgorund;
+    private javax.swing.JLabel imgBackground;
+    private javax.swing.JLabel imgLogo;
+    private javax.swing.JLabel imgLogo1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtIdSesion;
     // End of variables declaration//GEN-END:variables
 
