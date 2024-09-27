@@ -113,8 +113,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
         background2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        btnSalir = new javax.swing.JButton();
         autores = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
         iconPelicenter = new javax.swing.JLabel();
@@ -537,29 +535,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 50, true));
-        jPanel6.setOpaque(false);
-        jPanel6.setLayout(null);
-
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("Salir");
-        btnSalir.setBorder(null);
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnSalir);
-        btnSalir.setBounds(20, 0, 100, 40);
-
-        getContentPane().add(jPanel6);
-        jPanel6.setBounds(380, 330, 140, 45);
-
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Creado por: Jorge Silva, Samuel Tilano, Rafael Mejia");
         getContentPane().add(autores);
@@ -575,14 +550,15 @@ public class GestionPeliculas extends javax.swing.JFrame {
         getContentPane().add(iconPelicenter);
         iconPelicenter.setBounds(150, 70, 110, 100);
 
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 50, true));
+        jPanel5.setBackground(new java.awt.Color(52, 121, 40));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(22, 66, 60), 50, true));
         jPanel5.setOpaque(false);
         jPanel5.setLayout(null);
 
-        btnAcceder.setBackground(new java.awt.Color(153, 153, 255));
+        btnAcceder.setBackground(new java.awt.Color(153, 0, 0));
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        btnAcceder.setForeground(new java.awt.Color(255, 255, 255));
-        btnAcceder.setText("Entrar");
+        btnAcceder.setForeground(new java.awt.Color(255, 255, 153));
+        btnAcceder.setText("Iniciar");
         btnAcceder.setBorder(null);
         btnAcceder.setBorderPainted(false);
         btnAcceder.setContentAreaFilled(false);
@@ -599,7 +575,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         btnAcceder.setBounds(10, 4, 140, 30);
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(370, 260, 160, 40);
+        jPanel5.setBounds(370, 270, 160, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
@@ -639,6 +615,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         getContentPane().add(jPanel4);
         jPanel4.setBounds(320, 190, 270, 35);
 
+        background.setForeground(new java.awt.Color(255, 255, 153));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
         getContentPane().add(background);
         background.setBounds(0, 0, 890, 500);
@@ -672,10 +649,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }
         txtConsultarCompras.setText(sb.toString());
     }//GEN-LAST:event_btnTodasComprasActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         StringBuilder sb = new StringBuilder();
@@ -837,7 +810,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarPelicula;
     private javax.swing.JButton btnRegresarAdmin_main;
     private javax.swing.JButton btnRegresarModificar_Admin;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTodasCompras;
     private javax.swing.JFrame clienteNoRegistrado;
     private javax.swing.JFrame clienteRegistrado;
@@ -860,7 +832,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
