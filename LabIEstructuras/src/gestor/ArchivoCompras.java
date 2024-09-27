@@ -87,5 +87,18 @@ public class ArchivoCompras {
             System.out.println("Ocurrio un error al guardar la compra..." + e.getMessage());
         }
     }
+    
+    public ArrayList<Compra> buscarCompraCliente(int idClienteBuscar){
+        ArrayList<Compra> comprasCliente = new ArrayList<>();
+        for (Compra compra : compras){
+            if(compra.getIdecliente() == idClienteBuscar){
+                comprasCliente.add(compra);
+            }
+        }
+        if (comprasCliente.isEmpty()){
+            System.out.println("El cliente no existe");
+        }
+        return comprasCliente;
+    }
 
 }
