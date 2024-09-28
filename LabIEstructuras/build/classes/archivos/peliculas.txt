@@ -1,6 +1,5 @@
 1,Titanic,James Cameron,1997,Romance,15000.0
 2,Inception,Christopher Nolan,2010,Ciencia Ficción,20000.0
-3,The Godfather,Francis Ford Coppola,1972,Crimen,18000.0
 4,The Dark Knight,Christopher Nolan,2008,Acción,22000.0
 5,Schindler's List,Steven Spielberg,1993,Drama,20000.0
 6,Pulp Fiction,Quentin Tarantino,1994,Crimen,17000.0
