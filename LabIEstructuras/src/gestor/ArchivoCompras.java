@@ -88,17 +88,17 @@ public class ArchivoCompras {
         }
     }
     
-    public ArrayList<Compra> buscarCompraCliente(int idClienteBuscar){
-        ArrayList<Compra> comprasCliente = new ArrayList<>();
+    public ArrayList<Compra> buscarCompraPelicula(int idPelicula){
+        ArrayList<Compra> comprasPelicula = new ArrayList<>();
         for (Compra compra : compras){
-            if(compra.getIdecliente() == idClienteBuscar){
-                comprasCliente.add(compra);
+            if(compra.getIdepelicula()== idPelicula){
+                comprasPelicula.add(compra);
             }
         }
-        if (comprasCliente.isEmpty()){
-            System.out.println("El cliente no existe");
+        if (comprasPelicula.isEmpty()){
+            System.out.println("No se ha comprado la pelicula con el ID "+idPelicula);
         }
-        return comprasCliente;
+        return comprasPelicula;
     }
 
 }

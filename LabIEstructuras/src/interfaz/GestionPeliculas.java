@@ -16,7 +16,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,7 +30,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionPeliculas extends javax.swing.JFrame {
 
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel modelPeliculas = new DefaultTableModel();
+    DefaultTableModel modelCompras = new DefaultTableModel();
+    
+    DefaultTableCellRenderer headerRenderPeliculas = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer headerRenderCompras = new DefaultTableCellRenderer();
+    
+    DefaultTableCellRenderer cellRenderPeliculas = new DefaultTableCellRenderer();
 
     String rutaArchivoPelicula = new File("").getAbsolutePath() + "\\src\\archivos\\peliculas.txt";
     ArchivoPelicula archivoPelicula = new ArchivoPelicula(rutaArchivoPelicula);
@@ -41,7 +49,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
     ArrayList<Compra> compras;
     ArrayList<Pelicula> peliculas;
-    ArrayList<Compra> comprasCliente;
+    ArrayList<Compra> peliculasCompradas;
 
     private String idAdministrador = "admin";
 
@@ -53,6 +61,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         compras = archivoCompra.leerCompra();
         peliculas = archivoPelicula.leerPeliculas();
         CargaAutomaticoTablaPeliculas();
+        CargaAutomaticoTablaCompras();
     }
 
     /**
@@ -68,7 +77,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         clienteNoRegistrado = new javax.swing.JFrame();
         adminFrame = new javax.swing.JFrame();
         panelTablaPeliculas = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPaneTablaPeliculas = new javax.swing.JScrollPane();
         tablaPeliculas = new javax.swing.JTable();
         panelRegistrarPelicula = new javax.swing.JPanel();
         labelRegistrarPelicula = new javax.swing.JLabel();
@@ -98,13 +107,19 @@ public class GestionPeliculas extends javax.swing.JFrame {
         labelAño = new javax.swing.JLabel();
         labelGenero = new javax.swing.JLabel();
         labelPrecio = new javax.swing.JLabel();
-        panelCompras = new javax.swing.JPanel();
-        btnTodasCompras = new javax.swing.JButton();
-        labelIDconsultar = new javax.swing.JLabel();
-        txtIdClienteConsultar = new javax.swing.JTextField();
-        btnBuscarCliente = new javax.swing.JButton();
-        btnRegresarAdmin_main = new javax.swing.JButton();
+        panelConsultar = new javax.swing.JPanel();
         tituloConsultarCompras = new javax.swing.JLabel();
+        labelIDconsultar = new javax.swing.JLabel();
+        panelIDConsultarCompra = new javax.swing.JPanel();
+        txtIdPeliculaConsultar = new javax.swing.JTextField();
+        panelBuscarPelicula = new javax.swing.JPanel();
+        btnBuscarPelicula = new javax.swing.JButton();
+        panelTodasCompras = new javax.swing.JPanel();
+        btnTodasCompras = new javax.swing.JButton();
+        panelTablaCompras = new javax.swing.JPanel();
+        scrollTablaCompras = new javax.swing.JScrollPane();
+        tablaCompras = new javax.swing.JTable();
+        btnRegresarAdmin_main = new javax.swing.JButton();
         descrAdmin = new javax.swing.JLabel();
         background1 = new javax.swing.JLabel();
         modificarFrame = new javax.swing.JFrame();
@@ -122,6 +137,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
         background2 = new javax.swing.JLabel();
+        guia = new javax.swing.JLabel();
         autores = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
         iconPelicenter = new javax.swing.JLabel();
@@ -173,41 +189,26 @@ public class GestionPeliculas extends javax.swing.JFrame {
         panelTablaPeliculas.setOpaque(false);
         panelTablaPeliculas.setLayout(null);
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(810, 110));
-
+        tablaPeliculas.setAutoCreateRowSorter(true);
         tablaPeliculas.setBackground(new java.awt.Color(2, 21, 38));
-        tablaPeliculas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tablaPeliculas.setForeground(new java.awt.Color(255, 255, 255));
+        tablaPeliculas.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        tablaPeliculas.setForeground(new java.awt.Color(226, 226, 182));
         tablaPeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "ID", "Titulo", "Director", "Año", "Genero", "Precio"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        tablaPeliculas.setFillsViewportHeight(true);
-        tablaPeliculas.setGridColor(new java.awt.Color(255, 255, 255));
-        tablaPeliculas.setPreferredSize(new java.awt.Dimension(275, 80));
-        jScrollPane1.setViewportView(tablaPeliculas);
+        ));
+        tablaPeliculas.setGridColor(new java.awt.Color(255, 102, 51));
+        scrollPaneTablaPeliculas.setViewportView(tablaPeliculas);
 
-        panelTablaPeliculas.add(jScrollPane1);
-        jScrollPane1.setBounds(15, 10, 810, 110);
+        panelTablaPeliculas.add(scrollPaneTablaPeliculas);
+        scrollPaneTablaPeliculas.setBounds(40, 10, 780, 110);
 
         adminFrame.getContentPane().add(panelTablaPeliculas);
         panelTablaPeliculas.setBounds(20, 320, 850, 130);
@@ -246,6 +247,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtPrecioPelicula.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioPelicula.setBorder(null);
         txtPrecioPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPrecioPelicula.setOpaque(true);
         panelPrecio.add(txtPrecioPelicula);
         txtPrecioPelicula.setBounds(10, 5, 240, 14);
 
@@ -449,50 +451,116 @@ public class GestionPeliculas extends javax.swing.JFrame {
         labelPrecio.setBounds(20, 230, 80, 21);
 
         adminFrame.getContentPane().add(panelRegistrarPelicula);
-        panelRegistrarPelicula.setBounds(20, 10, 450, 450);
+        panelRegistrarPelicula.setBounds(50, 10, 450, 310);
 
-        panelCompras.setBackground(new java.awt.Color(51, 51, 51));
-        panelCompras.setForeground(new java.awt.Color(51, 51, 51));
-        panelCompras.setLayout(null);
+        panelConsultar.setBackground(new java.awt.Color(51, 51, 51));
+        panelConsultar.setForeground(new java.awt.Color(51, 51, 51));
+        panelConsultar.setOpaque(false);
+        panelConsultar.setLayout(null);
+
+        tituloConsultarCompras.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        tituloConsultarCompras.setForeground(new java.awt.Color(255, 255, 255));
+        tituloConsultarCompras.setText("Consultar Compras");
+        panelConsultar.add(tituloConsultarCompras);
+        tituloConsultarCompras.setBounds(30, 5, 300, 30);
+
+        labelIDconsultar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        labelIDconsultar.setForeground(new java.awt.Color(255, 255, 255));
+        labelIDconsultar.setText("ID Pelicula");
+        panelConsultar.add(labelIDconsultar);
+        labelIDconsultar.setBounds(10, 45, 100, 30);
+
+        panelIDConsultarCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelIDConsultarCompra.setOpaque(false);
+        panelIDConsultarCompra.setLayout(null);
+
+        txtIdPeliculaConsultar.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdPeliculaConsultar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        txtIdPeliculaConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdPeliculaConsultar.setBorder(null);
+        txtIdPeliculaConsultar.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelIDConsultarCompra.add(txtIdPeliculaConsultar);
+        txtIdPeliculaConsultar.setBounds(15, 2, 190, 20);
+
+        panelConsultar.add(panelIDConsultarCompra);
+        panelIDConsultarCompra.setBounds(110, 50, 220, 25);
+
+        panelBuscarPelicula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelBuscarPelicula.setOpaque(false);
+        panelBuscarPelicula.setLayout(null);
+
+        btnBuscarPelicula.setBackground(new java.awt.Color(153, 255, 153));
+        btnBuscarPelicula.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btnBuscarPelicula.setForeground(new java.awt.Color(226, 226, 182));
+        btnBuscarPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarIcon.png"))); // NOI18N
+        btnBuscarPelicula.setText("Buscar");
+        btnBuscarPelicula.setBorder(null);
+        btnBuscarPelicula.setBorderPainted(false);
+        btnBuscarPelicula.setContentAreaFilled(false);
+        btnBuscarPelicula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPeliculaActionPerformed(evt);
+            }
+        });
+        panelBuscarPelicula.add(btnBuscarPelicula);
+        btnBuscarPelicula.setBounds(10, 2, 90, 20);
+
+        panelConsultar.add(panelBuscarPelicula);
+        panelBuscarPelicula.setBounds(20, 90, 110, 25);
+
+        panelTodasCompras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelTodasCompras.setOpaque(false);
+        panelTodasCompras.setLayout(null);
 
         btnTodasCompras.setBackground(new java.awt.Color(204, 255, 204));
-        btnTodasCompras.setForeground(new java.awt.Color(0, 0, 0));
+        btnTodasCompras.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btnTodasCompras.setForeground(new java.awt.Color(226, 226, 182));
+        btnTodasCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/comprasIcon.png"))); // NOI18N
         btnTodasCompras.setText("Todas las compras");
+        btnTodasCompras.setBorderPainted(false);
+        btnTodasCompras.setContentAreaFilled(false);
         btnTodasCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTodasCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTodasComprasActionPerformed(evt);
             }
         });
-        panelCompras.add(btnTodasCompras);
-        btnTodasCompras.setBounds(180, 70, 140, 30);
+        panelTodasCompras.add(btnTodasCompras);
+        btnTodasCompras.setBounds(0, 0, 180, 27);
 
-        labelIDconsultar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        labelIDconsultar.setForeground(new java.awt.Color(255, 255, 255));
-        labelIDconsultar.setText("ID cliente");
-        panelCompras.add(labelIDconsultar);
-        labelIDconsultar.setBounds(20, 21, 80, 30);
+        panelConsultar.add(panelTodasCompras);
+        panelTodasCompras.setBounds(160, 90, 170, 25);
 
-        txtIdClienteConsultar.setBackground(new java.awt.Color(51, 51, 51));
-        txtIdClienteConsultar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtIdClienteConsultar.setForeground(new java.awt.Color(255, 255, 255));
-        panelCompras.add(txtIdClienteConsultar);
-        txtIdClienteConsultar.setBounds(100, 20, 220, 30);
+        panelTablaCompras.setAutoscrolls(true);
+        panelTablaCompras.setOpaque(false);
+        panelTablaCompras.setLayout(null);
 
-        btnBuscarCliente.setBackground(new java.awt.Color(153, 255, 153));
-        btnBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscarCliente.setText("Buscar Cliente");
-        btnBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarClienteActionPerformed(evt);
+        tablaCompras.setAutoCreateRowSorter(true);
+        tablaCompras.setBackground(new java.awt.Color(2, 21, 38));
+        tablaCompras.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        tablaCompras.setForeground(new java.awt.Color(226, 226, 182));
+        tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
             }
-        });
-        panelCompras.add(btnBuscarCliente);
-        btnBuscarCliente.setBounds(30, 70, 110, 30);
+        ));
+        scrollTablaCompras.setViewportView(tablaCompras);
 
-        adminFrame.getContentPane().add(panelCompras);
-        panelCompras.setBounds(510, 40, 340, 260);
+        panelTablaCompras.add(scrollTablaCompras);
+        scrollTablaCompras.setBounds(10, 0, 340, 170);
+
+        panelConsultar.add(panelTablaCompras);
+        panelTablaCompras.setBounds(0, 130, 360, 180);
+
+        adminFrame.getContentPane().add(panelConsultar);
+        panelConsultar.setBounds(490, 10, 360, 310);
 
         btnRegresarAdmin_main.setBackground(new java.awt.Color(153, 255, 0));
         btnRegresarAdmin_main.setForeground(new java.awt.Color(0, 0, 0));
@@ -508,12 +576,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         });
         adminFrame.getContentPane().add(btnRegresarAdmin_main);
         btnRegresarAdmin_main.setBounds(10, 450, 50, 40);
-
-        tituloConsultarCompras.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        tituloConsultarCompras.setForeground(new java.awt.Color(255, 255, 255));
-        tituloConsultarCompras.setText("Consultar Compras");
-        adminFrame.getContentPane().add(tituloConsultarCompras);
-        tituloConsultarCompras.setBounds(620, 10, 150, 30);
 
         descrAdmin.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         descrAdmin.setForeground(new java.awt.Color(255, 255, 255));
@@ -636,15 +698,20 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
+        guia.setForeground(new java.awt.Color(226, 226, 182));
+        guia.setText("Ingrese su cedula");
+        getContentPane().add(guia);
+        guia.setBounds(395, 230, 100, 16);
+
         autores.setForeground(new java.awt.Color(255, 255, 255));
-        autores.setText("Creado por: Jorge Silva, Samuel Tilano, Rafael Mejia");
+        autores.setText("Creado por: Jorge Silva, Samuel Tilano, Rafael Mejia.");
         getContentPane().add(autores);
         autores.setBounds(10, 480, 300, 16);
 
         descripcion.setForeground(new java.awt.Color(255, 255, 255));
-        descripcion.setText("ID administrador: admin");
+        descripcion.setText("Version : 1.1.1");
         getContentPane().add(descripcion);
-        descripcion.setBounds(730, 480, 150, 16);
+        descripcion.setBounds(790, 480, 80, 16);
 
         iconPelicenter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconPelicenter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliCenterLogo.png"))); // NOI18N
@@ -658,7 +725,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
         btnAcceder.setBackground(new java.awt.Color(153, 0, 0));
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        btnAcceder.setForeground(new java.awt.Color(255, 255, 255));
+        btnAcceder.setForeground(new java.awt.Color(226, 226, 182));
         btnAcceder.setText("Iniciar");
         btnAcceder.setBorder(null);
         btnAcceder.setBorderPainted(false);
@@ -673,20 +740,20 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         panelIniciar.add(btnAcceder);
-        btnAcceder.setBounds(10, 4, 140, 30);
+        btnAcceder.setBounds(11, 5, 120, 30);
 
         getContentPane().add(panelIniciar);
-        panelIniciar.setBounds(360, 270, 160, 40);
+        panelIniciar.setBounds(372, 275, 140, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
-        id.setText("ID:");
+        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/personIcon.png"))); // NOI18N
         getContentPane().add(id);
-        id.setBounds(280, 190, 50, 40);
+        id.setBounds(290, 190, 40, 40);
 
         titulo.setFont(new java.awt.Font("Berlin Sans FB", 0, 80)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("CompraFilms");
+        titulo.setText("Cuevana");
         getContentPane().add(titulo);
         titulo.setBounds(250, 80, 440, 90);
 
@@ -732,11 +799,26 @@ public class GestionPeliculas extends javax.swing.JFrame {
         nombreColumna.add("Año");
         nombreColumna.add("Genero");
         nombreColumna.add("Precio");
+        
+        
         for (Object columna : nombreColumna) {
-            model.addColumn(columna);
+            modelPeliculas.addColumn(columna);
         }
         panelTablaPeliculas.setVisible(false);
-        tablaPeliculas.setModel(model);
+        tablaPeliculas.setModel(modelPeliculas);
+    }
+    
+    public void CargaAutomaticoTablaCompras() {
+        ArrayList<Object> nombreColumna = new ArrayList<>();
+        nombreColumna.add("ID Compra");
+        nombreColumna.add("ID Cliente");
+        nombreColumna.add("ID Pelicula");
+        nombreColumna.add("Fecha");
+        for (Object columna : nombreColumna) {
+            modelCompras.addColumn(columna);
+        }
+        panelTablaCompras.setVisible(false);
+        tablaCompras.setModel(modelCompras);
     }
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
@@ -773,13 +855,24 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdSesionKeyPressed
 
     private void btnMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPeliculasActionPerformed
-        if (panelTablaPeliculas.isVisible()) {
-            panelTablaPeliculas.setVisible(false);
-        } else {
+        if (panelTablaPeliculas.isVisible() == false) {
             panelTablaPeliculas.setVisible(true);
         }
         
-        model.setRowCount(0);
+        headerRenderPeliculas.setBackground(new Color(3,52,110));
+        for (int i = 0; i < tablaPeliculas.getColumnModel().getColumnCount(); i++) {
+            tablaPeliculas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderPeliculas);
+        }
+        
+        cellRenderPeliculas.setBackground(new Color(110,172,218));
+        for (int i = 0; i < tablaPeliculas.getColumnModel().getColumnCount(); i ++) {
+            if(i % 2 == 0){
+                tablaPeliculas.getColumnModel().getColumn(i).setCellRenderer(cellRenderPeliculas);
+            }
+            
+        }
+        
+        modelPeliculas.setRowCount(0);
         for (Pelicula pelicula : peliculas) {
             Object[] rowData = new Object[]{
                 pelicula.getIde(),
@@ -789,10 +882,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 pelicula.getGenero(),
                 pelicula.getPrecio()
             };
-            model.addRow(rowData); 
+            modelPeliculas.addRow(rowData);
         }
-        tablaPeliculas.setModel(model);
 
+        tablaPeliculas.setModel(modelPeliculas);
 
     }//GEN-LAST:event_btnMostrarPeliculasActionPerformed
 
@@ -822,6 +915,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             txtGeneroPelicula.setText("");
             txtPrecioPelicula.setText("");
         }
+        btnMostrarPeliculas.doClick();
     }//GEN-LAST:event_btnRegistrarPeliculaActionPerformed
 
     private void txtTituloPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloPeliculaActionPerformed
@@ -840,27 +934,55 @@ public class GestionPeliculas extends javax.swing.JFrame {
             txtGeneroPelicula.setText("");
             txtPrecioPelicula.setText("");
         } else {
-
+            
         }
+        btnMostrarPeliculas.doClick();
     }//GEN-LAST:event_btnEliminarPeliculaActionPerformed
 
-    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        StringBuilder sb = new StringBuilder();
-        int clienteBuscar = Integer.parseInt(txtIdClienteConsultar.getText());
-
-        comprasCliente = archivoCompra.buscarCompraCliente(clienteBuscar);
-        for (Compra compra : comprasCliente) {
-            sb.append("IDCompra:" + compra.getIdecompra() + "| IDCliente:" + compra.getIdecliente() + "| IDPelicula:" + compra.getIdepelicula() + "| Fecha:" + compra.getFechacompra()
-                    + "\n---------------------------------------------------").append("\n");
+    private void btnBuscarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPeliculaActionPerformed
+        if (panelTablaCompras.isVisible() == false) {
+            panelTablaCompras.setVisible(true);
         }
-
-        if (comprasCliente.isEmpty()) {
-
+        
+        headerRenderCompras.setBackground(new Color(3,52,110));
+        for (int i = 0; i < tablaCompras.getColumnModel().getColumnCount(); i++) {
+            tablaCompras.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderCompras);
         }
-    }//GEN-LAST:event_btnBuscarClienteActionPerformed
+        int idPeliculaBuscar = Integer.parseInt(txtIdPeliculaConsultar.getText());
+        peliculasCompradas = archivoCompra.buscarCompraPelicula(idPeliculaBuscar);
+        modelCompras.setRowCount(0);
+        for (Compra compra : peliculasCompradas) {
+            Object[] rowData = new Object[]{
+                compra.getIdecompra(),
+                compra.getIdecliente(),
+                compra.getIdepelicula(),
+                compra.getFechacompra()
+            };
+            modelCompras.addRow(rowData);
+        }
+        tablaCompras.setModel(modelCompras);
+    }//GEN-LAST:event_btnBuscarPeliculaActionPerformed
 
     private void btnTodasComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodasComprasActionPerformed
-
+        if (panelTablaCompras.isVisible() == false) {
+            panelTablaCompras.setVisible(true);
+        }
+        headerRenderCompras.setBackground(new Color(3,52,110));
+        for (int i = 0; i < tablaCompras.getColumnModel().getColumnCount(); i++) {
+            tablaCompras.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderCompras);
+        }
+        
+        modelCompras.setRowCount(0);
+        for (Compra compra : compras) {
+            Object[] rowData = new Object[]{
+                compra.getIdecompra(),
+                compra.getIdecliente(),
+                compra.getIdepelicula(),
+                compra.getFechacompra()
+            };
+            modelCompras.addRow(rowData);
+        }
+        tablaCompras.setModel(modelCompras);
 
     }//GEN-LAST:event_btnTodasComprasActionPerformed
 
@@ -912,8 +1034,8 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel background1;
     private javax.swing.JLabel background2;
     private javax.swing.JButton btnAcceder;
-    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnBuscarCliente1;
+    private javax.swing.JButton btnBuscarPelicula;
     private javax.swing.JButton btnEliminarPelicula;
     private javax.swing.JButton btnModificarPelicula;
     private javax.swing.JButton btnMostrarPeliculas;
@@ -925,6 +1047,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JFrame clienteRegistrado;
     private javax.swing.JLabel descrAdmin;
     private javax.swing.JLabel descripcion;
+    private javax.swing.JLabel guia;
     private javax.swing.JLabel iconPelicenter;
     private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel2;
@@ -933,7 +1056,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelAño;
     private javax.swing.JLabel labelDirector;
@@ -945,12 +1067,14 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JFrame modificarFrame;
     private javax.swing.JPanel panelAño;
-    private javax.swing.JPanel panelCompras;
+    private javax.swing.JPanel panelBuscarPelicula;
     private javax.swing.JPanel panelCompras1;
+    private javax.swing.JPanel panelConsultar;
     private javax.swing.JPanel panelDirector;
     private javax.swing.JPanel panelEliminar;
     private javax.swing.JPanel panelGenero;
     private javax.swing.JPanel panelID;
+    private javax.swing.JPanel panelIDConsultarCompra;
     private javax.swing.JPanel panelIniciar;
     private javax.swing.JPanel panelInput;
     private javax.swing.JPanel panelModificar;
@@ -958,8 +1082,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrecio;
     private javax.swing.JPanel panelRegistrar;
     private javax.swing.JPanel panelRegistrarPelicula;
+    private javax.swing.JPanel panelTablaCompras;
     private javax.swing.JPanel panelTablaPeliculas;
     private javax.swing.JPanel panelTitulo;
+    private javax.swing.JPanel panelTodasCompras;
+    private javax.swing.JScrollPane scrollPaneTablaPeliculas;
+    private javax.swing.JScrollPane scrollTablaCompras;
+    private javax.swing.JTable tablaCompras;
     private javax.swing.JTable tablaPeliculas;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
@@ -968,9 +1097,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextArea txtConsultarCompras1;
     private javax.swing.JTextField txtDirectorPelicula;
     private javax.swing.JTextField txtGeneroPelicula;
-    private javax.swing.JTextField txtIdClienteConsultar;
     private javax.swing.JTextField txtIdClienteConsultar1;
     private javax.swing.JTextField txtIdPelicula;
+    private javax.swing.JTextField txtIdPeliculaConsultar;
     private javax.swing.JTextField txtIdSesion;
     private javax.swing.JTextField txtPrecioPelicula;
     private javax.swing.JTextField txtTituloPelicula;
