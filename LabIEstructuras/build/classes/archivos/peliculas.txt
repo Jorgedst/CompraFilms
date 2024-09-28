@@ -15,6 +15,5 @@
 15,Star Wars: Una nueva esperanza,George Lucas,1977,Ciencia ficción,70000.0
 16,La gran belleza,Paolo Sorrentino,2013,Drama,55000.0
 17,Mad Max: Furia en la carretera,George Miller,2015,Acción,75000.0
-18,V de Vendetta,James McTeigue,2005,Acción,60000.0
 19,El laberinto del fauno,Guillermo del Toro,2006,Fantasía,65000.0
 20,Whiplash,Damien Chazelle,2014,Drama,60000.0

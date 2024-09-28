@@ -65,10 +65,17 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame = new javax.swing.JFrame();
         panelID = new javax.swing.JPanel();
         txtIdPelicula = new javax.swing.JTextField();
+        panelPrecio = new javax.swing.JPanel();
+        txtPrecioPelicula = new javax.swing.JTextField();
         panelTitulo = new javax.swing.JPanel();
         txtTituloPelicula = new javax.swing.JTextField();
         panelDirector = new javax.swing.JPanel();
         txtDirectorPelicula = new javax.swing.JTextField();
+        panelAño = new javax.swing.JPanel();
+        txtAñoPelicula = new javax.swing.JTextField();
+        panelGenero = new javax.swing.JPanel();
+        txtGeneroPelicula = new javax.swing.JTextField();
+        panelRegistrarPelicula = new javax.swing.JPanel();
         panelCompras = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtConsultarCompras = new javax.swing.JTextArea();
@@ -89,15 +96,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
         btnRegistrarPelicula = new javax.swing.JButton();
         btnModificarPelicula = new javax.swing.JButton();
         btnEliminarPelicula = new javax.swing.JButton();
-        txtPrecioPelicula = new javax.swing.JTextField();
-        txtAñoPelicula = new javax.swing.JTextField();
-        txtGeneroPelicula = new javax.swing.JTextField();
         btnMostrarPeliculas = new javax.swing.JButton();
-        descrAdmin = new javax.swing.JLabel();
         btnRegresarAdmin_main = new javax.swing.JButton();
+        descrAdmin = new javax.swing.JLabel();
         background1 = new javax.swing.JLabel();
-        panelAño = new javax.swing.JPanel();
-        txtDirectorPelicula1 = new javax.swing.JTextField();
         modificarFrame = new javax.swing.JFrame();
         jLabel5 = new javax.swing.JLabel();
         panelCompras1 = new javax.swing.JPanel();
@@ -116,11 +118,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
         autores = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
         iconPelicenter = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        panelIniciar = new javax.swing.JPanel();
         btnAcceder = new javax.swing.JButton();
         id = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        panelInput = new javax.swing.JPanel();
         txtIdSesion = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
@@ -160,7 +162,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame.setSize(new java.awt.Dimension(890, 535));
         adminFrame.getContentPane().setLayout(null);
 
-        panelID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 50, true));
+        panelID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
         panelID.setOpaque(false);
         panelID.setLayout(null);
 
@@ -171,12 +173,27 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtIdPelicula.setBorder(null);
         txtIdPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
         panelID.add(txtIdPelicula);
-        txtIdPelicula.setBounds(10, 5, 340, 20);
+        txtIdPelicula.setBounds(10, 5, 170, 14);
 
         adminFrame.getContentPane().add(panelID);
-        panelID.setBounds(100, 50, 360, 30);
+        panelID.setBounds(90, 55, 200, 25);
 
-        panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 50, true));
+        panelPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelPrecio.setOpaque(false);
+        panelPrecio.setLayout(null);
+
+        txtPrecioPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecioPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtPrecioPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioPelicula.setBorder(null);
+        txtPrecioPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelPrecio.add(txtPrecioPelicula);
+        txtPrecioPelicula.setBounds(10, 5, 170, 14);
+
+        adminFrame.getContentPane().add(panelPrecio);
+        panelPrecio.setBounds(90, 230, 200, 25);
+
+        panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
         panelTitulo.setOpaque(false);
         panelTitulo.setLayout(null);
 
@@ -191,12 +208,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         panelTitulo.add(txtTituloPelicula);
-        txtTituloPelicula.setBounds(10, 5, 340, 20);
+        txtTituloPelicula.setBounds(10, 6, 170, 14);
 
         adminFrame.getContentPane().add(panelTitulo);
-        panelTitulo.setBounds(100, 90, 360, 30);
+        panelTitulo.setBounds(90, 90, 200, 25);
 
-        panelDirector.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 50, true));
+        panelDirector.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
         panelDirector.setOpaque(false);
         panelDirector.setLayout(null);
 
@@ -206,10 +223,54 @@ public class GestionPeliculas extends javax.swing.JFrame {
         txtDirectorPelicula.setBorder(null);
         txtDirectorPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
         panelDirector.add(txtDirectorPelicula);
-        txtDirectorPelicula.setBounds(10, 5, 340, 20);
+        txtDirectorPelicula.setBounds(10, 5, 170, 14);
 
         adminFrame.getContentPane().add(panelDirector);
-        panelDirector.setBounds(100, 130, 360, 30);
+        panelDirector.setBounds(90, 125, 200, 25);
+
+        panelAño.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelAño.setOpaque(false);
+        panelAño.setLayout(null);
+
+        txtAñoPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtAñoPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtAñoPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtAñoPelicula.setBorder(null);
+        txtAñoPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelAño.add(txtAñoPelicula);
+        txtAñoPelicula.setBounds(10, 5, 170, 14);
+
+        adminFrame.getContentPane().add(panelAño);
+        panelAño.setBounds(90, 160, 200, 25);
+
+        panelGenero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelGenero.setOpaque(false);
+        panelGenero.setLayout(null);
+
+        txtGeneroPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtGeneroPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtGeneroPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtGeneroPelicula.setBorder(null);
+        txtGeneroPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelGenero.add(txtGeneroPelicula);
+        txtGeneroPelicula.setBounds(10, 5, 170, 14);
+
+        adminFrame.getContentPane().add(panelGenero);
+        panelGenero.setBounds(90, 195, 200, 25);
+
+        javax.swing.GroupLayout panelRegistrarPeliculaLayout = new javax.swing.GroupLayout(panelRegistrarPelicula);
+        panelRegistrarPelicula.setLayout(panelRegistrarPeliculaLayout);
+        panelRegistrarPeliculaLayout.setHorizontalGroup(
+            panelRegistrarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panelRegistrarPeliculaLayout.setVerticalGroup(
+            panelRegistrarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        adminFrame.getContentPane().add(panelRegistrarPelicula);
+        panelRegistrarPelicula.setBounds(30, 20, 100, 100);
 
         panelCompras.setBackground(new java.awt.Color(51, 51, 51));
         panelCompras.setForeground(new java.awt.Color(51, 51, 51));
@@ -284,43 +345,43 @@ public class GestionPeliculas extends javax.swing.JFrame {
         tituloRegistrarPelicula.setForeground(new java.awt.Color(255, 255, 255));
         tituloRegistrarPelicula.setText("Registrar Pelicula");
         adminFrame.getContentPane().add(tituloRegistrarPelicula);
-        tituloRegistrarPelicula.setBounds(180, 10, 140, 30);
+        tituloRegistrarPelicula.setBounds(120, 20, 130, 30);
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("ID");
         adminFrame.getContentPane().add(jLabel7);
-        jLabel7.setBounds(70, 50, 30, 30);
+        jLabel7.setBounds(65, 55, 30, 30);
 
         jLabel8.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Titulo");
         adminFrame.getContentPane().add(jLabel8);
-        jLabel8.setBounds(40, 90, 60, 30);
+        jLabel8.setBounds(40, 85, 70, 30);
 
         jLabel9.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Director");
         adminFrame.getContentPane().add(jLabel9);
-        jLabel9.setBounds(30, 130, 80, 30);
+        jLabel9.setBounds(20, 120, 80, 30);
 
         jLabel10.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Año");
         adminFrame.getContentPane().add(jLabel10);
-        jLabel10.setBounds(40, 170, 80, 21);
+        jLabel10.setBounds(50, 161, 80, 21);
 
         jLabel11.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Genero");
         adminFrame.getContentPane().add(jLabel11);
-        jLabel11.setBounds(40, 200, 80, 21);
+        jLabel11.setBounds(30, 195, 80, 21);
 
         jLabel12.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Precio");
         adminFrame.getContentPane().add(jLabel12);
-        jLabel12.setBounds(40, 230, 80, 21);
+        jLabel12.setBounds(35, 230, 80, 21);
 
         btnRegistrarPelicula.setBackground(new java.awt.Color(153, 255, 0));
         btnRegistrarPelicula.setForeground(new java.awt.Color(0, 0, 0));
@@ -332,7 +393,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         adminFrame.getContentPane().add(btnRegistrarPelicula);
-        btnRegistrarPelicula.setBounds(50, 270, 80, 30);
+        btnRegistrarPelicula.setBounds(70, 270, 80, 30);
 
         btnModificarPelicula.setBackground(new java.awt.Color(0, 102, 153));
         btnModificarPelicula.setForeground(new java.awt.Color(0, 0, 0));
@@ -344,7 +405,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         adminFrame.getContentPane().add(btnModificarPelicula);
-        btnModificarPelicula.setBounds(150, 270, 90, 30);
+        btnModificarPelicula.setBounds(320, 200, 90, 30);
 
         btnEliminarPelicula.setBackground(new java.awt.Color(255, 102, 102));
         btnEliminarPelicula.setForeground(new java.awt.Color(0, 0, 0));
@@ -356,25 +417,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         adminFrame.getContentPane().add(btnEliminarPelicula);
-        btnEliminarPelicula.setBounds(360, 270, 90, 30);
-
-        txtPrecioPelicula.setBackground(new java.awt.Color(51, 51, 51));
-        txtPrecioPelicula.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        txtPrecioPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        adminFrame.getContentPane().add(txtPrecioPelicula);
-        txtPrecioPelicula.setBounds(110, 230, 340, 20);
-
-        txtAñoPelicula.setBackground(new java.awt.Color(51, 51, 51));
-        txtAñoPelicula.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        txtAñoPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        adminFrame.getContentPane().add(txtAñoPelicula);
-        txtAñoPelicula.setBounds(110, 170, 340, 20);
-
-        txtGeneroPelicula.setBackground(new java.awt.Color(51, 51, 51));
-        txtGeneroPelicula.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        txtGeneroPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        adminFrame.getContentPane().add(txtGeneroPelicula);
-        txtGeneroPelicula.setBounds(110, 200, 340, 20);
+        btnEliminarPelicula.setBounds(180, 270, 90, 30);
 
         btnMostrarPeliculas.setBackground(new java.awt.Color(153, 255, 0));
         btnMostrarPeliculas.setForeground(new java.awt.Color(0, 0, 0));
@@ -386,13 +429,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         adminFrame.getContentPane().add(btnMostrarPeliculas);
-        btnMostrarPeliculas.setBounds(260, 270, 80, 30);
-
-        descrAdmin.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        descrAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        descrAdmin.setText("Perfil: Administrador");
-        adminFrame.getContentPane().add(descrAdmin);
-        descrAdmin.setBounds(750, 470, 120, 30);
+        btnMostrarPeliculas.setBounds(300, 270, 80, 30);
 
         btnRegresarAdmin_main.setBackground(new java.awt.Color(153, 255, 0));
         btnRegresarAdmin_main.setForeground(new java.awt.Color(0, 0, 0));
@@ -406,26 +443,18 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame.getContentPane().add(btnRegresarAdmin_main);
         btnRegresarAdmin_main.setBounds(20, 460, 100, 23);
 
+        descrAdmin.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        descrAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        descrAdmin.setText("Perfil: Administrador");
+        adminFrame.getContentPane().add(descrAdmin);
+        descrAdmin.setBounds(750, 470, 120, 30);
+
         background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
         adminFrame.getContentPane().add(background1);
         background1.setBounds(0, 0, 890, 500);
 
-        panelAño.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 50, true));
-        panelAño.setOpaque(false);
-        panelAño.setLayout(null);
-
-        txtDirectorPelicula1.setBackground(new java.awt.Color(255, 255, 255));
-        txtDirectorPelicula1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txtDirectorPelicula1.setForeground(new java.awt.Color(0, 0, 0));
-        txtDirectorPelicula1.setBorder(null);
-        txtDirectorPelicula1.setCaretColor(new java.awt.Color(0, 0, 0));
-        panelAño.add(txtDirectorPelicula1);
-        txtDirectorPelicula1.setBounds(10, 5, 340, 20);
-
-        adminFrame.getContentPane().add(panelAño);
-        panelAño.setBounds(100, 130, 360, 30);
-
-        modificarFrame.setPreferredSize(new java.awt.Dimension(890, 535));
+        modificarFrame.setPreferredSize(new java.awt.Dimension(898, 535));
+        modificarFrame.setResizable(false);
         modificarFrame.setSize(new java.awt.Dimension(890, 535));
         modificarFrame.getContentPane().setLayout(null);
 
@@ -550,14 +579,14 @@ public class GestionPeliculas extends javax.swing.JFrame {
         getContentPane().add(iconPelicenter);
         iconPelicenter.setBounds(150, 70, 110, 100);
 
-        jPanel5.setBackground(new java.awt.Color(52, 121, 40));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(22, 66, 60), 50, true));
-        jPanel5.setOpaque(false);
-        jPanel5.setLayout(null);
+        panelIniciar.setBackground(new java.awt.Color(52, 121, 40));
+        panelIniciar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 50, true));
+        panelIniciar.setOpaque(false);
+        panelIniciar.setLayout(null);
 
         btnAcceder.setBackground(new java.awt.Color(153, 0, 0));
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        btnAcceder.setForeground(new java.awt.Color(255, 255, 153));
+        btnAcceder.setForeground(new java.awt.Color(255, 255, 255));
         btnAcceder.setText("Iniciar");
         btnAcceder.setBorder(null);
         btnAcceder.setBorderPainted(false);
@@ -571,17 +600,17 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 btnAccederActionPerformed(evt);
             }
         });
-        jPanel5.add(btnAcceder);
+        panelIniciar.add(btnAcceder);
         btnAcceder.setBounds(10, 4, 140, 30);
 
-        getContentPane().add(jPanel5);
-        jPanel5.setBounds(370, 270, 160, 40);
+        getContentPane().add(panelIniciar);
+        panelIniciar.setBounds(360, 270, 160, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
         id.setText("ID:");
         getContentPane().add(id);
-        id.setBounds(270, 190, 50, 40);
+        id.setBounds(280, 190, 50, 40);
 
         titulo.setFont(new java.awt.Font("Berlin Sans FB", 0, 80)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -589,10 +618,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
         getContentPane().add(titulo);
         titulo.setBounds(250, 80, 440, 90);
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 50, true));
-        jPanel4.setOpaque(false);
-        jPanel4.setLayout(null);
+        panelInput.setBackground(new java.awt.Color(0, 0, 0));
+        panelInput.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelInput.setOpaque(false);
+        panelInput.setLayout(null);
 
         txtIdSesion.setBackground(new java.awt.Color(255, 255, 255));
         txtIdSesion.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -609,11 +638,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 txtIdSesionKeyPressed(evt);
             }
         });
-        jPanel4.add(txtIdSesion);
-        txtIdSesion.setBounds(10, 8, 250, 20);
+        panelInput.add(txtIdSesion);
+        txtIdSesion.setBounds(15, 5, 200, 20);
 
-        getContentPane().add(jPanel4);
-        jPanel4.setBounds(320, 190, 270, 35);
+        getContentPane().add(panelInput);
+        panelInput.setBounds(330, 195, 230, 30);
 
         background.setForeground(new java.awt.Color(255, 255, 153));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
@@ -830,8 +859,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -840,7 +867,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JPanel panelCompras;
     private javax.swing.JPanel panelCompras1;
     private javax.swing.JPanel panelDirector;
+    private javax.swing.JPanel panelGenero;
     private javax.swing.JPanel panelID;
+    private javax.swing.JPanel panelIniciar;
+    private javax.swing.JPanel panelInput;
+    private javax.swing.JPanel panelPrecio;
+    private javax.swing.JPanel panelRegistrarPelicula;
     private javax.swing.JPanel panelTitulo;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
@@ -850,7 +882,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextArea txtConsultarCompras;
     private javax.swing.JTextArea txtConsultarCompras1;
     private javax.swing.JTextField txtDirectorPelicula;
-    private javax.swing.JTextField txtDirectorPelicula1;
     private javax.swing.JTextField txtGeneroPelicula;
     private javax.swing.JTextField txtIdClienteConsultar;
     private javax.swing.JTextField txtIdClienteConsultar1;
