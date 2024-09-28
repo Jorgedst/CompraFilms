@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/tilan/OneDrive/Documentos/NetBeansProjects/Lab1Estructuras/LabIEstructuras/src/gestor/ArchivoCompras.java</file>
             <file>file:/C:/Users/tilan/OneDrive/Documentos/NetBeansProjects/Lab1Estructuras/LabIEstructuras/src/interfaz/GestionPeliculas.java</file>
+=======
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoPelicula.java</file>
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/interfaz/GestionPeliculas.java</file>
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoCompras.java</file>
+            <file>file:/C:/Users/PC/OneDrive/Documentos/EstructurasRepo/LabIEstructuras/src/gestor/ArchivoCliente.java</file>
+>>>>>>> fbe634538c00ce1ac8f53615640d05875b8533aa
         </group>
     </open-files>
 </project-private>
