@@ -30,7 +30,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionPeliculas extends javax.swing.JFrame {
 
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel modelCompras = new DefaultTableModel();
+    DefaultTableModel modelPeliculas = new DefaultTableModel();
 
     public void CargaAutomatico() {
         ArrayList<Object> nombreColumna = new ArrayList<>();
@@ -39,9 +40,22 @@ public class GestionPeliculas extends javax.swing.JFrame {
         nombreColumna.add("IDPelicula");
         nombreColumna.add("Fecha");
         for (Object columna : nombreColumna) {
-            model.addColumn(columna);
+            modelCompras.addColumn(columna);
         }
-        this.tabladatos.setModel(model);
+        this.tablaPeliculas.setModel(modelCompras);
+        
+        ArrayList<Object> nombreColumna2 = new ArrayList<>();
+        nombreColumna2.add("ID");
+        nombreColumna2.add("Director");
+        nombreColumna2.add("Titulo");
+        nombreColumna2.add("Año");
+        nombreColumna2.add("Genero");
+        nombreColumna2.add("Precio");
+        for (Object columna : nombreColumna2) {
+            modelPeliculas.addColumn(columna);
+        }
+        
+        tablaPeliculas.setModel(modelPeliculas);
     }
 
     String rutaArchivoPelicula = new File("").getAbsolutePath() + "\\src\\archivos\\peliculas.txt";
@@ -86,13 +100,14 @@ public class GestionPeliculas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdClienteConsultar = new javax.swing.JTextField();
         btnBuscarCliente = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
         tabladatos = new javax.swing.JTable();
         tituloRegistrarPelicula1 = new javax.swing.JLabel();
         tituloRegistrarPelicula = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaPeliculas = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtPeliculasAdmin = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -202,6 +217,8 @@ public class GestionPeliculas extends javax.swing.JFrame {
         panelCompras.add(btnBuscarCliente);
         btnBuscarCliente.setBounds(30, 70, 110, 23);
 
+        jScrollPane5.setOpaque(false);
+
         tabladatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -214,20 +231,32 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tabladatos);
+        tabladatos.setOpaque(false);
+        tabladatos.setShowGrid(true);
+        jScrollPane5.setViewportView(tabladatos);
+        if (tabladatos.getColumnModel().getColumnCount() > 0) {
+            tabladatos.getColumnModel().getColumn(0).setResizable(false);
+            tabladatos.getColumnModel().getColumn(0).setHeaderValue("ID");
+            tabladatos.getColumnModel().getColumn(1).setResizable(false);
+            tabladatos.getColumnModel().getColumn(1).setHeaderValue("Director");
+            tabladatos.getColumnModel().getColumn(2).setResizable(false);
+            tabladatos.getColumnModel().getColumn(2).setHeaderValue("Titulo");
+            tabladatos.getColumnModel().getColumn(3).setResizable(false);
+            tabladatos.getColumnModel().getColumn(3).setHeaderValue("Año");
+        }
 
-        panelCompras.add(jScrollPane4);
-        jScrollPane4.setBounds(30, 110, 280, 260);
+        panelCompras.add(jScrollPane5);
+        jScrollPane5.setBounds(30, 110, 280, 100);
 
         adminFrame.getContentPane().add(panelCompras);
-        panelCompras.setBounds(510, 40, 340, 400);
+        panelCompras.setBounds(510, 40, 340, 250);
 
         tituloRegistrarPelicula1.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         tituloRegistrarPelicula1.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,20 +270,36 @@ public class GestionPeliculas extends javax.swing.JFrame {
         adminFrame.getContentPane().add(tituloRegistrarPelicula);
         tituloRegistrarPelicula.setBounds(180, 10, 140, 30);
 
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(null);
+
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane4.setOpaque(false);
+
+        tablaPeliculas.setBackground(new java.awt.Color(51, 51, 51));
+        tablaPeliculas.setForeground(new java.awt.Color(255, 255, 255));
+        tablaPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tablaPeliculas.getTableHeader().setResizingAllowed(false);
+        tablaPeliculas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tablaPeliculas);
+
+        jPanel2.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 10, 820, 120);
+
+        adminFrame.getContentPane().add(jPanel2);
+        jPanel2.setBounds(30, 310, 840, 140);
+
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(null);
-
-        txtPeliculasAdmin.setBackground(new java.awt.Color(51, 51, 51));
-        txtPeliculasAdmin.setColumns(20);
-        txtPeliculasAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        txtPeliculasAdmin.setLineWrap(true);
-        txtPeliculasAdmin.setRows(5);
-        jScrollPane1.setViewportView(txtPeliculasAdmin);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 260, 430, 130);
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -543,10 +588,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
         String generoPelicula = txtGeneroPelicula.getText();
         Double precioPelicula = Double.parseDouble(txtPrecioPelicula.getText());
         if (archivoPelicula.existeId(idpelicula)) {
-            txtPeliculasAdmin.setForeground(Color.red);
-            txtPeliculasAdmin.setText("¡EL ID INGRESADO YA EXISTE\nIntenta con otro id.");
+            // El id ya existe
         } else {
-            txtPeliculasAdmin.setText("¡PELICULA REGISTRADA EXITOSAMENTE!");
+            
             archivoPelicula.registrarPelicula(idpelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
 
             txtIdPelicula.setText("");
@@ -556,7 +600,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             txtGeneroPelicula.setText("");
             txtPrecioPelicula.setText("");
         }
-
+        btnMostrarPeliculas.doClick();
     }//GEN-LAST:event_btnRegistrarPeliculaActionPerformed
 
     private void btnModificarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPeliculaActionPerformed
@@ -569,8 +613,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         int idpeliculaEliminar = Integer.parseInt(txtIdPelicula.getText());
         if (archivoPelicula.existeId(idpeliculaEliminar)) {
             archivoPelicula.eliminarPelicula(idpeliculaEliminar);
-            txtPeliculasAdmin.setForeground(Color.green);
-            txtPeliculasAdmin.setText("¡PELICULA ELIMINADA EXITOSAMENTE! ");
+            
             txtIdPelicula.setText("");
             txtTituloPelicula.setText("");
             txtDirectorPelicula.setText("");
@@ -578,27 +621,27 @@ public class GestionPeliculas extends javax.swing.JFrame {
             txtGeneroPelicula.setText("");
             txtPrecioPelicula.setText("");
         } else {
-            txtPeliculasAdmin.setForeground(Color.red);
-            txtPeliculasAdmin.setText("¡EL ID INGRESADO NO EXISTE!");
+            //El id ingresado no existe
         }
+        btnMostrarPeliculas.doClick();
     }//GEN-LAST:event_btnEliminarPeliculaActionPerformed
 
     private void btnMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPeliculasActionPerformed
-        txtPeliculasAdmin.setForeground(Color.white);
-        StringBuilder sb = new StringBuilder();
-
-        try ( BufferedReader br = new BufferedReader(new FileReader("src/archivos/peliculas.txt"))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                // Separar los campos por comas
-                sb.append(linea + "\n"
-                        + "---------------------------------------------------------------------------------------------------").append("\n");
-            }
-            txtPeliculasAdmin.setText(sb.toString());
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        modelPeliculas.setRowCount(0);
+        
+        
+        for (Pelicula pelicula : peliculas) {
+            Object[] rowData = new Object[]{
+                pelicula.getIde(),
+                pelicula.getDirector(),
+                pelicula.getTitulo(),
+                pelicula.getAño(),
+                pelicula.getGenero(),
+                pelicula.getPrecio(),
+            };
+            modelPeliculas.addRow(rowData); // Añadir la fila al modelo
         }
+        tablaPeliculas.setModel(modelPeliculas);
     }//GEN-LAST:event_btnMostrarPeliculasActionPerformed
 
     private void txtIdSesionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdSesionKeyPressed
@@ -609,7 +652,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
     private void btnTodasComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodasComprasActionPerformed
 
-        model.setRowCount(0);
+        modelCompras.setRowCount(0);
 
         for (Compra compra : compras) {
             Object[] rowData = new Object[]{
@@ -618,9 +661,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 compra.getIdepelicula(),
                 compra.getFechacompra()
             };
-            model.addRow(rowData); // Añadir la fila al modelo
+            modelCompras.addRow(rowData); // Añadir la fila al modelo
         }
-        tabladatos.setModel(model);
+        tabladatos.setModel(modelCompras);
     }//GEN-LAST:event_btnTodasComprasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -629,7 +672,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         
-        model.setRowCount(0);
+        modelCompras.setRowCount(0);
         
         int clienteBuscar = Integer.parseInt(txtIdClienteConsultar.getText());
 
@@ -641,9 +684,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
                 compra.getIdepelicula(),
                 compra.getFechacompra()
             };
-            model.addRow(rowData); // Añadir la fila al modelo
+            modelCompras.addRow(rowData); // Añadir la fila al modelo
         }
-        tabladatos.setModel(model);
+        tabladatos.setModel(modelCompras);
         
         
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
@@ -726,10 +769,12 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JFrame modificarFrame;
     private javax.swing.JPanel panelCompras;
+    private javax.swing.JTable tablaPeliculas;
     private javax.swing.JTable tabladatos;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
@@ -741,7 +786,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdClienteConsultar;
     private javax.swing.JTextField txtIdPelicula;
     private javax.swing.JTextField txtIdSesion;
-    private javax.swing.JTextArea txtPeliculasAdmin;
     private javax.swing.JTextField txtPrecioPelicula;
     private javax.swing.JTextField txtTituloPelicula;
     // End of variables declaration//GEN-END:variables
