@@ -59,7 +59,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     ArrayList<Pelicula> peliculas;
     ArrayList<Compra> peliculasCompradas;
     ArrayList<Cliente> clientes;
-    
+
     private final String idAdministrador = "admin";
 
     /**
@@ -1491,7 +1491,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setTitle("CompraFilms");
         setPreferredSize(new java.awt.Dimension(890, 500));
         setResizable(false);
-        setSize(new java.awt.Dimension(890, 535));
+        setSize(new java.awt.Dimension(890, 500));
         getContentPane().setLayout(null);
 
         guia.setForeground(new java.awt.Color(226, 226, 182));
@@ -1615,9 +1615,9 @@ public class GestionPeliculas extends javax.swing.JFrame {
         panelTablaCompras.setVisible(false);
         tablaCompras.setModel(modelCompras);
     }
-    
+
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
-        
+
         String idusuarioAdmin = txtIdSesion.getText();
         if (idusuarioAdmin.equals(idAdministrador)) {
             this.dispose();
@@ -1626,7 +1626,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         } else {
             int idCliente = Integer.parseInt(txtIdSesion.getText());
             boolean existeId = archivoCliente.existeId(idCliente);
-            if(existeId){
+            if (existeId) {
                 this.dispose();
                 panelTablaPeliculasCliente.setVisible(false);
                 nombreCliente.setText(archivoCliente.getNombreCliente(idCliente));
@@ -1864,10 +1864,10 @@ public class GestionPeliculas extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String correo = txtCorreo.getText();
         String direccion = txtDireccion.getText();
-        
+
         if (archivoCliente.existeId(idcliente)) {
             panelTablaPeliculas.setVisible(false);
-            
+
         } else {
             archivoCliente.registrarCliente(idcliente, nombre, correo, direccion);
             nombreCliente.setText(archivoCliente.getNombreCliente(idcliente));
@@ -1879,10 +1879,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
         clienteNoRegistrado.setVisible(false);
         clienteRegistrado.setLocationRelativeTo(null);
         clienteRegistrado.setVisible(true);
-        
+
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void btnRegresarClienteRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarClienteRegistradoActionPerformed
+        
         clienteRegistrado.setVisible(false);
         mostrarMainPeliculas();
     }//GEN-LAST:event_btnRegresarClienteRegistradoActionPerformed
@@ -1891,7 +1892,21 @@ public class GestionPeliculas extends javax.swing.JFrame {
         clienteRegistrado.setVisible(false);
         modificarClienteFrame.setLocationRelativeTo(null);
         modificarClienteFrame.setVisible(true);
-        
+
+        for (Cliente cliente : clientes) {
+            int clienteModificar = Integer.parseInt(txtIdSesion.getText());
+            txtIDClienteMod.setText(Integer.toString(clienteModificar));
+            if (Integer.toString(cliente.getIdecliente()).equals(txtIdSesion.getText())) {
+                panelDatosCliente.setVisible(true);
+                txtIdCliente.setText(Integer.toString(cliente.getIdecliente()));
+                txtNombreMod.setText(cliente.getNombre());
+                txtCorreoMod.setText(cliente.getCorreo());
+                txtDireccionMod.setText(cliente.getDireccion());
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnEditarInfoClienteActionPerformed
 
     private void btnRealizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarCompraActionPerformed
@@ -1920,6 +1935,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdClienteActionPerformed
 
     private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
+
         try {
             int clienteModificar = Integer.parseInt(txtIdSesion.getText());
             txtIDClienteMod.setText(Integer.toString(clienteModificar));
@@ -1927,16 +1943,20 @@ public class GestionPeliculas extends javax.swing.JFrame {
             String correoMod = txtCorreoMod.getText();
             String direccionMod = txtDireccionMod.getText();
             archivoCliente.actualizarCliente(clienteModificar, nombreMod, correoMod, direccionMod);
+            nombreCliente.setText(nombreMod);
             JOptionPane.showMessageDialog(null, "Datos modificados exitosamente", "Pelicula modificada exitosamente", JOptionPane.PLAIN_MESSAGE, succesIcon);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR: Informacion incorrecta", JOptionPane.PLAIN_MESSAGE, errorIcon);
         }
+        
+        
     }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnRegresarModificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarModificar_ClienteActionPerformed
-        // TODO add your handling code here:
+        modificarClienteFrame.setVisible(false);
+        clienteRegistrado.setVisible(true);
     }//GEN-LAST:event_btnRegresarModificar_ClienteActionPerformed
-    
+
     public static void mostrarMainPeliculas() {
         // Crea una nueva instancia de GestionPeliculas y la muestra
         GestionPeliculas gestionPeliculas = new GestionPeliculas();
