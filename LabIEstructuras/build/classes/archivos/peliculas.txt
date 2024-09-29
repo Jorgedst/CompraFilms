@@ -75,7 +75,7 @@
 76,The Lego Movie,Phil Lord-Christopher Miller,2014,Animación,14000.0
 77,How to Train Your Dragon,Dean DeBlois-Chris Sanders,2010,Animación,14000.0
 78,Crouching Tiger-Hidden Dragon,Ang Lee,2000,Acción,17000.0
-79,Midsommar,Ari Aster,2019,Horror,18000.0
+79,Midsommar,Ari Aster,2019,Horror,10000.0
 80,The Farewell,Lulu Wang,2019,Drama,16000.0
 81,The Lighthouse,Robert Eggers,2019,Horror,18000.0
 82,Sicario,Denis Villeneuve,2015,Acción,19000.0

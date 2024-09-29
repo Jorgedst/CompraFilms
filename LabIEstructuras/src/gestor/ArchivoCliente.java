@@ -44,7 +44,7 @@ public class ArchivoCliente {
         return clientes;
     }
     
-    public Boolean existeId(int ide) {
+    public boolean existeId(int ide) {
         for (Cliente cliente : clientes) {
             if (cliente.getIdecliente() == ide) {
                 return true;
@@ -109,5 +109,14 @@ public class ArchivoCliente {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public String getNombreCliente(int idCliente){
+        for (Cliente cliente : clientes){
+            if (cliente.getIdecliente() == idCliente){
+                return cliente.getNombre();
+            }
+        }
+        return null;
     }
 }
