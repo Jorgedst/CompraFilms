@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -50,7 +51,7 @@ public class ArchivoPelicula {
     //Existe Id
     public Boolean existeId(int ide) {
         for (Pelicula pelicula : peliculas) {
-            if (pelicula.getIde() == ide) {
+            if (pelicula.getIde() == ide || ide < 1) {
                 return true;
             }
         }
@@ -59,7 +60,8 @@ public class ArchivoPelicula {
 
     //Registrar pelicula
     public void registrarPelicula(int ide, String titulo, String director, int año, String genero, double precio) {
-        if (existeId(ide) == true) {
+        
+        if (existeId(ide) == true ) {
             System.out.println("Ya existe una pelicula con ese ID...");
         } else {
             Pelicula pelicula = new Pelicula(ide, titulo, director, año, genero, precio);
@@ -154,4 +156,5 @@ public class ArchivoPelicula {
         }
         return generoPeliculas;
     }
+    
 }

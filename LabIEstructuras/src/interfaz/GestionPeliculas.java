@@ -1,13 +1,30 @@
 package interfaz;
 
+import entidades.Cliente;
+import entidades.Compra;
 import entidades.Pelicula;
+import gestor.ArchivoCliente;
+import gestor.ArchivoCompras;
 import gestor.ArchivoPelicula;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.constant.DirectMethodHandleDesc;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.plaf.OptionPaneUI;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import jdk.internal.org.jline.terminal.MouseEvent;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,16 +36,41 @@ import javax.swing.JOptionPane;
  */
 public class GestionPeliculas extends javax.swing.JFrame {
 
-    ArrayList<Pelicula> peliculas;
+    DefaultTableModel modelPeliculas = new DefaultTableModel();
+    DefaultTableModel modelCompras = new DefaultTableModel();
+
+    DefaultTableCellRenderer headerRenderPeliculas = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer headerRenderCompras = new DefaultTableCellRenderer();
+
     String rutaArchivoPelicula = new File("").getAbsolutePath() + "\\src\\archivos\\peliculas.txt";
     ArchivoPelicula archivoPelicula = new ArchivoPelicula(rutaArchivoPelicula);
+
+    String rutaArchivoCliente = new File("").getAbsolutePath() + "\\src\\archivos\\clientes.txt";
+    ArchivoCliente archivoCliente = new ArchivoCliente(rutaArchivoCliente);
+
+    String rutaArchivoCompra = new File("").getAbsolutePath() + "\\src\\archivos\\compras.txt";
+    ArchivoCompras archivoCompra = new ArchivoCompras(rutaArchivoCompra, rutaArchivoCliente, rutaArchivoPelicula);
+
+    ImageIcon errorIcon = new ImageIcon(new File("").getAbsolutePath() + "\\src\\images\\errorIcon.png");
+    ImageIcon notFoundIcon = new ImageIcon(new File("").getAbsolutePath() + "\\src\\images\\notfoundIcon.png");
+    ImageIcon succesIcon = new ImageIcon(new File("").getAbsolutePath() + "\\src\\images\\succesIcon.png");
+
+    ArrayList<Compra> compras;
+    ArrayList<Pelicula> peliculas;
+    ArrayList<Compra> peliculasCompradas;
+
+    private String idAdministrador = "admin";
 
     /**
      * Creates new form GestionPeliculas
      */
     public GestionPeliculas() {
         initComponents();
-        archivoPelicula.leerPeliculas();
+        compras = archivoCompra.leerCompra();
+        peliculas = archivoPelicula.leerPeliculas();
+        CargaAutomaticoTablaPeliculas();
+        CargaAutomaticoTablaCompras();
+
     }
 
     /**
@@ -40,106 +82,893 @@ public class GestionPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inicioSesion = new javax.swing.JFrame();
-        jLabel2 = new javax.swing.JLabel();
+        clienteRegistrado = new javax.swing.JFrame();
+        clienteNoRegistrado = new javax.swing.JFrame();
+        adminFrame = new javax.swing.JFrame();
+        panelTablaPeliculas = new javax.swing.JPanel();
+        scrollPaneTablaPeliculas = new javax.swing.JScrollPane();
+        tablaPeliculas = new javax.swing.JTable();
+        panelRegistrarPelicula = new javax.swing.JPanel();
+        labelRegistrarPelicula = new javax.swing.JLabel();
+        panelID = new javax.swing.JPanel();
+        txtIdPelicula = new javax.swing.JTextField();
+        panelPrecio = new javax.swing.JPanel();
+        txtPrecioPelicula = new javax.swing.JTextField();
+        panelTitulo = new javax.swing.JPanel();
+        txtTituloPelicula = new javax.swing.JTextField();
+        panelDirector = new javax.swing.JPanel();
+        txtDirectorPelicula = new javax.swing.JTextField();
+        panelAño = new javax.swing.JPanel();
+        txtAñoPelicula = new javax.swing.JTextField();
+        panelGenero = new javax.swing.JPanel();
+        txtGeneroPelicula = new javax.swing.JTextField();
+        panelRegistrar = new javax.swing.JPanel();
+        btnRegistrarPelicula = new javax.swing.JButton();
+        panelEliminar = new javax.swing.JPanel();
+        btnEliminarPelicula = new javax.swing.JButton();
+        panelModificar = new javax.swing.JPanel();
+        btnModificarPelicula = new javax.swing.JButton();
+        panelMostrar = new javax.swing.JPanel();
+        btnMostrarPeliculas = new javax.swing.JButton();
+        labelID = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        labelDirector = new javax.swing.JLabel();
+        labelAño = new javax.swing.JLabel();
+        labelGenero = new javax.swing.JLabel();
+        labelPrecio = new javax.swing.JLabel();
+        panelConsultar = new javax.swing.JPanel();
+        tituloConsultarCompras = new javax.swing.JLabel();
+        labelIDconsultar = new javax.swing.JLabel();
+        panelIDConsultarCompra = new javax.swing.JPanel();
+        txtIdPeliculaConsultar = new javax.swing.JTextField();
+        panelBuscarPelicula = new javax.swing.JPanel();
+        btnBuscarPeliculaCompra = new javax.swing.JButton();
+        panelTodasCompras = new javax.swing.JPanel();
+        btnTodasCompras = new javax.swing.JButton();
+        panelTablaCompras = new javax.swing.JPanel();
+        scrollTablaCompras = new javax.swing.JScrollPane();
+        tablaCompras = new javax.swing.JTable();
+        btnRegresarAdmin_main = new javax.swing.JButton();
+        descrAdmin = new javax.swing.JLabel();
+        background1 = new javax.swing.JLabel();
+        modificarFrame = new javax.swing.JFrame();
+        panelModificarPelicula = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        panelBusquedaModificarPelicula = new javax.swing.JPanel();
+        iconoBusqueda = new javax.swing.JLabel();
+        txtBusqIdMod = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        panelDatosPelicula = new javax.swing.JPanel();
+        panelBtnModificar = new javax.swing.JPanel();
+        btnModificar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Precio = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
+        labelIdPeliculaMod = new javax.swing.JLabel();
+        lblDirector = new javax.swing.JLabel();
+        lblTituloPeliculaMod = new javax.swing.JLabel();
+        panelPrecioMod = new javax.swing.JPanel();
+        txtPrecioMod = new javax.swing.JTextField();
+        panelGeneroMod = new javax.swing.JPanel();
+        txtGeneroMod = new javax.swing.JTextField();
+        panelAñoMod = new javax.swing.JPanel();
+        txtAñoMod = new javax.swing.JTextField();
+        panelDirectorMod = new javax.swing.JPanel();
+        txtDirectorMod = new javax.swing.JTextField();
+        panelTituloModPel = new javax.swing.JPanel();
+        txtTituloMod = new javax.swing.JTextField();
+        panelIdModificarPel = new javax.swing.JPanel();
+        txtIDmod = new javax.swing.JTextField();
+        lblGenero = new javax.swing.JLabel();
+        btnRegresarModificar_Admin = new javax.swing.JButton();
+        icono = new javax.swing.JLabel();
+        compraFilms = new javax.swing.JLabel();
+        background2 = new javax.swing.JLabel();
+        guia = new javax.swing.JLabel();
+        autores = new javax.swing.JLabel();
+        descripcion = new javax.swing.JLabel();
+        iconPelicenter = new javax.swing.JLabel();
+        panelIniciar = new javax.swing.JPanel();
         btnAcceder = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JTextField();
-        contraseña = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
-        txtIdSesion = new javax.swing.JTextField();
         titulo = new javax.swing.JLabel();
+        panelInput = new javax.swing.JPanel();
+        txtIdSesion = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 48)); // NOI18N
-        jLabel2.setText("INICIO DE SESION");
+        clienteRegistrado.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        clienteRegistrado.setResizable(false);
+        clienteRegistrado.setSize(new java.awt.Dimension(880, 500));
 
-        jLabel3.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
-        jLabel3.setText("Usuario");
-
-        jLabel4.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
-        jLabel4.setText("Email");
-
-        javax.swing.GroupLayout inicioSesionLayout = new javax.swing.GroupLayout(inicioSesion.getContentPane());
-        inicioSesion.getContentPane().setLayout(inicioSesionLayout);
-        inicioSesionLayout.setHorizontalGroup(
-            inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inicioSesionLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(inicioSesionLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(inicioSesionLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1)))
-                .addContainerGap(139, Short.MAX_VALUE))
+        javax.swing.GroupLayout clienteRegistradoLayout = new javax.swing.GroupLayout(clienteRegistrado.getContentPane());
+        clienteRegistrado.getContentPane().setLayout(clienteRegistradoLayout);
+        clienteRegistradoLayout.setHorizontalGroup(
+            clienteRegistradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 880, Short.MAX_VALUE)
         );
-        inicioSesionLayout.setVerticalGroup(
-            inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inicioSesionLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addGap(50, 50, 50)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(283, Short.MAX_VALUE))
+        clienteRegistradoLayout.setVerticalGroup(
+            clienteRegistradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
+
+        clienteNoRegistrado.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        clienteNoRegistrado.setResizable(false);
+        clienteNoRegistrado.setSize(new java.awt.Dimension(880, 500));
+
+        javax.swing.GroupLayout clienteNoRegistradoLayout = new javax.swing.GroupLayout(clienteNoRegistrado.getContentPane());
+        clienteNoRegistrado.getContentPane().setLayout(clienteNoRegistradoLayout);
+        clienteNoRegistradoLayout.setHorizontalGroup(
+            clienteNoRegistradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 880, Short.MAX_VALUE)
+        );
+        clienteNoRegistradoLayout.setVerticalGroup(
+            clienteNoRegistradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        adminFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        adminFrame.setResizable(false);
+        adminFrame.setSize(new java.awt.Dimension(890, 535));
+        adminFrame.getContentPane().setLayout(null);
+
+        panelTablaPeliculas.setAutoscrolls(true);
+        panelTablaPeliculas.setOpaque(false);
+        panelTablaPeliculas.setLayout(null);
+
+        tablaPeliculas.setAutoCreateRowSorter(true);
+        tablaPeliculas.setBackground(new java.awt.Color(2, 21, 38));
+        tablaPeliculas.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        tablaPeliculas.setForeground(new java.awt.Color(226, 226, 182));
+        tablaPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaPeliculas.setGridColor(new java.awt.Color(255, 255, 255));
+        scrollPaneTablaPeliculas.setViewportView(tablaPeliculas);
+
+        panelTablaPeliculas.add(scrollPaneTablaPeliculas);
+        scrollPaneTablaPeliculas.setBounds(40, 10, 780, 110);
+
+        adminFrame.getContentPane().add(panelTablaPeliculas);
+        panelTablaPeliculas.setBounds(20, 320, 850, 130);
+
+        panelRegistrarPelicula.setOpaque(false);
+        panelRegistrarPelicula.setLayout(null);
+
+        labelRegistrarPelicula.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        labelRegistrarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        labelRegistrarPelicula.setText("Registrar Pelicula");
+        panelRegistrarPelicula.add(labelRegistrarPelicula);
+        labelRegistrarPelicula.setBounds(20, 0, 300, 40);
+
+        panelID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelID.setOpaque(false);
+        panelID.setLayout(null);
+
+        txtIdPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtIdPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdPelicula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIdPelicula.setBorder(null);
+        txtIdPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelID.add(txtIdPelicula);
+        txtIdPelicula.setBounds(10, 5, 120, 14);
+
+        panelRegistrarPelicula.add(panelID);
+        panelID.setBounds(95, 55, 140, 25);
+
+        panelPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelPrecio.setOpaque(false);
+        panelPrecio.setLayout(null);
+
+        txtPrecioPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecioPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtPrecioPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioPelicula.setBorder(null);
+        txtPrecioPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPrecioPelicula.setOpaque(true);
+        panelPrecio.add(txtPrecioPelicula);
+        txtPrecioPelicula.setBounds(10, 5, 240, 14);
+
+        panelRegistrarPelicula.add(panelPrecio);
+        panelPrecio.setBounds(95, 230, 260, 25);
+
+        panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelTitulo.setOpaque(false);
+        panelTitulo.setLayout(null);
+
+        txtTituloPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtTituloPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtTituloPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtTituloPelicula.setBorder(null);
+        txtTituloPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTituloPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTituloPeliculaActionPerformed(evt);
+            }
+        });
+        panelTitulo.add(txtTituloPelicula);
+        txtTituloPelicula.setBounds(10, 6, 240, 14);
+
+        panelRegistrarPelicula.add(panelTitulo);
+        panelTitulo.setBounds(95, 90, 260, 25);
+
+        panelDirector.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelDirector.setOpaque(false);
+        panelDirector.setLayout(null);
+
+        txtDirectorPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtDirectorPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtDirectorPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtDirectorPelicula.setBorder(null);
+        txtDirectorPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelDirector.add(txtDirectorPelicula);
+        txtDirectorPelicula.setBounds(10, 5, 240, 14);
+
+        panelRegistrarPelicula.add(panelDirector);
+        panelDirector.setBounds(95, 125, 260, 25);
+
+        panelAño.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelAño.setOpaque(false);
+        panelAño.setLayout(null);
+
+        txtAñoPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtAñoPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtAñoPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtAñoPelicula.setBorder(null);
+        txtAñoPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelAño.add(txtAñoPelicula);
+        txtAñoPelicula.setBounds(10, 5, 120, 14);
+
+        panelRegistrarPelicula.add(panelAño);
+        panelAño.setBounds(95, 160, 140, 25);
+
+        panelGenero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelGenero.setOpaque(false);
+        panelGenero.setLayout(null);
+
+        txtGeneroPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        txtGeneroPelicula.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtGeneroPelicula.setForeground(new java.awt.Color(0, 0, 0));
+        txtGeneroPelicula.setBorder(null);
+        txtGeneroPelicula.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelGenero.add(txtGeneroPelicula);
+        txtGeneroPelicula.setBounds(10, 5, 120, 14);
+
+        panelRegistrarPelicula.add(panelGenero);
+        panelGenero.setBounds(95, 195, 140, 25);
+
+        panelRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelRegistrar.setOpaque(false);
+        panelRegistrar.setLayout(null);
+
+        btnRegistrarPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarPelicula.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 15)); // NOI18N
+        btnRegistrarPelicula.setForeground(new java.awt.Color(226, 226, 182));
+        btnRegistrarPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
+        btnRegistrarPelicula.setText("Registrar");
+        btnRegistrarPelicula.setBorder(null);
+        btnRegistrarPelicula.setBorderPainted(false);
+        btnRegistrarPelicula.setContentAreaFilled(false);
+        btnRegistrarPelicula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPeliculaActionPerformed(evt);
+            }
+        });
+        panelRegistrar.add(btnRegistrarPelicula);
+        btnRegistrarPelicula.setBounds(3, 5, 100, 20);
+
+        panelRegistrarPelicula.add(panelRegistrar);
+        panelRegistrar.setBounds(10, 270, 110, 30);
+
+        panelEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(130, 17, 49), 30, true));
+        panelEliminar.setOpaque(false);
+        panelEliminar.setLayout(null);
+
+        btnEliminarPelicula.setBackground(new java.awt.Color(226, 226, 182));
+        btnEliminarPelicula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminarPelicula.setForeground(new java.awt.Color(226, 226, 182));
+        btnEliminarPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminarIcon.png"))); // NOI18N
+        btnEliminarPelicula.setBorderPainted(false);
+        btnEliminarPelicula.setContentAreaFilled(false);
+        btnEliminarPelicula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarPelicula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPeliculaActionPerformed(evt);
+            }
+        });
+        panelEliminar.add(btnEliminarPelicula);
+        btnEliminarPelicula.setBounds(5, 5, 40, 30);
+
+        panelRegistrarPelicula.add(panelEliminar);
+        panelEliminar.setBounds(370, 265, 50, 40);
+
+        panelModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelModificar.setOpaque(false);
+        panelModificar.setLayout(null);
+
+        btnModificarPelicula.setBackground(new java.awt.Color(0, 102, 153));
+        btnModificarPelicula.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 15)); // NOI18N
+        btnModificarPelicula.setForeground(new java.awt.Color(226, 226, 182));
+        btnModificarPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editarIcon.png"))); // NOI18N
+        btnModificarPelicula.setText("Modificar");
+        btnModificarPelicula.setBorder(null);
+        btnModificarPelicula.setBorderPainted(false);
+        btnModificarPelicula.setContentAreaFilled(false);
+        btnModificarPelicula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarPeliculaActionPerformed(evt);
+            }
+        });
+        panelModificar.add(btnModificarPelicula);
+        btnModificarPelicula.setBounds(5, 5, 100, 20);
+
+        panelRegistrarPelicula.add(panelModificar);
+        panelModificar.setBounds(130, 270, 110, 30);
+
+        panelMostrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelMostrar.setOpaque(false);
+        panelMostrar.setLayout(null);
+
+        btnMostrarPeliculas.setBackground(new java.awt.Color(153, 255, 0));
+        btnMostrarPeliculas.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 15)); // NOI18N
+        btnMostrarPeliculas.setForeground(new java.awt.Color(226, 226, 182));
+        btnMostrarPeliculas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mostrarIcon.png"))); // NOI18N
+        btnMostrarPeliculas.setText("Mostrar");
+        btnMostrarPeliculas.setBorder(null);
+        btnMostrarPeliculas.setBorderPainted(false);
+        btnMostrarPeliculas.setContentAreaFilled(false);
+        btnMostrarPeliculas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMostrarPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarPeliculasActionPerformed(evt);
+            }
+        });
+        panelMostrar.add(btnMostrarPeliculas);
+        btnMostrarPeliculas.setBounds(0, 5, 110, 20);
+
+        panelRegistrarPelicula.add(panelMostrar);
+        panelMostrar.setBounds(250, 270, 110, 30);
+
+        labelID.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelID.setForeground(new java.awt.Color(255, 255, 255));
+        labelID.setText("ID");
+        panelRegistrarPelicula.add(labelID);
+        labelID.setBounds(20, 50, 30, 30);
+
+        labelTitulo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitulo.setText("Titulo");
+        panelRegistrarPelicula.add(labelTitulo);
+        labelTitulo.setBounds(20, 85, 70, 30);
+
+        labelDirector.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelDirector.setForeground(new java.awt.Color(255, 255, 255));
+        labelDirector.setText("Director");
+        panelRegistrarPelicula.add(labelDirector);
+        labelDirector.setBounds(20, 120, 80, 30);
+
+        labelAño.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelAño.setForeground(new java.awt.Color(255, 255, 255));
+        labelAño.setText("Año");
+        panelRegistrarPelicula.add(labelAño);
+        labelAño.setBounds(20, 160, 80, 21);
+
+        labelGenero.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelGenero.setForeground(new java.awt.Color(255, 255, 255));
+        labelGenero.setText("Genero");
+        panelRegistrarPelicula.add(labelGenero);
+        labelGenero.setBounds(20, 195, 80, 21);
+
+        labelPrecio.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        labelPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        labelPrecio.setText("Precio");
+        panelRegistrarPelicula.add(labelPrecio);
+        labelPrecio.setBounds(20, 230, 80, 21);
+
+        adminFrame.getContentPane().add(panelRegistrarPelicula);
+        panelRegistrarPelicula.setBounds(50, 10, 450, 310);
+
+        panelConsultar.setBackground(new java.awt.Color(51, 51, 51));
+        panelConsultar.setForeground(new java.awt.Color(51, 51, 51));
+        panelConsultar.setOpaque(false);
+        panelConsultar.setLayout(null);
+
+        tituloConsultarCompras.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        tituloConsultarCompras.setForeground(new java.awt.Color(255, 255, 255));
+        tituloConsultarCompras.setText("Consultar Compras");
+        panelConsultar.add(tituloConsultarCompras);
+        tituloConsultarCompras.setBounds(30, 5, 300, 30);
+
+        labelIDconsultar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        labelIDconsultar.setForeground(new java.awt.Color(255, 255, 255));
+        labelIDconsultar.setText("ID Pelicula");
+        panelConsultar.add(labelIDconsultar);
+        labelIDconsultar.setBounds(10, 45, 100, 30);
+
+        panelIDConsultarCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelIDConsultarCompra.setOpaque(false);
+        panelIDConsultarCompra.setLayout(null);
+
+        txtIdPeliculaConsultar.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdPeliculaConsultar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        txtIdPeliculaConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdPeliculaConsultar.setBorder(null);
+        txtIdPeliculaConsultar.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelIDConsultarCompra.add(txtIdPeliculaConsultar);
+        txtIdPeliculaConsultar.setBounds(15, 2, 190, 20);
+
+        panelConsultar.add(panelIDConsultarCompra);
+        panelIDConsultarCompra.setBounds(110, 50, 220, 25);
+
+        panelBuscarPelicula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelBuscarPelicula.setOpaque(false);
+        panelBuscarPelicula.setLayout(null);
+
+        btnBuscarPeliculaCompra.setBackground(new java.awt.Color(153, 255, 153));
+        btnBuscarPeliculaCompra.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btnBuscarPeliculaCompra.setForeground(new java.awt.Color(226, 226, 182));
+        btnBuscarPeliculaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarIcon.png"))); // NOI18N
+        btnBuscarPeliculaCompra.setText("Buscar");
+        btnBuscarPeliculaCompra.setBorder(null);
+        btnBuscarPeliculaCompra.setBorderPainted(false);
+        btnBuscarPeliculaCompra.setContentAreaFilled(false);
+        btnBuscarPeliculaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarPeliculaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPeliculaCompraActionPerformed(evt);
+            }
+        });
+        panelBuscarPelicula.add(btnBuscarPeliculaCompra);
+        btnBuscarPeliculaCompra.setBounds(10, 2, 90, 20);
+
+        panelConsultar.add(panelBuscarPelicula);
+        panelBuscarPelicula.setBounds(20, 90, 110, 25);
+
+        panelTodasCompras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelTodasCompras.setOpaque(false);
+        panelTodasCompras.setLayout(null);
+
+        btnTodasCompras.setBackground(new java.awt.Color(204, 255, 204));
+        btnTodasCompras.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        btnTodasCompras.setForeground(new java.awt.Color(226, 226, 182));
+        btnTodasCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/comprasIcon.png"))); // NOI18N
+        btnTodasCompras.setText("Todas las compras");
+        btnTodasCompras.setBorderPainted(false);
+        btnTodasCompras.setContentAreaFilled(false);
+        btnTodasCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTodasCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTodasComprasActionPerformed(evt);
+            }
+        });
+        panelTodasCompras.add(btnTodasCompras);
+        btnTodasCompras.setBounds(0, 0, 180, 27);
+
+        panelConsultar.add(panelTodasCompras);
+        panelTodasCompras.setBounds(160, 90, 170, 25);
+
+        panelTablaCompras.setAutoscrolls(true);
+        panelTablaCompras.setOpaque(false);
+        panelTablaCompras.setLayout(null);
+
+        tablaCompras.setAutoCreateRowSorter(true);
+        tablaCompras.setBackground(new java.awt.Color(2, 21, 38));
+        tablaCompras.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        tablaCompras.setForeground(new java.awt.Color(226, 226, 182));
+        tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        scrollTablaCompras.setViewportView(tablaCompras);
+
+        panelTablaCompras.add(scrollTablaCompras);
+        scrollTablaCompras.setBounds(10, 0, 340, 170);
+
+        panelConsultar.add(panelTablaCompras);
+        panelTablaCompras.setBounds(0, 130, 360, 180);
+
+        adminFrame.getContentPane().add(panelConsultar);
+        panelConsultar.setBounds(490, 10, 360, 310);
+
+        btnRegresarAdmin_main.setBackground(new java.awt.Color(153, 255, 0));
+        btnRegresarAdmin_main.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarAdmin_main.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/returnIcon.png"))); // NOI18N
+        btnRegresarAdmin_main.setBorder(null);
+        btnRegresarAdmin_main.setBorderPainted(false);
+        btnRegresarAdmin_main.setContentAreaFilled(false);
+        btnRegresarAdmin_main.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarAdmin_main.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarAdmin_mainActionPerformed(evt);
+            }
+        });
+        adminFrame.getContentPane().add(btnRegresarAdmin_main);
+        btnRegresarAdmin_main.setBounds(10, 450, 50, 40);
+
+        descrAdmin.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        descrAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        descrAdmin.setText("Perfil: Administrador");
+        adminFrame.getContentPane().add(descrAdmin);
+        descrAdmin.setBounds(750, 470, 120, 30);
+
+        background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        adminFrame.getContentPane().add(background1);
+        background1.setBounds(0, 0, 890, 500);
+
+        modificarFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        modificarFrame.setPreferredSize(new java.awt.Dimension(898, 535));
+        modificarFrame.setResizable(false);
+        modificarFrame.setSize(new java.awt.Dimension(890, 535));
+        modificarFrame.getContentPane().setLayout(null);
+
+        panelModificarPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        panelModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        panelModificarPelicula.setOpaque(false);
+        panelModificarPelicula.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Modificar Pelicula");
+        panelModificarPelicula.add(jLabel3);
+        jLabel3.setBounds(320, 0, 230, 50);
+
+        panelBusquedaModificarPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        panelBusquedaModificarPelicula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelBusquedaModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        panelBusquedaModificarPelicula.setOpaque(false);
+        panelBusquedaModificarPelicula.setLayout(null);
+
+        iconoBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarIconNegro.png"))); // NOI18N
+        panelBusquedaModificarPelicula.add(iconoBusqueda);
+        iconoBusqueda.setBounds(10, 0, 40, 30);
+
+        txtBusqIdMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtBusqIdMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtBusqIdMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtBusqIdMod.setBorder(null);
+        txtBusqIdMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtBusqIdMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusqIdModActionPerformed(evt);
+            }
+        });
+        txtBusqIdMod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBusqIdModKeyPressed(evt);
+            }
+        });
+        panelBusquedaModificarPelicula.add(txtBusqIdMod);
+        txtBusqIdMod.setBounds(50, 0, 320, 30);
+
+        panelModificarPelicula.add(panelBusquedaModificarPelicula);
+        panelBusquedaModificarPelicula.setBounds(220, 50, 410, 30);
+
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel1.setText("Ingresa el ID de la pelicula a modificar");
+        panelModificarPelicula.add(jLabel1);
+        jLabel1.setBounds(310, 80, 230, 15);
+
+        panelDatosPelicula.setOpaque(false);
+        panelDatosPelicula.setLayout(null);
+
+        panelBtnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelBtnModificar.setOpaque(false);
+        panelBtnModificar.setLayout(null);
+
+        btnModificar.setBackground(new java.awt.Color(2, 21, 38));
+        btnModificar.setBorder(null);
+        btnModificar.setBorderPainted(false);
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        panelBtnModificar.add(btnModificar);
+        btnModificar.setBounds(5, 3, 130, 40);
+
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editarIcon.png"))); // NOI18N
+        jLabel2.setText("Modificar");
+        panelBtnModificar.add(jLabel2);
+        jLabel2.setBounds(25, 0, 120, 40);
+
+        panelDatosPelicula.add(panelBtnModificar);
+        panelBtnModificar.setBounds(320, 210, 140, 40);
+
+        Precio.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        Precio.setForeground(new java.awt.Color(255, 255, 255));
+        Precio.setText("Precio:");
+        panelDatosPelicula.add(Precio);
+        Precio.setBounds(420, 150, 110, 40);
+
+        lblAño.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        lblAño.setForeground(new java.awt.Color(255, 255, 255));
+        lblAño.setText("Genero:");
+        panelDatosPelicula.add(lblAño);
+        lblAño.setBounds(420, 80, 110, 40);
+
+        labelIdPeliculaMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        labelIdPeliculaMod.setForeground(new java.awt.Color(255, 255, 255));
+        labelIdPeliculaMod.setText("ID:");
+        panelDatosPelicula.add(labelIdPeliculaMod);
+        labelIdPeliculaMod.setBounds(30, 10, 40, 40);
+
+        lblDirector.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        lblDirector.setForeground(new java.awt.Color(255, 255, 255));
+        lblDirector.setText("Director:");
+        panelDatosPelicula.add(lblDirector);
+        lblDirector.setBounds(30, 150, 110, 40);
+
+        lblTituloPeliculaMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        lblTituloPeliculaMod.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloPeliculaMod.setText("Titulo:");
+        panelDatosPelicula.add(lblTituloPeliculaMod);
+        lblTituloPeliculaMod.setBounds(30, 80, 80, 40);
+
+        panelPrecioMod.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrecioMod.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelPrecioMod.setForeground(new java.awt.Color(255, 255, 255));
+        panelPrecioMod.setOpaque(false);
+        panelPrecioMod.setLayout(null);
+
+        txtPrecioMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecioMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtPrecioMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioMod.setBorder(null);
+        txtPrecioMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPrecioMod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        panelPrecioMod.add(txtPrecioMod);
+        txtPrecioMod.setBounds(20, 0, 160, 30);
+
+        panelDatosPelicula.add(panelPrecioMod);
+        panelPrecioMod.setBounds(530, 155, 200, 30);
+
+        panelGeneroMod.setBackground(new java.awt.Color(255, 255, 255));
+        panelGeneroMod.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelGeneroMod.setForeground(new java.awt.Color(255, 255, 255));
+        panelGeneroMod.setOpaque(false);
+        panelGeneroMod.setLayout(null);
+
+        txtGeneroMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtGeneroMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtGeneroMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtGeneroMod.setBorder(null);
+        txtGeneroMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtGeneroMod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        panelGeneroMod.add(txtGeneroMod);
+        txtGeneroMod.setBounds(20, 0, 160, 30);
+
+        panelDatosPelicula.add(panelGeneroMod);
+        panelGeneroMod.setBounds(530, 85, 200, 30);
+
+        panelAñoMod.setBackground(new java.awt.Color(255, 255, 255));
+        panelAñoMod.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelAñoMod.setForeground(new java.awt.Color(255, 255, 255));
+        panelAñoMod.setOpaque(false);
+        panelAñoMod.setLayout(null);
+
+        txtAñoMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtAñoMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtAñoMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtAñoMod.setBorder(null);
+        txtAñoMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtAñoMod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        panelAñoMod.add(txtAñoMod);
+        txtAñoMod.setBounds(20, 0, 160, 30);
+
+        panelDatosPelicula.add(panelAñoMod);
+        panelAñoMod.setBounds(530, 15, 200, 30);
+
+        panelDirectorMod.setBackground(new java.awt.Color(255, 255, 255));
+        panelDirectorMod.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelDirectorMod.setForeground(new java.awt.Color(255, 255, 255));
+        panelDirectorMod.setOpaque(false);
+        panelDirectorMod.setLayout(null);
+
+        txtDirectorMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtDirectorMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtDirectorMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtDirectorMod.setBorder(null);
+        txtDirectorMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelDirectorMod.add(txtDirectorMod);
+        txtDirectorMod.setBounds(10, 0, 250, 30);
+
+        panelDatosPelicula.add(panelDirectorMod);
+        panelDirectorMod.setBounds(130, 155, 270, 30);
+
+        panelTituloModPel.setBackground(new java.awt.Color(255, 255, 255));
+        panelTituloModPel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelTituloModPel.setForeground(new java.awt.Color(255, 255, 255));
+        panelTituloModPel.setOpaque(false);
+        panelTituloModPel.setLayout(null);
+
+        txtTituloMod.setBackground(new java.awt.Color(255, 255, 255));
+        txtTituloMod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtTituloMod.setForeground(new java.awt.Color(0, 0, 0));
+        txtTituloMod.setBorder(null);
+        txtTituloMod.setCaretColor(new java.awt.Color(0, 0, 0));
+        panelTituloModPel.add(txtTituloMod);
+        txtTituloMod.setBounds(10, 0, 250, 30);
+
+        panelDatosPelicula.add(panelTituloModPel);
+        panelTituloModPel.setBounds(130, 85, 270, 30);
+
+        panelIdModificarPel.setBackground(new java.awt.Color(255, 255, 255));
+        panelIdModificarPel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 52, 110), 30, true));
+        panelIdModificarPel.setForeground(new java.awt.Color(255, 255, 255));
+        panelIdModificarPel.setOpaque(false);
+        panelIdModificarPel.setLayout(null);
+
+        txtIDmod.setEditable(false);
+        txtIDmod.setBackground(new java.awt.Color(3, 52, 110));
+        txtIDmod.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        txtIDmod.setForeground(new java.awt.Color(226, 226, 182));
+        txtIDmod.setBorder(null);
+        txtIDmod.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtIDmod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelIdModificarPel.add(txtIDmod);
+        txtIDmod.setBounds(10, 0, 140, 30);
+
+        panelDatosPelicula.add(panelIdModificarPel);
+        panelIdModificarPel.setBounds(130, 15, 160, 30);
+
+        lblGenero.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        lblGenero.setForeground(new java.awt.Color(255, 255, 255));
+        lblGenero.setText("Año:");
+        panelDatosPelicula.add(lblGenero);
+        lblGenero.setBounds(420, 10, 110, 40);
+
+        panelModificarPelicula.add(panelDatosPelicula);
+        panelDatosPelicula.setBounds(40, 120, 770, 270);
+
+        modificarFrame.getContentPane().add(panelModificarPelicula);
+        panelModificarPelicula.setBounds(30, 70, 840, 390);
+
+        btnRegresarModificar_Admin.setBackground(new java.awt.Color(153, 255, 0));
+        btnRegresarModificar_Admin.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarModificar_Admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/returnIcon.png"))); // NOI18N
+        btnRegresarModificar_Admin.setBorder(null);
+        btnRegresarModificar_Admin.setBorderPainted(false);
+        btnRegresarModificar_Admin.setContentAreaFilled(false);
+        btnRegresarModificar_Admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarModificar_Admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarModificar_AdminActionPerformed(evt);
+            }
+        });
+        modificarFrame.getContentPane().add(btnRegresarModificar_Admin);
+        btnRegresarModificar_Admin.setBounds(10, 450, 50, 40);
+
+        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliCenterLogoSmall.png"))); // NOI18N
+        modificarFrame.getContentPane().add(icono);
+        icono.setBounds(10, 10, 80, 60);
+
+        compraFilms.setFont(new java.awt.Font("Berlin Sans FB", 0, 40)); // NOI18N
+        compraFilms.setForeground(new java.awt.Color(255, 255, 255));
+        compraFilms.setText("CompraFilms");
+        modificarFrame.getContentPane().add(compraFilms);
+        compraFilms.setBounds(80, 20, 270, 50);
+
+        background2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
+        modificarFrame.getContentPane().add(background2);
+        background2.setBounds(0, 0, 890, 500);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CompraFilms");
         setPreferredSize(new java.awt.Dimension(890, 535));
         setResizable(false);
         setSize(new java.awt.Dimension(890, 535));
         getContentPane().setLayout(null);
 
+        guia.setForeground(new java.awt.Color(226, 226, 182));
+        guia.setText("Ingrese su cedula");
+        getContentPane().add(guia);
+        guia.setBounds(395, 230, 100, 16);
+
+        autores.setForeground(new java.awt.Color(255, 255, 255));
+        autores.setText("Creado por: Jorge Silva, Samuel Tilano, Rafael Mejia.");
+        getContentPane().add(autores);
+        autores.setBounds(10, 480, 300, 16);
+
+        descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        descripcion.setText("Version : 1.1.1");
+        getContentPane().add(descripcion);
+        descripcion.setBounds(790, 480, 80, 16);
+
+        iconPelicenter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPelicenter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliCenterLogo.png"))); // NOI18N
+        getContentPane().add(iconPelicenter);
+        iconPelicenter.setBounds(150, 70, 110, 100);
+
+        panelIniciar.setBackground(new java.awt.Color(52, 121, 40));
+        panelIniciar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 50, true));
+        panelIniciar.setOpaque(false);
+        panelIniciar.setLayout(null);
+
+        btnAcceder.setBackground(new java.awt.Color(153, 0, 0));
         btnAcceder.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        btnAcceder.setText("Entrar");
-        getContentPane().add(btnAcceder);
-        btnAcceder.setBounds(390, 320, 140, 40);
+        btnAcceder.setForeground(new java.awt.Color(226, 226, 182));
+        btnAcceder.setText("Iniciar");
+        btnAcceder.setBorder(null);
+        btnAcceder.setBorderPainted(false);
+        btnAcceder.setContentAreaFilled(false);
+        btnAcceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAcceder.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAcceder.setIconTextGap(2);
+        btnAcceder.setMargin(new java.awt.Insets(0, 0, 0, 14));
+        btnAcceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccederActionPerformed(evt);
+            }
+        });
+        panelIniciar.add(btnAcceder);
+        btnAcceder.setBounds(11, 5, 120, 30);
 
-        txtContraseña.setBackground(new java.awt.Color(51, 51, 51));
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setToolTipText("Ingrese su contraseña");
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtContraseña);
-        txtContraseña.setBounds(330, 260, 260, 30);
-
-        contraseña.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        contraseña.setText("Contraseña:");
-        getContentPane().add(contraseña);
-        contraseña.setBounds(140, 260, 180, 30);
+        getContentPane().add(panelIniciar);
+        panelIniciar.setBounds(372, 275, 140, 40);
 
         id.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
         id.setForeground(new java.awt.Color(255, 255, 255));
-        id.setText("ID:");
+        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/personIcon.png"))); // NOI18N
         getContentPane().add(id);
-        id.setBounds(280, 200, 40, 30);
-
-        txtIdSesion.setBackground(new java.awt.Color(51, 51, 51));
-        txtIdSesion.setForeground(new java.awt.Color(255, 255, 255));
-        txtIdSesion.setToolTipText("Ingrese su ID");
-        txtIdSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtIdSesion);
-        txtIdSesion.setBounds(330, 200, 260, 30);
+        id.setBounds(290, 190, 40, 40);
 
         titulo.setFont(new java.awt.Font("Berlin Sans FB", 0, 80)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("PeliCenter");
+        titulo.setText("CompraFilms");
         getContentPane().add(titulo);
-        titulo.setBounds(280, 70, 350, 90);
+        titulo.setBounds(250, 80, 440, 90);
 
+        panelInput.setBackground(new java.awt.Color(0, 0, 0));
+        panelInput.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
+        panelInput.setOpaque(false);
+        panelInput.setLayout(null);
+
+        txtIdSesion.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdSesion.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtIdSesion.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdSesion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIdSesion.setToolTipText("Ingrese su ID");
+        txtIdSesion.setBorder(null);
+        txtIdSesion.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtIdSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtIdSesion.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        txtIdSesion.setOpaque(true);
+        txtIdSesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdSesionKeyPressed(evt);
+            }
+        });
+        panelInput.add(txtIdSesion);
+        txtIdSesion.setBounds(15, 5, 200, 20);
+
+        getContentPane().add(panelInput);
+        panelInput.setBounds(330, 195, 230, 30);
+
+        background.setForeground(new java.awt.Color(255, 255, 153));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.jpg"))); // NOI18N
         getContentPane().add(background);
         background.setBounds(0, 0, 890, 500);
@@ -147,6 +976,268 @@ public class GestionPeliculas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void CargaAutomaticoTablaPeliculas() {
+        ArrayList<Object> nombreColumna = new ArrayList<>();
+        nombreColumna.add("ID");
+        nombreColumna.add("Director");
+        nombreColumna.add("Titulo");
+        nombreColumna.add("Año");
+        nombreColumna.add("Genero");
+        nombreColumna.add("Precio");
+
+        for (Object columna : nombreColumna) {
+            modelPeliculas.addColumn(columna);
+        }
+        panelTablaPeliculas.setVisible(false);
+        tablaPeliculas.setModel(modelPeliculas);
+    }
+
+    public void CargaAutomaticoTablaCompras() {
+        ArrayList<Object> nombreColumna = new ArrayList<>();
+        nombreColumna.add("ID Compra");
+        nombreColumna.add("ID Cliente");
+        nombreColumna.add("ID Pelicula");
+        nombreColumna.add("Fecha");
+        for (Object columna : nombreColumna) {
+            modelCompras.addColumn(columna);
+        }
+        panelTablaCompras.setVisible(false);
+        tablaCompras.setModel(modelCompras);
+    }
+
+    private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
+        String idusuario = txtIdSesion.getText();
+        if (idusuario.equals(idAdministrador)) {
+            this.dispose();
+            adminFrame.setLocationRelativeTo(null);
+            adminFrame.setVisible(true);
+        } else {
+            archivoCliente.existeId(Integer.parseInt(idusuario));
+        }
+
+    }//GEN-LAST:event_btnAccederActionPerformed
+
+    private void btnRegresarAdmin_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarAdmin_mainActionPerformed
+        adminFrame.setVisible(false);
+        mostrarMainPeliculas();
+    }//GEN-LAST:event_btnRegresarAdmin_mainActionPerformed
+
+    private void btnRegresarModificar_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarModificar_AdminActionPerformed
+        modificarFrame.setVisible(false);
+        adminFrame.setVisible(true);
+        panelTablaPeliculas.setVisible(false);
+        panelTablaCompras.setVisible(false);
+
+        txtIdPelicula.setText("");
+        txtTituloPelicula.setText("");
+        txtDirectorPelicula.setText("");
+        txtAñoPelicula.setText("");
+        txtGeneroPelicula.setText("");
+        txtPrecioPelicula.setText("");
+    }//GEN-LAST:event_btnRegresarModificar_AdminActionPerformed
+
+    private void txtIdSesionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdSesionKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            this.btnAcceder.doClick();
+        }
+    }//GEN-LAST:event_txtIdSesionKeyPressed
+
+    private void btnMostrarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPeliculasActionPerformed
+
+        if (panelTablaPeliculas.isVisible() == false) {
+            panelTablaPeliculas.setVisible(true);
+        }
+
+        headerRenderPeliculas.setBackground(new Color(3, 52, 110));
+        for (int i = 0; i < tablaPeliculas.getColumnModel().getColumnCount(); i++) {
+            tablaPeliculas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderPeliculas);
+        }
+
+        modelPeliculas.setRowCount(0);
+        for (Pelicula pelicula : peliculas) {
+            Object[] rowData = new Object[]{
+                pelicula.getIde(),
+                pelicula.getDirector(),
+                pelicula.getTitulo(),
+                pelicula.getAño(),
+                pelicula.getGenero(),
+                pelicula.getPrecio()
+            };
+            modelPeliculas.addRow(rowData);
+        }
+
+        tablaPeliculas.setModel(modelPeliculas);
+
+    }//GEN-LAST:event_btnMostrarPeliculasActionPerformed
+
+    private void btnModificarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPeliculaActionPerformed
+        adminFrame.setVisible(false);
+        modificarFrame.setLocationRelativeTo(null);
+        modificarFrame.setVisible(true);
+        panelDatosPelicula.setVisible(false);
+        txtBusqIdMod.requestFocusInWindow();
+    }//GEN-LAST:event_btnModificarPeliculaActionPerformed
+
+    private void btnRegistrarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPeliculaActionPerformed
+
+        try {
+            int idpelicula = Integer.parseInt(txtIdPelicula.getText());
+            String tituloPelicula = txtTituloPelicula.getText();
+            String directorPelicula = txtDirectorPelicula.getText();
+            int añoPelicula = Integer.parseInt(txtAñoPelicula.getText());
+            String generoPelicula = txtGeneroPelicula.getText();
+            Double precioPelicula = Double.parseDouble(txtPrecioPelicula.getText());
+            if (archivoPelicula.existeId(idpelicula)) {
+
+                JOptionPane.showMessageDialog(null, "El ID ingresado ya esta registrado."
+                        + "\nIntenta con otro ID.", "ERROR: ID Existente", JOptionPane.PLAIN_MESSAGE, errorIcon);
+            } else {
+
+                archivoPelicula.registrarPelicula(idpelicula, tituloPelicula, directorPelicula, añoPelicula, generoPelicula, precioPelicula);
+
+                txtIdPelicula.setText("");
+                txtTituloPelicula.setText("");
+                txtDirectorPelicula.setText("");
+                txtAñoPelicula.setText("");
+                txtGeneroPelicula.setText("");
+                txtPrecioPelicula.setText("");
+                btnMostrarPeliculas.doClick();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Llene correctamente los campos de registro.", "ERROR: Campos requeridos", JOptionPane.PLAIN_MESSAGE, errorIcon);
+        }
+
+
+    }//GEN-LAST:event_btnRegistrarPeliculaActionPerformed
+
+    private void txtTituloPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloPeliculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTituloPeliculaActionPerformed
+
+    private void btnEliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPeliculaActionPerformed
+        try {
+            int idpeliculaEliminar = Integer.parseInt(txtIdPelicula.getText());
+            if (archivoPelicula.existeId(idpeliculaEliminar)) {
+                archivoPelicula.eliminarPelicula(idpeliculaEliminar);
+
+                txtIdPelicula.setText("");
+                txtTituloPelicula.setText("");
+                txtDirectorPelicula.setText("");
+                txtAñoPelicula.setText("");
+                txtGeneroPelicula.setText("");
+                txtPrecioPelicula.setText("");
+                btnMostrarPeliculas.doClick();
+            } else {
+                JOptionPane.showMessageDialog(null, "El ID ingresado no existe", "ERROR: ID No existe", JOptionPane.PLAIN_MESSAGE, notFoundIcon);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese correctamente el ID a eliminar", "ERROR: ID Incorrecto", JOptionPane.PLAIN_MESSAGE, errorIcon);
+        }
+
+
+    }//GEN-LAST:event_btnEliminarPeliculaActionPerformed
+
+    private void btnBuscarPeliculaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPeliculaCompraActionPerformed
+
+        headerRenderCompras.setBackground(new Color(3, 52, 110));
+
+        try {
+            int idPeliculaBuscar = Integer.parseInt(txtIdPeliculaConsultar.getText());
+            if (archivoCompra.existeId(idPeliculaBuscar)) {
+                if (panelTablaCompras.isVisible() == false) {
+                    panelTablaCompras.setVisible(true);
+                }
+                for (int i = 0; i < tablaCompras.getColumnModel().getColumnCount(); i++) {
+                    tablaCompras.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderCompras);
+                }
+                peliculasCompradas = archivoCompra.buscarCompraPelicula(idPeliculaBuscar);
+                modelCompras.setRowCount(0);
+                for (Compra compra : peliculasCompradas) {
+                    Object[] rowData = new Object[]{
+                        compra.getIdecompra(),
+                        compra.getIdecliente(),
+                        compra.getIdepelicula(),
+                        compra.getFechacompra()
+                    };
+                    modelCompras.addRow(rowData);
+                }
+                tablaCompras.setModel(modelCompras);
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay compras registradas con el ID de pelicula " + idPeliculaBuscar, "ERROR: Pelicula no comprada", JOptionPane.PLAIN_MESSAGE, notFoundIcon);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese correctamente el ID de pelicula a consultar", "ERROR: ID Incorrecto", JOptionPane.PLAIN_MESSAGE, errorIcon);
+        }
+
+
+    }//GEN-LAST:event_btnBuscarPeliculaCompraActionPerformed
+
+    private void btnTodasComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodasComprasActionPerformed
+        if (panelTablaCompras.isVisible() == false) {
+            panelTablaCompras.setVisible(true);
+        }
+        headerRenderCompras.setBackground(new Color(3, 52, 110));
+        for (int i = 0; i < tablaCompras.getColumnModel().getColumnCount(); i++) {
+            tablaCompras.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderCompras);
+        }
+
+        modelCompras.setRowCount(0);
+        for (Compra compra : compras) {
+            Object[] rowData = new Object[]{
+                compra.getIdecompra(),
+                compra.getIdecliente(),
+                compra.getIdepelicula(),
+                compra.getFechacompra()
+            };
+            modelCompras.addRow(rowData);
+        }
+        tablaCompras.setModel(modelCompras);
+
+    }//GEN-LAST:event_btnTodasComprasActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try {
+            int idMod = Integer.parseInt(txtIDmod.getText());
+            String tituloMod = txtTituloMod.getText();
+            String directorMod = txtDirectorMod.getText();
+            int añoMod = Integer.parseInt(txtAñoMod.getText());
+            String generoMod = txtGeneroMod.getText();
+            Double precioMod = Double.parseDouble(txtPrecioMod.getText());
+            archivoPelicula.actualizarPelicula(idMod, tituloMod, directorMod, añoMod, generoMod, precioMod);
+            JOptionPane.showMessageDialog(null, "Datos modificados exitosamente", "Pelicula modificada exitosamente", JOptionPane.PLAIN_MESSAGE, succesIcon);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR: Informacion incorrecta", JOptionPane.PLAIN_MESSAGE, errorIcon);
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtBusqIdModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusqIdModActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusqIdModActionPerformed
+
+    private void txtBusqIdModKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusqIdModKeyPressed
+        int idPeliculaModificar;
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            idPeliculaModificar = Integer.parseInt(txtBusqIdMod.getText());
+            for (Pelicula pelicula : peliculas) {
+                if (pelicula.getIde() == idPeliculaModificar) {
+                    panelDatosPelicula.setVisible(true);
+                    txtIDmod.setText(Integer.toString(idPeliculaModificar));
+                    txtTituloMod.setText(pelicula.getTitulo());
+                    txtDirectorMod.setText(pelicula.getDirector());
+                    txtAñoMod.setText(Integer.toString(pelicula.getAño()));
+                    txtGeneroMod.setText(pelicula.getGenero());
+                    txtPrecioMod.setText(Double.toString(pelicula.getPrecio()));
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtBusqIdModKeyPressed
+
+    public static void mostrarMainPeliculas() {
+        // Crea una nueva instancia de GestionPeliculas y la muestra
+        GestionPeliculas gestionPeliculas = new GestionPeliculas();
+        gestionPeliculas.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
@@ -178,27 +1269,105 @@ public class GestionPeliculas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GestionPeliculas enterPanel = new GestionPeliculas();
-                enterPanel.setVisible(true);
+                new GestionPeliculas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Precio;
+    private javax.swing.JFrame adminFrame;
+    private javax.swing.JLabel autores;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel background1;
+    private javax.swing.JLabel background2;
     private javax.swing.JButton btnAcceder;
-    private javax.swing.JLabel contraseña;
+    private javax.swing.JButton btnBuscarPeliculaCompra;
+    private javax.swing.JButton btnEliminarPelicula;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnModificarPelicula;
+    private javax.swing.JButton btnMostrarPeliculas;
+    private javax.swing.JButton btnRegistrarPelicula;
+    private javax.swing.JButton btnRegresarAdmin_main;
+    private javax.swing.JButton btnRegresarModificar_Admin;
+    private javax.swing.JButton btnTodasCompras;
+    private javax.swing.JFrame clienteNoRegistrado;
+    private javax.swing.JFrame clienteRegistrado;
+    private javax.swing.JLabel compraFilms;
+    private javax.swing.JLabel descrAdmin;
+    private javax.swing.JLabel descripcion;
+    private javax.swing.JLabel guia;
+    private javax.swing.JLabel iconPelicenter;
+    private javax.swing.JLabel icono;
+    private javax.swing.JLabel iconoBusqueda;
     private javax.swing.JLabel id;
-    private javax.swing.JFrame inicioSesion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel labelAño;
+    private javax.swing.JLabel labelDirector;
+    private javax.swing.JLabel labelGenero;
+    private javax.swing.JLabel labelID;
+    private javax.swing.JLabel labelIDconsultar;
+    private javax.swing.JLabel labelIdPeliculaMod;
+    private javax.swing.JLabel labelPrecio;
+    private javax.swing.JLabel labelRegistrarPelicula;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel lblAño;
+    private javax.swing.JLabel lblDirector;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblTituloPeliculaMod;
+    private javax.swing.JFrame modificarFrame;
+    private javax.swing.JPanel panelAño;
+    private javax.swing.JPanel panelAñoMod;
+    private javax.swing.JPanel panelBtnModificar;
+    private javax.swing.JPanel panelBuscarPelicula;
+    private javax.swing.JPanel panelBusquedaModificarPelicula;
+    private javax.swing.JPanel panelConsultar;
+    private javax.swing.JPanel panelDatosPelicula;
+    private javax.swing.JPanel panelDirector;
+    private javax.swing.JPanel panelDirectorMod;
+    private javax.swing.JPanel panelEliminar;
+    private javax.swing.JPanel panelGenero;
+    private javax.swing.JPanel panelGeneroMod;
+    private javax.swing.JPanel panelID;
+    private javax.swing.JPanel panelIDConsultarCompra;
+    private javax.swing.JPanel panelIdModificarPel;
+    private javax.swing.JPanel panelIniciar;
+    private javax.swing.JPanel panelInput;
+    private javax.swing.JPanel panelModificar;
+    private javax.swing.JPanel panelModificarPelicula;
+    private javax.swing.JPanel panelMostrar;
+    private javax.swing.JPanel panelPrecio;
+    private javax.swing.JPanel panelPrecioMod;
+    private javax.swing.JPanel panelRegistrar;
+    private javax.swing.JPanel panelRegistrarPelicula;
+    private javax.swing.JPanel panelTablaCompras;
+    private javax.swing.JPanel panelTablaPeliculas;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JPanel panelTituloModPel;
+    private javax.swing.JPanel panelTodasCompras;
+    private javax.swing.JScrollPane scrollPaneTablaPeliculas;
+    private javax.swing.JScrollPane scrollTablaCompras;
+    private javax.swing.JTable tablaCompras;
+    private javax.swing.JTable tablaPeliculas;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JLabel tituloConsultarCompras;
+    private javax.swing.JTextField txtAñoMod;
+    private javax.swing.JTextField txtAñoPelicula;
+    private javax.swing.JTextField txtBusqIdMod;
+    private javax.swing.JTextField txtDirectorMod;
+    private javax.swing.JTextField txtDirectorPelicula;
+    private javax.swing.JTextField txtGeneroMod;
+    private javax.swing.JTextField txtGeneroPelicula;
+    private javax.swing.JTextField txtIDmod;
+    private javax.swing.JTextField txtIdPelicula;
+    private javax.swing.JTextField txtIdPeliculaConsultar;
     private javax.swing.JTextField txtIdSesion;
+    private javax.swing.JTextField txtPrecioMod;
+    private javax.swing.JTextField txtPrecioPelicula;
+    private javax.swing.JTextField txtTituloMod;
+    private javax.swing.JTextField txtTituloPelicula;
     // End of variables declaration//GEN-END:variables
 
-//System.exit(0);
 }

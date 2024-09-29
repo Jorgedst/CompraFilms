@@ -52,7 +52,7 @@ public class ArchivoCompras {
 
     public Boolean existeId(int ide) {
         for (Compra compra : compras) {
-            if (compra.getIdecliente() == ide) {
+            if (compra.getIdecompra()== ide) {
                 return true;
             }
         }
@@ -86,6 +86,19 @@ public class ArchivoCompras {
         } catch (IOException e) {
             System.out.println("Ocurrio un error al guardar la compra..." + e.getMessage());
         }
+    }
+    
+    public ArrayList<Compra> buscarCompraPelicula(int idPelicula){
+        ArrayList<Compra> comprasPelicula = new ArrayList<>();
+        for (Compra compra : compras){
+            if(compra.getIdepelicula()== idPelicula){
+                comprasPelicula.add(compra);
+            }
+        }
+        if (comprasPelicula.isEmpty()){
+            System.out.println("No se ha comprado la pelicula con el ID "+idPelicula);
+        }
+        return comprasPelicula;
     }
 
 }

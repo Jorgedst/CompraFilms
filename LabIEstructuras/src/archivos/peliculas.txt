@@ -1,12 +1,99 @@
-2,The Godfather,Francis Ford Coppola,1972,Crime,63900.0
-3,The Dark Knight,Christopher Nolan,2008,Action,75900.0
-4,Pulp Fiction,Quentin Tarantino,1994,Crime,67900.0
-5,The Shawshank Redemption,Frank Darabont,1994,Drama,70900.0
-6,Interstellar,Christopher Nolan,2014,Sci-Fi,84900.0
-7,The Matrix,Lana Wachowski,1999,Sci-Fi,72900.0
-8,Forrest Gump,Robert Zemeckis,1994,Drama,59900.0
-9,Fight Club,David Fincher,1999,Drama,68900.0
-10,Gladiator,Ridley Scott,2000,Action,73900.0
-11,The Social Network,David Fincher,2010,Drama,68900.0
-12,Parasite,Bong Joon-ho,2019,Thriller,81900.0
-13,Avatar,James Cameron,2009,Sci-Fi,99900.0
+1,Titulo,Director,2024,Ficción,10000.0
+2,Inception,Christopher Nolan,2010,Ciencia Ficción,20000.0
+4,The Dark Knight,Christopher Nolan,2008,Acción,22000.0
+5,Schindler's List,Steven Spielberg,1993,Drama,20000.0
+6,Pulp Fiction,Quentin Tarantino,1994,Crimen,17000.0
+7,Forrest Gump,Robert Zemeckis,1994,Drama,15000.0
+8,The Matrix,Lana Wachowski-Lilly Wachowski,1999,Ciencia Ficción,19000.0
+9,The Shawshank Redemption,Frank Darabont,1994,Drama,16000.0
+10,Avatar,James Cameron,2009,Ciencia Ficción,25000.0
+11,Gladiator,Ridley Scott,2000,Acción,18000.0
+12,The Lord of the Rings: The Fellowship of the Ring,Peter Jackson,2001,Fantasía,20000.0
+13,Jurassic Park,Steven Spielberg,1993,Aventura,17000.0
+14,Star Wars: Episode IV - A New Hope,George Lucas,1977,Fantasía,18000.0
+15,The Silence of the Lambs,Jonathan Demme,1991,Thriller,16000.0
+16,The Social Network,David Fincher,2010,Drama,19000.0
+17,The Lion King,Roger Allers-Roba Minkoff,1994,Animación,12000.0
+18,Back to the Future,Robert Zemeckis,1985,Aventura,15000.0
+19,Fight Club,David Fincher,1999,Drama,17000.0
+20,The Avengers,Joss Whedon,2012,Acción,22000.0
+21,The Departed,Martin Scorsese,2006,Crimen,19000.0
+22,Spirited Away,Hayao Miyazaki,2001,Animación,15000.0
+23,Casablanca,Michael Curtiz,1942,Romance,14000.0
+24,The Prestige,Christopher Nolan,2006,Drama,18000.0
+25,The Great Gatsby,Baz Luhrmann,2013,Drama,16000.0
+26,Braveheart,Mel Gibson,1995,Drama,17000.0
+27,The Shining,Stanley Kubrick,1980,Horror,16000.0
+28,The Usual Suspects,Bryan Singer,1995,Crimen,16000.0
+29,Goodfellas,Martin Scorsese,1990,Crimen,19000.0
+30,Rocky,John G. Avildsen,1976,Drama,15000.0
+31,12 Angry Men,Sidney Lumet,1957,Drama,14000.0
+32,The Green Mile,Frank Darabont,1999,Drama,17000.0
+33,Dead Poets Society,Peter Weir,1989,Drama,16000.0
+34,Avatar: The Way of Water,James Cameron,2022,Ciencia Ficción,25000.0
+35,La La Land,Damien Chazelle,2016,Musical,18000.0
+36,The Breakfast Club,John Hughes,1985,Comedia,14000.0
+37,The Truman Show,Peter Weir,1998,Drama,16000.0
+38,A Clockwork Orange,Stanley Kubrick,1971,Drama,16000.0
+39,Finding Nemo,Andrew Stanton,2003,Animación,13000.0
+40,Inside Out,Pete Docter-Ronaldo Del Carmen,2015,Animación,14000.0
+41,Up,Pete Docter-Bob Peterson,2009,Animación,13000.0
+42,Toy Story,John Lasseter,1995,Animación,12000.0
+43,The Lion King 2: Simba's Pride,Bradley Raymond,1998,Animación,11000.0
+44,Finding Dory,Andrew Stanton,2016,Animación,14000.0
+45,Shutter Island,Martin Scorsese,2010,Thriller,19000.0
+46,Hotel Rwanda,Terence Howard,2004,Drama,18000.0
+47,The Intouchables,Eric Toledano-Olivier Nakache,2011,Comedia,16000.0
+48,The King's Speech,Tom Hooper,2010,Drama,18000.0
+49,Little Miss Sunshine,Jonathan Dayton-Valerie Faris,2006,Comedia,15000.0
+50,The Social Dilemma,Jeff Orlowski,2020,Documental,12000.0
+51,Coco,Lee Unkrich-Adrian Molina,2017,Animación,14000.0
+52,Her,Spike Jonze,2013,Romance,17000.0
+53,The Shape of Water,Guillermo del Toro,2017,Fantasía,20000.0
+54,Whiplash,Damien Chazelle,2014,Drama,16000.0
+55,The Imitation Game,Morten Tyldum,2014,Drama,17000.0
+56,The Pianist,Roman Polanski,2002,Drama,18000.0
+57,Gravity,Alfonso Cuarón,2013,Ciencia Ficción,19000.0
+58,The Martian,Ridley Scott,2015,Ciencia Ficción,19000.0
+59,Room,Lenny Abrahamson,2015,Drama,16000.0
+60,Black Panther,Ryan Coogler,2018,Acción,22000.0
+61,Wonder Woman,Patty Jenkins,2017,Acción,20000.0
+62,Spider-Man: Into the Spider-Verse,Bob Persichetti-Peter Ramsey-Rodney Rothman,2018,Animación,15000.0
+63,It,Andy Muschietti,2017,Horror,17000.0
+64,Get Out,Jordan Peele,2017,Horror,16000.0
+65,A Quiet Place,John Krasinski,2018,Horror,17000.0
+66,Parasite,Bong Joon-ho,2019,Thriller,20000.0
+67,Joker,Todd Phillips,2019,Drama,20000.0
+68,Knives Out,Rian Johnson,2019,Misterio,18000.0
+69,Once Upon a Time in Hollywood,Quentin Tarantino,2019,Drama,20000.0
+70,Spider-Man: No Way Home,Jon Watts,2021,Acción,22000.0
+71,Dune,Dennis Villeneuve,2021,Ciencia Ficción,25000.0
+72,Encanto,Bushra Asad-Jared Bush,2021,Animación,14000.0
+73,Ratatouille,Brad Bird,2007,Animación,13000.0
+74,The Incredibles,Brad Bird,2004,Animación,13000.0
+75,Monsters Inc.,Pete Docter-David Silverman,2001,Animación,13000.0
+76,The Lego Movie,Phil Lord-Christopher Miller,2014,Animación,14000.0
+77,How to Train Your Dragon,Dean DeBlois-Chris Sanders,2010,Animación,14000.0
+78,Crouching Tiger-Hidden Dragon,Ang Lee,2000,Acción,17000.0
+79,Midsommar,Ari Aster,2019,Horror,18000.0
+80,The Farewell,Lulu Wang,2019,Drama,16000.0
+81,The Lighthouse,Robert Eggers,2019,Horror,18000.0
+82,Sicario,Denis Villeneuve,2015,Acción,19000.0
+83,Moonlight,Barry Jenkins,2016,Drama,17000.0
+84,Sound of Metal,Darius Marder,2019,Drama,16000.0
+85,Nomadland,Chloé Zhao,2020,Drama,18000.0
+86,The Father,Florian Zeller,2020,Drama,16000.0
+87,Promising Young Woman,Emerald Fennell,2020,Thriller,17000.0
+88,The Trial of the Chicago 7,Aaron Sorkin,2020,Drama,18000.0
+89,West Side Story,Steven Spielberg,2021,Musical,20000.0
+90,The French Dispatch,Wes Anderson,2021,Comedia,18000.0
+91,Licorice Pizza,Paul Thomas Anderson,2021,Comedia,16000.0
+92,Top Gun: Maverick,Joseph Kosinski,2022,Acción,25000.0
+93,Everything Everywhere All at Once,Daniels,2022,Ciencia Ficción,19000.0
+94,Nope,Jordan Peele,2022,Horror,17000.0
+95,The Batman,Matt Reeves,2022,Acción,22000.0
+96,Black Adam,Jahmil Elamin,2022,Acción,22000.0
+97,Thor: Love and Thunder,Taika Waititi,2022,Acción,20000.0
+98,The Whale,Darren Aronofsky,2022,Drama,18000.0
+99,Killers of the Flower Moon,Martin Scorsese,2023,Drama,20000.0
+100,Oppenheimer,Christopher Nolan,2023,Drama,25000.0
