@@ -23,6 +23,7 @@ public class ArchivoCompras {
     private final String rutaClientes;
     private final String rutaPeliculas;
     ArrayList<Compra> compras;
+    int idPeliculaGenerado = 0;
 
     public ArchivoCompras(String rutaCompras, String rutaClientes, String rutaPeliculas) {
         this.rutaCompras = rutaCompras;
@@ -52,7 +53,7 @@ public class ArchivoCompras {
 
     public Boolean existeId(int ide) {
         for (Compra compra : compras) {
-            if (compra.getIdecompra()== ide) {
+            if (compra.getIdecompra() == ide) {
                 return true;
             }
         }
@@ -62,20 +63,12 @@ public class ArchivoCompras {
     public void registrarCompra(int ideCompra, int idCliente, int idPelicula, String fechaCompra) {
         ArchivoCliente archivoCliente = new ArchivoCliente(rutaCompras);
         ArchivoPelicula archivoPeliculas = new ArchivoPelicula(rutaCompras);
-
         ArrayList<Cliente> clientes = archivoCliente.leerClientes();
-        if (existeId(ideCompra) == true) {
-            System.out.println("Ya existe una compra con ese ID...");
-        } else if (archivoCliente.existeId(idCliente) == false) {
-            System.out.println("No existe un cliente con ese ID...");
-        } else if(archivoPeliculas.existeId(idCliente)==false) {
-            System.out.println("No existe una pelicula con es ID...");
-        }else{
-            Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
-            compras.add(compra);
-            guardarCompra(compra);
-            System.out.println("Compra guardada...");
-        }
+        Compra compra = new Compra(generarIdCompra(), idCliente, idPelicula, fechaCompra);
+        compras.add(compra);
+        guardarCompra(compra);
+        System.out.println("Compra guardada...");
+
     }
 
     public void guardarCompra(Compra compra) {
@@ -87,18 +80,23 @@ public class ArchivoCompras {
             System.out.println("Ocurrio un error al guardar la compra..." + e.getMessage());
         }
     }
-    
-    public ArrayList<Compra> buscarCompraPelicula(int idPelicula){
+
+    public ArrayList<Compra> buscarCompraPelicula(int idPelicula) {
         ArrayList<Compra> comprasPelicula = new ArrayList<>();
-        for (Compra compra : compras){
-            if(compra.getIdepelicula()== idPelicula){
+        for (Compra compra : compras) {
+            if (compra.getIdepelicula() == idPelicula) {
                 comprasPelicula.add(compra);
             }
         }
-        if (comprasPelicula.isEmpty()){
-            System.out.println("No se ha comprado la pelicula con el ID "+idPelicula);
+        if (comprasPelicula.isEmpty()) {
+            System.out.println("No se ha comprado la pelicula con el ID " + idPelicula);
         }
         return comprasPelicula;
+    }
+    
+    public int generarIdCompra(){
+        idPeliculaGenerado =+1;
+        return idPeliculaGenerado;
     }
 
 }
