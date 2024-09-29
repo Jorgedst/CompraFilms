@@ -52,7 +52,7 @@ public class ArchivoCompras {
 
     public Boolean existeId(int ide) {
         for (Compra compra : compras) {
-            if (compra.getIdecliente() == ide) {
+            if (compra.getIdecompra()== ide) {
                 return true;
             }
         }
