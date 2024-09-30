@@ -7,7 +7,7 @@
 7,Luis Torres,luis.torres@mail.com,Carrera10#89-12Manizales
 8,Carmen Díaz,carmen.diaz@correo.co,Calle67#45-78Cúcuta
 9,Andrés Ortiz,andres.ortiz@mail.com,Carrera34#12-56Pereira
-10,Claudia Castillo,claudia.castillo@correo.co,Calle9#56-23SantaMarta
+10,La que mas compra,claudia.castillo@correo.co,Calle9#56-23SantaMarta
 11,Fernando Suárez,fernando.suarez@mail.com,Carrera67#34-90Villavicencio
 12,Gloria Medina,gloria.medina@correo.co,Calle12#34-67Pasto
 13,David Hernández,david.hernandez@mail.com,Carrera45#89-23Ibagué
@@ -48,3 +48,5 @@
 48,Laura Mejía,laura.mejia@correo.co,Calle67#34-12Florencia
 49,Esteban Pineda,esteban.pineda@mail.com,Carrera12#78-45Tunja
 50,Lionel Messi,lioGoat@correo.co,Calle90#23-67Tuluá0
+777,Vegetta,correo@gmail.com,Calle 0
+1047040868,Rafael,rdmp3003@gmail.com,Cra 42#76-225

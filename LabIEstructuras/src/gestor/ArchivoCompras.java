@@ -111,5 +111,13 @@ public class ArchivoCompras {
         }
         return comprasPelicula;
     }
-
+    
+    public boolean existeIdPeliculaCompra(int ide){
+         for (Compra compra : compras) {
+            if (compra.getIdepelicula()== ide ) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

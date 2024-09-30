@@ -260,16 +260,21 @@ public class GestionPeliculas extends javax.swing.JFrame {
         background2 = new javax.swing.JLabel();
         compraExitosaFrame = new javax.swing.JFrame();
         panelCompraExitosa = new javax.swing.JPanel();
-        iconoSucced = new javax.swing.JLabel();
-        fechaMostrar = new javax.swing.JLabel();
-        idPeliculaMostrar = new javax.swing.JLabel();
-        idClienteMostrar = new javax.swing.JLabel();
+        panelIDCompraSucces = new javax.swing.JPanel();
         idCompraMostrar = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        panelDclienteSucces = new javax.swing.JPanel();
+        idClienteMostrar = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelIDPeliculaSucces = new javax.swing.JPanel();
+        idPeliculaMostrar = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        panelFechaSucced = new javax.swing.JPanel();
+        fechaMostrar = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        iconoSucced = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         guia = new javax.swing.JLabel();
         autores = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
@@ -621,7 +626,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
 
         tituloCliente.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 48)); // NOI18N
         tituloCliente.setForeground(new java.awt.Color(226, 226, 182));
-        tituloCliente.setText("!Hola!");
+        tituloCliente.setText("¡Hola!");
         clienteNoRegistrado.getContentPane().add(tituloCliente);
         tituloCliente.setBounds(370, 50, 150, 60);
 
@@ -1188,11 +1193,11 @@ public class GestionPeliculas extends javax.swing.JFrame {
         panelModificarPelicula1.setOpaque(false);
         panelModificarPelicula1.setLayout(null);
 
-        tituloModificarCliente.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
-        tituloModificarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        tituloModificarCliente.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
+        tituloModificarCliente.setForeground(new java.awt.Color(226, 226, 182));
         tituloModificarCliente.setText("Modifica tus datos");
         panelModificarPelicula1.add(tituloModificarCliente);
-        tituloModificarCliente.setBounds(290, 30, 280, 50);
+        tituloModificarCliente.setBounds(270, 30, 310, 50);
 
         panelDatosCliente.setOpaque(false);
         panelDatosCliente.setLayout(null);
@@ -1236,7 +1241,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
             }
         });
         panelBtnModificar1.add(btnModificarCliente);
-        btnModificarCliente.setBounds(5, 3, 130, 40);
+        btnModificarCliente.setBounds(12, 3, 120, 30);
 
         lblModificarCliente.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         lblModificarCliente.setForeground(new java.awt.Color(226, 226, 182));
@@ -1246,7 +1251,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         lblModificarCliente.setBounds(25, 0, 120, 40);
 
         panelDatosCliente.add(panelBtnModificar1);
-        panelBtnModificar1.setBounds(320, 210, 140, 40);
+        panelBtnModificar1.setBounds(320, 200, 140, 40);
 
         panelDireccionMod.setBackground(new java.awt.Color(255, 255, 255));
         panelDireccionMod.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 30, true));
@@ -1634,60 +1639,93 @@ public class GestionPeliculas extends javax.swing.JFrame {
         panelCompraExitosa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelCompraExitosa.setLayout(null);
 
-        iconoSucced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/compraSuccesIcon.png"))); // NOI18N
-        panelCompraExitosa.add(iconoSucced);
-        iconoSucced.setBounds(10, 50, 110, 130);
+        panelIDCompraSucces.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelIDCompraSucces.setOpaque(false);
+        panelIDCompraSucces.setLayout(null);
 
-        fechaMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        fechaMostrar.setForeground(new java.awt.Color(226, 226, 182));
-        fechaMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panelCompraExitosa.add(fechaMostrar);
-        fechaMostrar.setBounds(265, 140, 110, 40);
-
-        idPeliculaMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        idPeliculaMostrar.setForeground(new java.awt.Color(226, 226, 182));
-        panelCompraExitosa.add(idPeliculaMostrar);
-        idPeliculaMostrar.setBounds(510, 90, 50, 40);
-
-        idClienteMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        idClienteMostrar.setForeground(new java.awt.Color(226, 226, 182));
-        panelCompraExitosa.add(idClienteMostrar);
-        idClienteMostrar.setBounds(365, 90, 60, 40);
-
-        idCompraMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        idCompraMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 20)); // NOI18N
         idCompraMostrar.setForeground(new java.awt.Color(226, 226, 182));
-        panelCompraExitosa.add(idCompraMostrar);
-        idCompraMostrar.setBounds(230, 90, 50, 40);
-
-        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(226, 226, 182));
-        jLabel4.setText("ID Pelicula:");
-        panelCompraExitosa.add(jLabel4);
-        jLabel4.setBounds(430, 90, 80, 40);
-
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(226, 226, 182));
-        jLabel1.setText("!Compra realizada exitosamente!");
-        panelCompraExitosa.add(jLabel1);
-        jLabel1.setBounds(120, 50, 460, 40);
-
-        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(226, 226, 182));
-        jLabel5.setText("Fecha");
-        panelCompraExitosa.add(jLabel5);
-        jLabel5.setBounds(300, 120, 50, 40);
-
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(226, 226, 182));
-        jLabel6.setText("ID Cliente:");
-        panelCompraExitosa.add(jLabel6);
-        jLabel6.setBounds(290, 90, 70, 40);
+        panelIDCompraSucces.add(idCompraMostrar);
+        idCompraMostrar.setBounds(90, 0, 120, 30);
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(226, 226, 182));
         jLabel7.setText("ID compra:");
-        panelCompraExitosa.add(jLabel7);
-        jLabel7.setBounds(150, 90, 80, 40);
+        panelIDCompraSucces.add(jLabel7);
+        jLabel7.setBounds(10, 0, 80, 30);
+
+        panelCompraExitosa.add(panelIDCompraSucces);
+        panelIDCompraSucces.setBounds(120, 90, 210, 30);
+
+        panelDclienteSucces.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelDclienteSucces.setOpaque(false);
+        panelDclienteSucces.setLayout(null);
+
+        idClienteMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 20)); // NOI18N
+        idClienteMostrar.setForeground(new java.awt.Color(226, 226, 182));
+        panelDclienteSucces.add(idClienteMostrar);
+        idClienteMostrar.setBounds(80, 0, 130, 30);
+
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel6.setText("ID Cliente:");
+        panelDclienteSucces.add(jLabel6);
+        jLabel6.setBounds(10, 0, 70, 30);
+
+        panelCompraExitosa.add(panelDclienteSucces);
+        panelDclienteSucces.setBounds(120, 135, 210, 30);
+
+        panelIDPeliculaSucces.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelIDPeliculaSucces.setOpaque(false);
+        panelIDPeliculaSucces.setLayout(null);
+
+        idPeliculaMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 20)); // NOI18N
+        idPeliculaMostrar.setForeground(new java.awt.Color(226, 226, 182));
+        panelIDPeliculaSucces.add(idPeliculaMostrar);
+        idPeliculaMostrar.setBounds(90, 0, 120, 30);
+
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel4.setText("ID Pelicula:");
+        panelIDPeliculaSucces.add(jLabel4);
+        jLabel4.setBounds(10, 0, 80, 30);
+
+        panelCompraExitosa.add(panelIDPeliculaSucces);
+        panelIDPeliculaSucces.setBounds(120, 180, 210, 30);
+
+        panelFechaSucced.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 21, 38), 30, true));
+        panelFechaSucced.setOpaque(false);
+        panelFechaSucced.setLayout(null);
+
+        fechaMostrar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        fechaMostrar.setForeground(new java.awt.Color(226, 226, 182));
+        fechaMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelFechaSucced.add(fechaMostrar);
+        fechaMostrar.setBounds(60, 0, 110, 30);
+
+        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel5.setText("Fecha:");
+        panelFechaSucced.add(jLabel5);
+        jLabel5.setBounds(10, 0, 50, 30);
+
+        panelCompraExitosa.add(panelFechaSucced);
+        panelFechaSucced.setBounds(370, 90, 180, 30);
+
+        iconoSucced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/compraSuccesIcon.png"))); // NOI18N
+        panelCompraExitosa.add(iconoSucced);
+        iconoSucced.setBounds(10, 50, 110, 130);
+
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(226, 226, 182));
+        jLabel3.setText("!Compra realizada exitosamente!");
+        panelCompraExitosa.add(jLabel3);
+        jLabel3.setBounds(110, 30, 460, 40);
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliCenterLogo.png"))); // NOI18N
+        panelCompraExitosa.add(jLabel8);
+        jLabel8.setBounds(400, 130, 110, 90);
 
         compraExitosaFrame.getContentPane().add(panelCompraExitosa);
         panelCompraExitosa.setBounds(0, 0, 580, 240);
@@ -1978,7 +2016,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         headerRender.setBackground(new Color(3, 52, 110));
         try {
             int idPeliculaBuscar = Integer.parseInt(txtIdPeliculaConsultar.getText());
-            if (archivoCompra.existeId(idPeliculaBuscar)) {
+            if (archivoCompra.existeIdPeliculaCompra(idPeliculaBuscar)) {
                 if (panelTablaCompras.isVisible() == false) {
                     panelTablaCompras.setVisible(true);
                 }
@@ -2396,12 +2434,13 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JLabel idClienteMostrar;
     private javax.swing.JLabel idCompraMostrar;
     private javax.swing.JLabel idPeliculaMostrar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel labelAño;
     private javax.swing.JLabel labelAño1;
     private javax.swing.JLabel labelCorreo;
@@ -2444,19 +2483,23 @@ public class GestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JPanel panelCorreoMod;
     private javax.swing.JPanel panelDatosCliente;
     private javax.swing.JPanel panelDatosPelicula;
+    private javax.swing.JPanel panelDclienteSucces;
     private javax.swing.JPanel panelDireccion;
     private javax.swing.JPanel panelDireccionMod;
     private javax.swing.JPanel panelDirector;
     private javax.swing.JPanel panelDirectorMod;
     private javax.swing.JPanel panelEditarInfoCliente;
     private javax.swing.JPanel panelEliminar;
+    private javax.swing.JPanel panelFechaSucced;
     private javax.swing.JPanel panelGenero;
     private javax.swing.JPanel panelGeneroMod;
     private javax.swing.JPanel panelID;
     private javax.swing.JPanel panelID1;
     private javax.swing.JPanel panelIDCliente;
+    private javax.swing.JPanel panelIDCompraSucces;
     private javax.swing.JPanel panelIDConsultarCompra;
     private javax.swing.JPanel panelIDMod;
+    private javax.swing.JPanel panelIDPeliculaSucces;
     private javax.swing.JPanel panelIDpeliculaComprar;
     private javax.swing.JPanel panelIdModificarPel;
     private javax.swing.JPanel panelIniciar;
