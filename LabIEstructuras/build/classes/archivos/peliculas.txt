@@ -6,7 +6,7 @@
 7,Forrest Gump,Robert Zemeckis,1994,Drama,15000.0
 8,The Matrix,Lana Wachowski-Lilly Wachowski,1999,Ciencia Ficción,19000.0
 9,The Shawshank Redemption,Frank Darabont,1994,Drama,16000.0
-10,Avatar,James Cameron,2009,Ciencia Ficción,25000.0
+10,Avatar,James Cameron,2009,Ciencia Ficción,70000.0
 11,Gladiator,Ridley Scott,2000,Acción,18000.0
 12,The Lord of the Rings: The Fellowship of the Ring,Peter Jackson,2001,Fantasía,20000.0
 13,Jurassic Park,Steven Spielberg,1993,Aventura,17000.0
