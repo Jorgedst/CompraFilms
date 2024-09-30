@@ -20,3 +20,5 @@ plt.xlabel('Fecha')
 plt.ylabel('Número de Ventas')
 plt.grid(True)
 plt.show()
+
+
