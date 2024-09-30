@@ -47,3 +47,6 @@
 48,Laura Mejía,laura.mejia@correo.co,Calle67#34-12Florencia
 49,Esteban Pineda,esteban.pineda@mail.com,Carrera12#78-45Tunja
 50,Gabriela Luna,gabriela.luna@correo.co,Calle90#23-67Tuluá999,Prueba,Prueba@gmail.com,direcicon
+32879102,DARLYS TAPIA,Jsaries09@hotmail.com,Calle 96 #72.43
+1,Jorge Silva,joregdani700@gmail.com,Calle 96 #72-43
+1042851562,Jorge,correoPrueba@gmail.com,Direccion Prueba

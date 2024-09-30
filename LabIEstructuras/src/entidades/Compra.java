@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Dtapiaj
@@ -12,9 +14,9 @@ public class Compra {
     int idecompra;
     int idecliente;
     int idepelicula;
-    String fechacompra;
+    LocalDate fechacompra;
 
-    public Compra(int idecompra, int idecliente, int idepelicula, String fechacompra) {
+    public Compra(int idecompra, int idecliente, int idepelicula, LocalDate fechacompra) {
         this.idecompra = idecompra;
         this.idecliente = idecliente;
         this.idepelicula = idepelicula;
@@ -45,11 +47,11 @@ public class Compra {
         this.idepelicula = idepelicula;
     }
 
-    public String getFechacompra() {
+    public LocalDate getFechacompra() {
         return fechacompra;
     }
 
-    public void setFechacompra(String fechacompra) {
+    public void setFechacompra(LocalDate fechacompra) {
         this.fechacompra = fechacompra;
     }
     

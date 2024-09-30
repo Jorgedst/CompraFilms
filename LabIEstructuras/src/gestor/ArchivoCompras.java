@@ -11,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,6 @@ public class ArchivoCompras {
     private final String rutaClientes;
     private final String rutaPeliculas;
     ArrayList<Compra> compras;
-    int idPeliculaGenerado = 0;
 
     public ArchivoCompras(String rutaCompras, String rutaClientes, String rutaPeliculas) {
         this.rutaCompras = rutaCompras;
@@ -40,15 +40,33 @@ public class ArchivoCompras {
                 int idcompra = Integer.parseInt(elementos[0]);
                 int idecliente = Integer.parseInt(elementos[1]);
                 int idpelicula = Integer.parseInt(elementos[2]);
-                String fechaCompra = elementos[3];
+                LocalDate fechaCompra = LocalDate.parse(elementos[3]);
 
-                Compra compra = new Compra(idcompra, idecliente, idpelicula, fechaCompra);
+                Compra compra = new Compra(idcompra, idecliente, idpelicula,fechaCompra );
                 compras.add(compra);
             }
         } catch (IOException e) {
             System.out.println("Ocurrio un error al leer las compras..." + e.getMessage());
         }
         return compras;
+    }
+    
+    public int getUltimoIndexCompra(){
+        int ultimoIdCompra = 0;
+        try ( BufferedReader br = new BufferedReader(new FileReader(rutaCompras))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] elementos = linea.split(",");
+                int idcompra = Integer.parseInt(elementos[0]);
+                int idecliente = Integer.parseInt(elementos[1]);
+                int idpelicula = Integer.parseInt(elementos[2]);
+                LocalDate fechaCompra = LocalDate.parse(elementos[3]);
+                ultimoIdCompra = idcompra;
+            }
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al leer las compras..." + e.getMessage());
+        }
+        return ultimoIdCompra;
     }
 
     public Boolean existeId(int ide) {
@@ -60,15 +78,15 @@ public class ArchivoCompras {
         return false;
     }
 
-    public void registrarCompra(int ideCompra, int idCliente, int idPelicula, String fechaCompra) {
+    public Compra registrarCompra(int ideCompra, int idCliente, int idPelicula, LocalDate fechaCompra) {
         ArchivoCliente archivoCliente = new ArchivoCliente(rutaCompras);
         ArchivoPelicula archivoPeliculas = new ArchivoPelicula(rutaCompras);
         ArrayList<Cliente> clientes = archivoCliente.leerClientes();
-        Compra compra = new Compra(generarIdCompra(), idCliente, idPelicula, fechaCompra);
+        Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
         compras.add(compra);
         guardarCompra(compra);
         System.out.println("Compra guardada...");
-
+        return compra;
     }
 
     public void guardarCompra(Compra compra) {
@@ -92,11 +110,6 @@ public class ArchivoCompras {
             System.out.println("No se ha comprado la pelicula con el ID " + idPelicula);
         }
         return comprasPelicula;
-    }
-    
-    public int generarIdCompra(){
-        idPeliculaGenerado =+1;
-        return idPeliculaGenerado;
     }
 
 }
