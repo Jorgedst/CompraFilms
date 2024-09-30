@@ -11,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -39,9 +40,9 @@ public class ArchivoCompras {
                 int idcompra = Integer.parseInt(elementos[0]);
                 int idecliente = Integer.parseInt(elementos[1]);
                 int idpelicula = Integer.parseInt(elementos[2]);
-                String fechaCompra = elementos[3];
+                LocalDate fechaCompra = LocalDate.parse(elementos[3]);
 
-                Compra compra = new Compra(idcompra, idecliente, idpelicula, fechaCompra);
+                Compra compra = new Compra(idcompra, idecliente, idpelicula,fechaCompra );
                 compras.add(compra);
             }
         } catch (IOException e) {
@@ -49,33 +50,43 @@ public class ArchivoCompras {
         }
         return compras;
     }
+    
+    public int getUltimoIndexCompra(){
+        int ultimoIdCompra = 0;
+        try ( BufferedReader br = new BufferedReader(new FileReader(rutaCompras))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] elementos = linea.split(",");
+                int idcompra = Integer.parseInt(elementos[0]);
+                int idecliente = Integer.parseInt(elementos[1]);
+                int idpelicula = Integer.parseInt(elementos[2]);
+                LocalDate fechaCompra = LocalDate.parse(elementos[3]);
+                ultimoIdCompra = idcompra;
+            }
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al leer las compras..." + e.getMessage());
+        }
+        return ultimoIdCompra;
+    }
 
     public Boolean existeId(int ide) {
         for (Compra compra : compras) {
-            if (compra.getIdecompra()== ide) {
+            if (compra.getIdecompra() == ide) {
                 return true;
             }
         }
         return false;
     }
 
-    public void registrarCompra(int ideCompra, int idCliente, int idPelicula, String fechaCompra) {
+    public Compra registrarCompra(int ideCompra, int idCliente, int idPelicula, LocalDate fechaCompra) {
         ArchivoCliente archivoCliente = new ArchivoCliente(rutaCompras);
         ArchivoPelicula archivoPeliculas = new ArchivoPelicula(rutaCompras);
-
         ArrayList<Cliente> clientes = archivoCliente.leerClientes();
-        if (existeId(ideCompra) == true) {
-            System.out.println("Ya existe una compra con ese ID...");
-        } else if (archivoCliente.existeId(idCliente) == false) {
-            System.out.println("No existe un cliente con ese ID...");
-        } else if(archivoPeliculas.existeId(idCliente)==false) {
-            System.out.println("No existe una pelicula con es ID...");
-        }else{
-            Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
-            compras.add(compra);
-            guardarCompra(compra);
-            System.out.println("Compra guardada...");
-        }
+        Compra compra = new Compra(ideCompra, idCliente, idPelicula, fechaCompra);
+        compras.add(compra);
+        guardarCompra(compra);
+        System.out.println("Compra guardada...");
+        return compra;
     }
 
     public void guardarCompra(Compra compra) {
@@ -87,16 +98,16 @@ public class ArchivoCompras {
             System.out.println("Ocurrio un error al guardar la compra..." + e.getMessage());
         }
     }
-    
-    public ArrayList<Compra> buscarCompraPelicula(int idPelicula){
+
+    public ArrayList<Compra> buscarCompraPelicula(int idPelicula) {
         ArrayList<Compra> comprasPelicula = new ArrayList<>();
-        for (Compra compra : compras){
-            if(compra.getIdepelicula()== idPelicula){
+        for (Compra compra : compras) {
+            if (compra.getIdepelicula() == idPelicula) {
                 comprasPelicula.add(compra);
             }
         }
-        if (comprasPelicula.isEmpty()){
-            System.out.println("No se ha comprado la pelicula con el ID "+idPelicula);
+        if (comprasPelicula.isEmpty()) {
+            System.out.println("No se ha comprado la pelicula con el ID " + idPelicula);
         }
         return comprasPelicula;
     }
