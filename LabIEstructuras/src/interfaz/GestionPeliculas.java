@@ -1360,7 +1360,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         background5.setBounds(0, 0, 890, 500);
 
         modificarPeliculaFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        modificarPeliculaFrame.setPreferredSize(new java.awt.Dimension(890, 535));
         modificarPeliculaFrame.setResizable(false);
         modificarPeliculaFrame.setSize(new java.awt.Dimension(890, 535));
         modificarPeliculaFrame.getContentPane().setLayout(null);
@@ -1697,7 +1696,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
         setTitle("CompraFilms");
         setPreferredSize(new java.awt.Dimension(890, 535));
         setResizable(false);
-        setSize(new java.awt.Dimension(890, 535));
+        setSize(new java.awt.Dimension(890, 500));
         getContentPane().setLayout(null);
 
         guia.setForeground(new java.awt.Color(226, 226, 182));
@@ -2095,6 +2094,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void btnRegresarClienteRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarClienteRegistradoActionPerformed
+        
         clienteRegistrado.setVisible(false);
         mostrarMainPeliculas();
     }//GEN-LAST:event_btnRegresarClienteRegistradoActionPerformed
@@ -2103,6 +2103,20 @@ public class GestionPeliculas extends javax.swing.JFrame {
         clienteRegistrado.setVisible(false);
         modificarClienteFrame.setLocationRelativeTo(null);
         modificarClienteFrame.setVisible(true);
+
+        for (Cliente cliente : clientes) {
+            int clienteModificar = Integer.parseInt(txtIdSesion.getText());
+            txtIDClienteMod.setText(Integer.toString(clienteModificar));
+            if (Integer.toString(cliente.getIdecliente()).equals(txtIdSesion.getText())) {
+                panelDatosCliente.setVisible(true);
+                txtIdCliente.setText(Integer.toString(cliente.getIdecliente()));
+                txtNombreMod.setText(cliente.getNombre());
+                txtCorreoMod.setText(cliente.getCorreo());
+                txtDireccionMod.setText(cliente.getDireccion());
+            }
+
+        }
+
 
     }//GEN-LAST:event_btnEditarInfoClienteActionPerformed
 
@@ -2245,6 +2259,7 @@ public class GestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdClienteActionPerformed
 
     private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
+
         try {
             int clienteModificar = Integer.parseInt(txtIdSesion.getText());
             txtIDClienteMod.setText(Integer.toString(clienteModificar));
@@ -2252,14 +2267,18 @@ public class GestionPeliculas extends javax.swing.JFrame {
             String correoMod = txtCorreoMod.getText();
             String direccionMod = txtDireccionMod.getText();
             archivoCliente.actualizarCliente(clienteModificar, nombreMod, correoMod, direccionMod);
+            nombreCliente.setText(nombreMod);
             JOptionPane.showMessageDialog(null, "Datos modificados exitosamente", "Pelicula modificada exitosamente", JOptionPane.PLAIN_MESSAGE, succesIcon);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR: Informacion incorrecta", JOptionPane.PLAIN_MESSAGE, errorIcon);
         }
+        
+        
     }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnRegresarModificar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarModificar_ClienteActionPerformed
-        // TODO add your handling code here:
+        modificarClienteFrame.setVisible(false);
+        clienteRegistrado.setVisible(true);
     }//GEN-LAST:event_btnRegresarModificar_ClienteActionPerformed
 
     private void btnConsultarComprasClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarComprasClienteActionPerformed
