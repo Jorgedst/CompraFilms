@@ -50,3 +50,4 @@
 50,Lionel Messi,lioGoat@correo.co,Calle90#23-67Tuluá0
 777,Vegetta,correo@gmail.com,Calle 0
 1047040868,Rafael,rdmp3003@gmail.com,Cra 42#76-225
+1042247225,Banshiik,jbautipf@gmail.com,Calle 69d #38-138

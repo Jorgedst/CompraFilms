@@ -1,5 +1,0 @@
-3,Mami prenda la radio encienda la tele,Ryan Castro,Reggaeton,2024,90000.0
-2,The box,Roddy Richh,Peo,2024,100.0
-5,Bored,Laufey,Bossa ,2024,50000.0
-7,PassionFruit,Drake,peo,2024,1000.0
-12,po,po,po,2023,200.0

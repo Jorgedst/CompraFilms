@@ -3467,9 +3467,6 @@
     <Container class="javax.swing.JFrame" name="compraExitosaFrame">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[580, 240]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[590, 270]"/>

@@ -97,3 +97,4 @@
 98,The Whale,Darren Aronofsky,2022,Drama,18000.0
 99,Killers of the Flower Moon,Martin Scorsese,2023,Drama,20000.0
 100,Oppenheimer,Christopher Nolan,2023,Drama,25000.0
+101,Deadpool 2,Ryan reynolds,2024,Acción,20000.0
