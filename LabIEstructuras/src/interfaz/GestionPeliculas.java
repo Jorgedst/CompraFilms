@@ -1630,7 +1630,6 @@ public class GestionPeliculas extends javax.swing.JFrame {
         background2.setBounds(0, 0, 890, 500);
 
         compraExitosaFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        compraExitosaFrame.setPreferredSize(new java.awt.Dimension(580, 240));
         compraExitosaFrame.setResizable(false);
         compraExitosaFrame.setSize(new java.awt.Dimension(590, 270));
         compraExitosaFrame.getContentPane().setLayout(null);
